@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Download Checklist | FoxOn Agência</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap');
+        :root { --bg-deep: #0d0118; }
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: var(--bg-deep); color: white; min-height: 100vh; display: flex; align-items: center; justify-content: center; overflow-x: hidden; }
+        .tech-bg { position: fixed; inset: 0; z-index: -1; background: linear-gradient(to bottom, #110221, #0d0118); }
+        .hero-grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(249, 115, 22, 0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(249, 115, 22, 0.08) 1px, transparent 1px); background-size: 50px 50px; mask-image: radial-gradient(ellipse at center, black, transparent 85%); pointer-events: none; z-index: 0; transform: rotateX(45deg) translateY(-20%); }
+        .glass-card { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.1); box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5); }
+        .orange-button { background: #f97316; transition: all 0.3s ease; box-shadow: 0 0 20px rgba(249, 115, 22, 0.3); }
+        .orange-button:hover { background: #ea580c; transform: translateY(-2px); box-shadow: 0 0 35px rgba(249, 115, 22, 0.5); }
+        .success-anim { animation: scaleIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+        @keyframes scaleIn { from { transform: scale(0.8); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+    </style>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script type="importmap">
+    { "imports": { "react": "https://esm.sh/react@19.0.0", "react-dom": "https://esm.sh/react-dom@19.0.0", "react-dom/client": "https://esm.sh/react-dom@19.0.0/client", "lucide-react": "https://esm.sh/lucide-react@0.460.0" } }
+    </script>
+</head>
+<body>
+    <div class="tech-bg"><div class="hero-grid"></div></div>
+    <div id="root"></div>
+
+    <script type="text/babel" data-type="module">
+        import React from 'react';
+        import ReactDOM from 'react-dom/client';
+        import { CheckCircle, Download, MessageCircle, ArrowLeft, ExternalLink } from 'lucide-react';
+
+        const CHECKLIST_URL = "/assets/ebooks/Checklist_REC.pdf";
+        const WHATSAPP_LINK = "https://wa.me/5511972202587?text=Quero%20agendar%20um%20diagnóstico%20enquanto%20leio%20o%20checklist!";
+
+        const DownloadPage = () => (
+          <div className="p-6 max-w-2xl w-full success-anim">
+            <div className="glass-card p-10 md:p-16 rounded-[48px] text-center border-orange-500/20 border">
+              <div className="w-24 h-24 bg-green-500/20 text-green-500 rounded-full flex items-center justify-center mx-auto mb-8">
+                <CheckCircle size={56} />
+              </div>
+              
+              <h1 className="text-4xl md:text-5xl font-black mb-6 leading-tight">
+                Acesso <span className="text-[#f97316]">Liberado!</span>
+              </h1>
+              
+              <p className="text-gray-300 text-lg mb-12 font-medium">
+                Sua inscrição foi concluída com sucesso. Clique abaixo para baixar seu Checklist e começar a auditar sua operação digital.
+              </p>
+
+              <div className="flex flex-col gap-4">
+                <a href={CHECKLIST_URL} download className="orange-button text-black font-black py-6 px-10 rounded-2xl text-xl flex items-center justify-center gap-3">
+                  <Download size={24} /> BAIXAR CHECKLIST AGORA
+                </a>
+
+                <a href={WHATSAPP_LINK} target="_blank" className="bg-white/5 hover:bg-white/10 text-white font-bold py-5 px-10 rounded-2xl text-lg border border-white/10 flex items-center justify-center gap-3 transition-all">
+                  AGENDAR DIAGNÓSTICO <ExternalLink size={20} />
+                </a>
+              </div>
+
+              <div className="mt-12 pt-8 border-t border-white/10">
+                <a href="../index.html" className="text-gray-500 hover:text-orange-500 font-bold inline-flex items-center gap-2 transition-colors">
+                  <ArrowLeft size={18} /> Voltar para o site
+                </a>
+              </div>
+            </div>
+          </div>
+        );
+
+        ReactDOM.createRoot(document.getElementById('root')).render(<DownloadPage />);
+    </script>
+</body>
+</html>

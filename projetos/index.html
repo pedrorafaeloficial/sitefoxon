@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sites de Alta Performance | Agência FoxOn</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        fox: {
+                            orange: '#FF5722',
+                            dark: '#1E0B2B',
+                            black: '#0F0314',
+                            light: '#F5F5F5'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Open Sans', 'sans-serif'],
+                        heading: ['Montserrat', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        .gradient-text {
+            background: linear-gradient(90deg, #FF5722, #FF9100);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .hero-bg {
+            background-color: #0F0314;
+            background-image: 
+                radial-gradient(circle at 50% 10%, rgba(156, 39, 176, 0.15) 0%, transparent 40%),
+                radial-gradient(circle at 90% 90%, rgba(255, 87, 34, 0.08) 0%, transparent 30%);
+        }
+
+        /* Efeito de brilho no card de preço */
+        .price-card-glow:hover {
+            box-shadow: 0 0 30px rgba(255, 87, 34, 0.2);
+            border-color: #FF5722;
+        }
+
+        /* FAQ Animation */
+        .faq-content {
+            transition: max-height 0.3s ease-in-out, padding 0.3s ease;
+        }
+
+        /* Infinite Scroll Animation */
+        @keyframes infinite-scroll {
+            from { transform: translateX(0); }
+            to { transform: translateX(-50%); }
+        }
+        .animate-infinite-scroll {
+            animation: infinite-infinite-scroll 25s linear infinite;
+        }
+        @keyframes scroll {
+             0% { transform: translateX(0); }
+             100% { transform: translateX(-50%); }
+        }
+        .scroller {
+            animation: scroll 40s linear infinite;
+        }
+    </style>
+</head>
+<body class="bg-fox-black text-fox-light font-sans antialiased overflow-x-hidden">
+
+    <!-- Header -->
+    <header class="fixed w-full z-50 bg-[#0F0314]/90 backdrop-blur-md border-b border-purple-500/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex-shrink-0 flex items-center cursor-pointer" onclick="window.scrollTo(0,0)">
+                    <img src="/assets/images/Logo-2-H.png" alt="Agência FoxOn" class="h-10 w-auto">
+                </div>
+                <a href="#planos" class="bg-fox-orange hover:bg-orange-600 text-white px-6 py-2 rounded-full font-bold transition-all shadow-lg shadow-orange-500/20 text-sm">
+                    Garantir Oferta
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section (VSL) -->
+    <section class="relative pt-32 pb-20 hero-bg">
+        <div class="max-w-4xl mx-auto px-4 text-center relative z-10">
+            
+            <div class="inline-block px-3 py-1 rounded-full bg-fox-orange/10 border border-fox-orange/30 text-fox-orange text-xs font-bold uppercase tracking-wider mb-6">
+                🔥 Oferta por Tempo Limitado
+            </div>
+
+            <h1 class="text-3xl md:text-5xl lg:text-6xl font-heading font-black text-white leading-tight mb-6">
+                Tenha um Site Profissional que <br>
+                <span class="gradient-text">Vende Por Você 24h/dia</span>
+            </h1>
+            
+            <p class="text-gray-300 text-lg md:text-xl mb-10 max-w-2xl mx-auto">
+                Chega de perder credibilidade. Descubra como ter uma presença digital de alto nível pagando menos da metade do preço de mercado.
+            </p>
+
+            <!-- VSL YouTube Wrapper (Corrigido com aspect-video) -->
+            <div class="w-full max-w-4xl mx-auto mb-12 relative z-20">
+                <div class="aspect-video w-full bg-black shadow-[0_20px_50px_rgba(0,0,0,0.5)] border border-white/10 rounded-2xl overflow-hidden">
+                    <iframe 
+                        class="w-full h-full"
+                        src="https://www.youtube.com/embed/O2u0L-eCBWk?rel=0&modestbranding=1&controls=1&showinfo=0" 
+                        title="Vídeo de Vendas" 
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen>
+                    </iframe>
+                </div>
+            </div>
+
+            <a href="#planos" class="inline-flex items-center justify-center bg-[#25D366] hover:bg-[#1fbd59] text-white text-xl font-bold py-5 px-10 rounded-lg shadow-[0_0_20px_rgba(37,211,102,0.4)] transition-all transform hover:-translate-y-1 hover:scale-105 w-full md:w-auto">
+                <i class="fa-brands fa-whatsapp mr-2"></i> QUERO MEU SITE AGORA
+            </a>
+            
+        </div>
+    </section>
+
+    <!-- LOGO CAROUSEL SECTION -->
+    <section class="py-10 bg-black border-y border-white/5 overflow-hidden relative">
+        <div class="max-w-7xl mx-auto px-4 mb-8 text-center">
+            <p class="text-gray-500 text-sm font-bold tracking-[0.2em] uppercase">
+                <span class="text-fox-orange mr-2">●</span> Mais de 500 Projetos Entregues por Ano
+            </p>
+        </div>
+
+        <div class="flex overflow-hidden relative w-full">
+            <div class="absolute top-0 left-0 h-full w-16 bg-gradient-to-r from-black to-transparent z-10"></div>
+            <div class="absolute top-0 right-0 h-full w-16 bg-gradient-to-l from-black to-transparent z-10"></div>
+
+            <div class="flex items-center gap-16 scroller w-max px-8">
+                <!-- Logos -->
+                <div class="flex items-center gap-3 opacity-50 hover:opacity-100 transition-opacity grayscale hover:grayscale-0">
+                    <i class="fa-solid fa-cube text-3xl text-blue-500"></i><span class="text-xl font-bold text-white">InovaTech</span>
+                </div>
+                <div class="flex items-center gap-3 opacity-50 hover:opacity-100 transition-opacity grayscale hover:grayscale-0">
+                    <i class="fa-solid fa-leaf text-3xl text-green-500"></i><span class="text-xl font-bold text-white">BioSaúde</span>
+                </div>
+                <div class="flex items-center gap-3 opacity-50 hover:opacity-100 transition-opacity grayscale hover:grayscale-0">
+                    <i class="fa-solid fa-dumbbell text-3xl text-red-500"></i><span class="text-xl font-bold text-white">PowerFit</span>
+                </div>
+                <div class="flex items-center gap-3 opacity-50 hover:opacity-100 transition-opacity grayscale hover:grayscale-0">
+                    <i class="fa-solid fa-tooth text-3xl text-cyan-400"></i><span class="text-xl font-bold text-white">Sorriso & Co.</span>
+                </div>
+                <div class="flex items-center gap-3 opacity-50 hover:opacity-100 transition-opacity grayscale hover:grayscale-0">
+                    <i class="fa-solid fa-burger text-3xl text-orange-500"></i><span class="text-xl font-bold text-white">Brasa Burguer</span>
+                </div>
+                <div class="flex items-center gap-3 opacity-50 hover:opacity-100 transition-opacity grayscale hover:grayscale-0">
+                    <i class="fa-solid fa-building text-3xl text-gray-400"></i><span class="text-xl font-bold text-white">Urban Construtora</span>
+                </div>
+                <div class="flex items-center gap-3 opacity-50 hover:opacity-100 transition-opacity grayscale hover:grayscale-0">
+                    <i class="fa-solid fa-shirt text-3xl text-pink-500"></i><span class="text-xl font-bold text-white">Bella Moda</span>
+                </div>
+                <div class="flex items-center gap-3 opacity-50 hover:opacity-100 transition-opacity grayscale hover:grayscale-0">
+                    <i class="fa-solid fa-scale-balanced text-3xl text-yellow-600"></i><span class="text-xl font-bold text-white">Silva Associados</span>
+                </div>
+                
+                <!-- Duplicate Set -->
+                <div class="flex items-center gap-3 opacity-50 hover:opacity-100 transition-opacity grayscale hover:grayscale-0">
+                    <i class="fa-solid fa-cube text-3xl text-blue-500"></i><span class="text-xl font-bold text-white">InovaTech</span>
+                </div>
+                <div class="flex items-center gap-3 opacity-50 hover:opacity-100 transition-opacity grayscale hover:grayscale-0">
+                    <i class="fa-solid fa-leaf text-3xl text-green-500"></i><span class="text-xl font-bold text-white">BioSaúde</span>
+                </div>
+                <div class="flex items-center gap-3 opacity-50 hover:opacity-100 transition-opacity grayscale hover:grayscale-0">
+                    <i class="fa-solid fa-dumbbell text-3xl text-red-500"></i><span class="text-xl font-bold text-white">PowerFit</span>
+                </div>
+                <div class="flex items-center gap-3 opacity-50 hover:opacity-100 transition-opacity grayscale hover:grayscale-0">
+                    <i class="fa-solid fa-tooth text-3xl text-cyan-400"></i><span class="text-xl font-bold text-white">Sorriso & Co.</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NEW SECTION: Pain Points (Agitação) -->
+    <section class="py-20 bg-[#150520] border-t border-purple-500/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-2xl md:text-3xl font-heading font-bold text-white mb-12">
+                Você já passou por essa <span class="text-fox-orange">situação constrangedora?</span>
+            </h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Pain 1 -->
+                <div class="p-6 bg-black/40 rounded-xl border border-white/5 hover:border-red-500/30 transition-colors">
+                    <div class="w-16 h-16 mx-auto bg-red-500/10 rounded-full flex items-center justify-center mb-4">
+                        <i class="fa-regular fa-face-frown text-3xl text-red-500"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-2">"Qual o seu site?"</h3>
+                    <p class="text-gray-400 text-sm">E você teve que responder: <em>"Ainda está em manutenção..."</em> ou mandar apenas o link do Instagram, perdendo autoridade na hora.</p>
+                </div>
+
+                <!-- Pain 2 -->
+                <div class="p-6 bg-black/40 rounded-xl border border-white/5 hover:border-red-500/30 transition-colors">
+                    <div class="w-16 h-16 mx-auto bg-red-500/10 rounded-full flex items-center justify-center mb-4">
+                        <i class="fa-solid fa-hand-holding-dollar text-3xl text-red-500"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-2">Guerra de Preços</h3>
+                    <p class="text-gray-400 text-sm">Sem um site profissional, o cliente te compara pelo preço, não pelo valor. Você acaba cobrando menos do que merece.</p>
+                </div>
+
+                <!-- Pain 3 -->
+                <div class="p-6 bg-black/40 rounded-xl border border-white/5 hover:border-red-500/30 transition-colors">
+                    <div class="w-16 h-16 mx-auto bg-red-500/10 rounded-full flex items-center justify-center mb-4">
+                        <i class="fa-solid fa-ban text-3xl text-red-500"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-2">Medo do Bloqueio</h3>
+                    <p class="text-gray-400 text-sm">Seu negócio depende 100% das redes sociais? Se sua conta cair amanhã, sua empresa desaparece junto com ela.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SEÇÃO: A Importância do Site (Jornada do Cliente) -->
+    <section class="py-24 bg-fox-black border-t border-purple-500/10 relative overflow-hidden">
+        <!-- Efeito de fundo -->
+        <div class="absolute top-0 right-0 w-64 h-64 bg-fox-orange/5 rounded-full blur-[80px] pointer-events-none"></div>
+        <div class="absolute bottom-0 left-0 w-64 h-64 bg-purple-600/5 rounded-full blur-[80px] pointer-events-none"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-heading font-bold text-white mb-6">
+                    A Jornada de Compra <span class="text-fox-orange">Definitiva</span>
+                </h2>
+                <p class="text-gray-400 text-lg max-w-3xl mx-auto">
+                    O Instagram é sua vitrine, mas o Google é onde as pessoas vão quando querem <strong>comprar</strong>. Veja como transformamos cliques em clientes:
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-center text-center relative">
+                <!-- Linha conectora -->
+                <div class="hidden md:block absolute top-12 left-[16%] right-[16%] h-0.5 bg-gradient-to-r from-transparent via-purple-500/30 to-transparent -z-10"></div>
+
+                <!-- Passo 1 -->
+                <div class="bg-[#150520] p-8 rounded-2xl border border-purple-500/20">
+                    <div class="w-20 h-20 mx-auto bg-white/5 rounded-full flex items-center justify-center mb-6">
+                        <i class="fa-brands fa-google text-4xl text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">1. A Busca</h3>
+                    <p class="text-gray-400 text-sm">O cliente procura "Seu Serviço + Cidade" no Google.</p>
+                </div>
+
+                <!-- Passo 2 -->
+                <div class="bg-[#150520] p-8 rounded-2xl border border-fox-orange shadow-[0_0_40px_rgba(255,87,34,0.15)] scale-105 relative z-10 transform md:-translate-y-4">
+                    <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-fox-orange text-white text-xs font-bold px-4 py-1.5 rounded-full uppercase tracking-wider shadow-lg whitespace-nowrap">
+                        FoxOn entra aqui
+                    </div>
+                    <div class="w-20 h-20 mx-auto bg-fox-orange rounded-full flex items-center justify-center mb-6 animate-[pulse_3s_infinite]">
+                        <i class="fa-solid fa-globe text-4xl text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">2. Autoridade Imediata</h3>
+                    <p class="text-gray-300 text-sm">Ele encontra seu site profissional, rápido e bonito. A confiança é instantânea.</p>
+                </div>
+
+                <!-- Passo 3 -->
+                <div class="bg-[#150520] p-8 rounded-2xl border border-purple-500/20">
+                    <div class="w-20 h-20 mx-auto bg-white/5 rounded-full flex items-center justify-center mb-6">
+                        <i class="fa-brands fa-whatsapp text-4xl text-green-500"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">3. Venda Fechada</h3>
+                    <p class="text-gray-400 text-sm">Com um clique, ele cai no seu WhatsApp pronto para pagar.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section class="py-20 bg-[#150520] border-t border-purple-500/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-heading font-bold text-white mb-4">Portfólio FoxOn</h2>
+                <p class="text-gray-400">Veja alguns dos projetos que desenvolvemos recentemente.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Projects (Same as before) -->
+                <div class="group relative rounded-xl overflow-hidden border border-purple-500/20 bg-[#0F0314]">
+                    <div class="aspect-video overflow-hidden">
+                        <img src="/assets/images/sitesfeitos/carinapinanutri.png" alt="Carina Pina Nutri" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-white mb-2">Carina Pina Nutri</h3>
+                        <p class="text-sm text-gray-500 mb-4">Saúde e Nutrição</p>
+                        <a href="https://carinapinanutri.com.br" target="_blank" class="text-fox-orange text-sm font-bold hover:underline flex items-center gap-1">Ver site ao vivo <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i></a>
+                    </div>
+                </div>
+                <div class="group relative rounded-xl overflow-hidden border border-purple-500/20 bg-[#0F0314]">
+                    <div class="aspect-video overflow-hidden">
+                        <img src="/assets/images/sitesfeitos/commander.png" alt="Commander Imports" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-white mb-2">Commander Imports</h3>
+                        <p class="text-sm text-gray-500 mb-4">E-commerce Automotivo</p>
+                        <a href="https://commanderimports.com.br" target="_blank" class="text-fox-orange text-sm font-bold hover:underline flex items-center gap-1">Ver site ao vivo <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i></a>
+                    </div>
+                </div>
+                <div class="group relative rounded-xl overflow-hidden border border-purple-500/20 bg-[#0F0314]">
+                    <div class="aspect-video overflow-hidden">
+                        <img src="/assets/images/sitesfeitos/mrsanntana.png" alt="Barbearia Mr Sanntana" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-white mb-2">Barbearia Mr Sanntana</h3>
+                        <p class="text-sm text-gray-500 mb-4">Beleza e Estética</p>
+                        <a href="https://mrsanntana.com.br" target="_blank" class="text-fox-orange text-sm font-bold hover:underline flex items-center gap-1">Ver site ao vivo <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i></a>
+                    </div>
+                </div>
+                <div class="group relative rounded-xl overflow-hidden border border-purple-500/20 bg-[#0F0314]">
+                    <div class="aspect-video overflow-hidden">
+                        <img src="/assets/images/sitesfeitos/omnitv.png" alt="OmniTv" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-white mb-2">OmniTv</h3>
+                        <p class="text-sm text-gray-500 mb-4">Plataforma de Streaming</p>
+                        <a href="https://app.omnitv.com.br" target="_blank" class="text-fox-orange text-sm font-bold hover:underline flex items-center gap-1">Ver site ao vivo <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i></a>
+                    </div>
+                </div>
+                <div class="group relative rounded-xl overflow-hidden border border-purple-500/20 bg-[#0F0314]">
+                    <div class="aspect-video overflow-hidden">
+                        <img src="/assets/images/sitesfeitos/drclaudio.png" alt="Dr Claudio" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-white mb-2">Dr. Cláudio Gualberto</h3>
+                        <p class="text-sm text-gray-500 mb-4">Medicina e Saúde</p>
+                        <a href="https://drclaudiogualberto.com.br" target="_blank" class="text-fox-orange text-sm font-bold hover:underline flex items-center gap-1">Ver site ao vivo <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i></a>
+                    </div>
+                </div>
+                <div class="group relative rounded-xl overflow-hidden border border-purple-500/20 bg-[#0F0314]">
+                    <div class="aspect-video overflow-hidden">
+                        <img src="/assets/images/sitesfeitos/france.png" alt="France Motors" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-white mb-2">France Motors Garage</h3>
+                        <p class="text-sm text-gray-500 mb-4">Oficina Especializada</p>
+                        <a href="https://francemotorsgarage.com.br" target="_blank" class="text-fox-orange text-sm font-bold hover:underline flex items-center gap-1">Ver site ao vivo <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NEW SECTION: Tecnology/Benefits -->
+    <section class="py-20 bg-fox-black border-t border-purple-500/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <span class="text-fox-orange font-bold text-sm uppercase tracking-wider">Mais que um rostinho bonito</span>
+                    <h2 class="text-3xl md:text-4xl font-heading font-bold text-white mt-2 mb-6">
+                        Tecnologia focada em <br><span class="gradient-text">Conversão e Vendas</span>
+                    </h2>
+                    <p class="text-gray-400 mb-8">
+                        Não usamos templates lentos ou códigos antigos. Entregamos uma máquina de vendas otimizada para o Google e para seus clientes.
+                    </p>
+                    
+                    <div class="space-y-6">
+                        <div class="flex gap-4">
+                            <div class="w-12 h-12 bg-purple-500/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                                <i class="fa-solid fa-bolt text-fox-orange text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-bold text-lg">Velocidade Extrema</h4>
+                                <p class="text-gray-500 text-sm">Sites que carregam em milissegundos. Seu cliente não espera, e nós sabemos disso.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4">
+                            <div class="w-12 h-12 bg-purple-500/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                                <i class="fa-solid fa-lock text-fox-orange text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-bold text-lg">Segurança Total (SSL)</h4>
+                                <p class="text-gray-500 text-sm">O cadeado verde que passa confiança e protege os dados dos seus visitantes.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4">
+                            <div class="w-12 h-12 bg-purple-500/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                                <i class="fa-solid fa-mobile-screen text-fox-orange text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-bold text-lg">100% Responsivo</h4>
+                                <p class="text-gray-500 text-sm">Perfeito no iPhone, no Android, no Tablet e no Computador. Sem letras pequenas ou botões quebrados.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="relative">
+                    <div class="absolute inset-0 bg-gradient-to-r from-fox-orange/20 to-purple-600/20 rounded-2xl blur-3xl -z-10"></div>
+                    <div class="bg-[#150520] border border-white/10 rounded-2xl p-8 shadow-2xl">
+                        <h3 class="text-white font-bold mb-6 text-center">Do Zero ao Ar em 3 Passos</h3>
+                        <div class="space-y-8 relative">
+                            <!-- Line -->
+                            <div class="absolute left-6 top-4 bottom-4 w-0.5 bg-white/10"></div>
+                            
+                            <div class="flex gap-6 relative">
+                                <div class="w-12 h-12 bg-fox-orange rounded-full flex items-center justify-center text-white font-bold z-10 flex-shrink-0 border-4 border-[#150520]">1</div>
+                                <div>
+                                    <h4 class="text-white font-bold">Briefing Rápido</h4>
+                                    <p class="text-gray-400 text-sm">Você preenche um formulário simples contando sobre seu negócio e preferências.</p>
+                                </div>
+                            </div>
+                            <div class="flex gap-6 relative">
+                                <div class="w-12 h-12 bg-gray-800 rounded-full flex items-center justify-center text-white font-bold z-10 flex-shrink-0 border-4 border-[#150520]">2</div>
+                                <div>
+                                    <h4 class="text-white font-bold">Desenvolvimento</h4>
+                                    <p class="text-gray-400 text-sm">Nossa equipe cria o design, configura o domínio e monta toda a estrutura.</p>
+                                </div>
+                            </div>
+                            <div class="flex gap-6 relative">
+                                <div class="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center text-white font-bold z-10 flex-shrink-0 border-4 border-[#150520]">3</div>
+                                <div>
+                                    <h4 class="text-white font-bold">Entrega e Sucesso</h4>
+                                    <p class="text-gray-400 text-sm">Você aprova, nós publicamos e seu negócio está pronto para vender pro mundo.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="planos" class="py-24 bg-fox-black relative">
+        <!-- Background Glow -->
+        <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-purple-900/10 rounded-full blur-[120px] pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-heading font-black text-white mb-4">Escolha seu Plano</h2>
+                <p class="text-gray-400 text-lg">Investimento único para transformar a imagem do seu negócio.</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-5xl mx-auto">
+                
+                <!-- PLANO 1 (DESTAQUE) -->
+                <div class="relative bg-[#1A0924] border-2 border-fox-orange rounded-3xl p-8 md:p-12 shadow-[0_0_40px_rgba(255,87,34,0.15)] flex flex-col transform md:-translate-y-4">
+                    <div class="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-fox-orange text-white font-bold px-6 py-2 rounded-full uppercase text-sm tracking-wider shadow-lg">
+                        Mais Vendido
+                    </div>
+
+                    <h3 class="text-2xl font-bold text-white mb-2">Site Institucional</h3>
+                    <p class="text-gray-400 mb-8">Ideal para prestadores de serviço, clínicas e pequenos negócios.</p>
+
+                    <div class="mb-8">
+                        <span class="text-gray-500 line-through text-lg">De R$ 1.215,00</span>
+                        <div class="flex items-baseline gap-1">
+                            <span class="text-gray-400 text-2xl font-bold">Por</span>
+                            <span class="text-5xl font-black text-white">R$ 650,00</span>
+                            <span class="text-gray-400 text-sm">/único</span>
+                        </div>
+                        <p class="text-green-500 text-sm mt-2 font-bold"><i class="fa-solid fa-tag mr-1"></i> Desconto de 45% aplicado</p>
+                    </div>
+
+                    <ul class="space-y-4 mb-10 flex-grow">
+                        <li class="flex items-start gap-3 text-gray-300">
+                            <i class="fa-solid fa-check text-fox-orange mt-1"></i>
+                            <span>Até <strong>5 Páginas</strong> completas</span>
+                        </li>
+                        <li class="flex items-start gap-3 text-gray-300">
+                            <i class="fa-solid fa-check text-fox-orange mt-1"></i>
+                            <span>Design Moderno e Responsivo (Celular)</span>
+                        </li>
+                        <li class="flex items-start gap-3 text-gray-300">
+                            <i class="fa-solid fa-check text-fox-orange mt-1"></i>
+                            <span>Botão de WhatsApp Flutuante</span>
+                        </li>
+                        <li class="flex items-start gap-3 text-gray-300">
+                            <i class="fa-solid fa-check text-fox-orange mt-1"></i>
+                            <span>Otimização Básica SEO (Google)</span>
+                        </li>
+                        
+                        <!-- BÔNUS -->
+                        <li class="pt-4 border-t border-white/10 mt-4">
+                            <span class="text-fox-orange font-bold text-sm uppercase tracking-wide">BÔNUS EXCLUSIVOS:</span>
+                        </li>
+                        <li class="flex items-start gap-3 text-white">
+                            <i class="fa-solid fa-gift text-green-500 mt-1"></i>
+                            <span><strong>Domínio Grátis</strong> (1 ano)</span>
+                        </li>
+                        <li class="flex items-start gap-3 text-white">
+                            <i class="fa-solid fa-gift text-green-500 mt-1"></i>
+                            <span><strong>Hospedagem Grátis</strong> (1 ano)</span>
+                        </li>
+                        <li class="flex items-start gap-3 text-white">
+                            <i class="fa-solid fa-gift text-green-500 mt-1"></i>
+                            <span><strong>3 E-mails Profissionais</strong> (ex: contato@suaempresa)</span>
+                        </li>
+                    </ul>
+
+                    <div class="flex flex-col gap-3">
+                        <a href="https://checkout.infinitepay.io/foxonagencia/71c0zDw6lD" target="_blank" class="w-full bg-[#25D366] hover:bg-[#1fbd59] text-white font-bold py-4 rounded-xl text-center shadow-lg transition-transform hover:scale-105 flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-cart-shopping text-xl"></i> QUERO ESSE PLANO
+                        </a>
+                        
+                        <p class="text-gray-400 text-xs text-center px-2 leading-relaxed">
+                            <i class="fa-brands fa-whatsapp text-green-500 mr-1"></i> <strong>Fique tranquilo:</strong> Assim que a compra for confirmada, nosso especialista entrará em contato pelo seu WhatsApp para iniciar a criação.
+                        </p>
+                    </div>
+                    
+                    <!-- Garantia Section Inside Card -->
+                    <div class="mt-6 flex items-center justify-center gap-3 text-gray-400 text-xs border-t border-white/10 pt-4">
+                        <i class="fa-solid fa-shield-halved text-fox-orange text-lg"></i>
+                        <span>Garantia de Satisfação: Ajustamos até você aprovar.</span>
+                    </div>
+                </div>
+
+                <!-- PLANO 2 (PERSONALIZADO) -->
+                <div class="bg-[#150520] border border-purple-500/20 rounded-3xl p-8 md:p-12 flex flex-col hover:border-purple-500/50 transition-colors">
+                    <h3 class="text-2xl font-bold text-white mb-2">Projeto Personalizado</h3>
+                    <p class="text-gray-400 mb-8">Para e-commerces, sistemas complexos ou grandes portais.</p>
+
+                    <div class="mb-8">
+                        <span class="text-5xl font-black text-white">Sob Medida</span>
+                        <p class="text-gray-500 text-sm mt-2">Orçamento via análise</p>
+                    </div>
+
+                    <ul class="space-y-4 mb-10 flex-grow">
+                        <li class="flex items-start gap-3 text-gray-300">
+                            <i class="fa-solid fa-check text-purple-500 mt-1"></i>
+                            <span>Páginas Ilimitadas</span>
+                        </li>
+                        <li class="flex items-start gap-3 text-gray-300">
+                            <i class="fa-solid fa-check text-purple-500 mt-1"></i>
+                            <span>Loja Virtual / E-commerce</span>
+                        </li>
+                        <li class="flex items-start gap-3 text-gray-300">
+                            <i class="fa-solid fa-check text-purple-500 mt-1"></i>
+                            <span>Área de Membros / Login</span>
+                        </li>
+                        <li class="flex items-start gap-3 text-gray-300">
+                            <i class="fa-solid fa-check text-purple-500 mt-1"></i>
+                            <span>Integrações Avançadas (API)</span>
+                        </li>
+                        <li class="flex items-start gap-3 text-gray-300">
+                            <i class="fa-solid fa-check text-purple-500 mt-1"></i>
+                            <span>Design Exclusivo UX/UI</span>
+                        </li>
+                    </ul>
+
+                    <a href="https://wa.me/5511972202587?text=Ol%C3%A1%2C%20preciso%20de%20um%20projeto%20personalizado%20para%20minha%20empresa." target="_blank" class="w-full bg-transparent border border-white/20 hover:bg-white/10 text-white font-bold py-4 rounded-xl text-center transition-colors flex items-center justify-center gap-2">
+                        <i class="fa-brands fa-whatsapp text-lg"></i> SOLICITAR ORÇAMENTO
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews Section -->
+    <section class="py-24 bg-[#150520] border-t border-purple-500/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-heading font-bold text-white mb-4">O que dizem nossos clientes</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                
+                <!-- Review 1 -->
+                <div class="bg-[#0F0314] p-6 rounded-xl border border-white/5">
+                    <div class="flex text-yellow-500 mb-3 text-xs"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                    <p class="text-gray-300 text-sm mb-4">"Meu agendamento triplicou depois que lancei o site. Passou uma credibilidade que o Instagram sozinho não passava. O suporte da FoxOn foi essencial."</p>
+                    <div class="flex items-center gap-3">
+                        <img src="https://randomuser.me/api/portraits/women/12.jpg" class="w-10 h-10 rounded-full">
+                        <div><p class="text-white font-bold text-sm">Dra. Camila Rodrigues</p><p class="text-xs text-gray-500">Dentista</p></div>
+                    </div>
+                </div>
+
+                <!-- Review 2 -->
+                <div class="bg-[#0F0314] p-6 rounded-xl border border-white/5">
+                    <div class="flex text-yellow-500 mb-3 text-xs"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                    <p class="text-gray-300 text-sm mb-4">"Precisava de um site rápido para rodar tráfego pago. Entregaram antes do prazo e a velocidade de carregamento é absurda. Recomendo!"</p>
+                    <div class="flex items-center gap-3">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" class="w-10 h-10 rounded-full">
+                        <div><p class="text-white font-bold text-sm">Ricardo Silva</p><p class="text-xs text-gray-500">Corretor de Imóveis</p></div>
+                    </div>
+                </div>
+
+                <!-- Review 3 -->
+                <div class="bg-[#0F0314] p-6 rounded-xl border border-white/5">
+                    <div class="flex text-yellow-500 mb-3 text-xs"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                    <p class="text-gray-300 text-sm mb-4">"Já tive sites antes que viviam fora do ar. Com a hospedagem inclusa da FoxOn, nunca mais tive dor de cabeça. O e-mail profissional dá outra cara pro negócio."</p>
+                    <div class="flex items-center gap-3">
+                        <img src="https://randomuser.me/api/portraits/men/85.jpg" class="w-10 h-10 rounded-full">
+                        <div><p class="text-white font-bold text-sm">Fernando Costa</p><p class="text-xs text-gray-500">Advogado</p></div>
+                    </div>
+                </div>
+
+                <!-- Review 4 -->
+                <div class="bg-[#0F0314] p-6 rounded-xl border border-white/5">
+                    <div class="flex text-yellow-500 mb-3 text-xs"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                    <p class="text-gray-300 text-sm mb-4">"Amei o design! Ficou exatamente com as cores da minha marca. Eles entenderam muito bem o que eu queria sem eu precisar explicar mil vezes."</p>
+                    <div class="flex items-center gap-3">
+                        <img src="https://randomuser.me/api/portraits/women/44.jpg" class="w-10 h-10 rounded-full">
+                        <div><p class="text-white font-bold text-sm">Juliana Mendes</p><p class="text-xs text-gray-500">Arquiteta</p></div>
+                    </div>
+                </div>
+
+                <!-- Review 5 -->
+                <div class="bg-[#0F0314] p-6 rounded-xl border border-white/5">
+                    <div class="flex text-yellow-500 mb-3 text-xs"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                    <p class="text-gray-300 text-sm mb-4">"O preço é imbatível pelo que entregam. Cotei em outras agências e cobravam o triplo sem dar o domínio. Melhor custo-benefício."</p>
+                    <div class="flex items-center gap-3">
+                        <img src="https://randomuser.me/api/portraits/men/67.jpg" class="w-10 h-10 rounded-full">
+                        <div><p class="text-white font-bold text-sm">Carlos Eduardo</p><p class="text-xs text-gray-500">Dono de Pizzaria</p></div>
+                    </div>
+                </div>
+
+                <!-- Review 6 -->
+                <div class="bg-[#0F0314] p-6 rounded-xl border border-white/5">
+                    <div class="flex text-yellow-500 mb-3 text-xs"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                    <p class="text-gray-300 text-sm mb-4">"Site super fácil de mexer e responsivo. Meus clientes acessam pelo celular e elogiam a facilidade para encontrar as informações."</p>
+                    <div class="flex items-center gap-3">
+                        <img src="https://randomuser.me/api/portraits/women/65.jpg" class="w-10 h-10 rounded-full">
+                        <div><p class="text-white font-bold text-sm">Patrícia Lima</p><p class="text-xs text-gray-500">Psicóloga</p></div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="py-24 bg-fox-black border-t border-purple-500/10">
+        <div class="max-w-3xl mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-heading font-bold text-white mb-4">Perguntas Frequentes</h2>
+            </div>
+
+            <div class="space-y-4">
+                <!-- FAQ 1 -->
+                <div class="border border-white/10 rounded-xl overflow-hidden">
+                    <button class="w-full p-5 text-left bg-[#150520] text-white font-bold flex justify-between items-center" onclick="toggleFaq(this)">
+                        <span>O site será meu ou da agência?</span>
+                        <i class="fa-solid fa-chevron-down text-fox-orange transition-transform"></i>
+                    </button>
+                    <div class="max-h-0 overflow-hidden faq-content bg-[#0F0314]">
+                        <div class="p-5 text-gray-400 text-sm">
+                            O site é 100% seu. Após o pagamento e a entrega, você tem total propriedade sobre o domínio e os arquivos.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ 2 -->
+                <div class="border border-white/10 rounded-xl overflow-hidden">
+                    <button class="w-full p-5 text-left bg-[#150520] text-white font-bold flex justify-between items-center" onclick="toggleFaq(this)">
+                        <span>Quanto tempo demora para ficar pronto?</span>
+                        <i class="fa-solid fa-chevron-down text-fox-orange transition-transform"></i>
+                    </button>
+                    <div class="max-h-0 overflow-hidden faq-content bg-[#0F0314]">
+                        <div class="p-5 text-gray-400 text-sm">
+                            Para o Site Institucional (Plano 1), o prazo médio é de 5 a 7 dias úteis após o envio de todo o material (textos e fotos) pelo cliente.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ 3 -->
+                <div class="border border-white/10 rounded-xl overflow-hidden">
+                    <button class="w-full p-5 text-left bg-[#150520] text-white font-bold flex justify-between items-center" onclick="toggleFaq(this)">
+                        <span>Como funcionam os e-mails profissionais?</span>
+                        <i class="fa-solid fa-chevron-down text-fox-orange transition-transform"></i>
+                    </button>
+                    <div class="max-h-0 overflow-hidden faq-content bg-[#0F0314]">
+                        <div class="p-5 text-gray-400 text-sm">
+                            Criamos até 3 contas (ex: financeiro@suaempresa.com.br, contato@...). Isso passa muito mais profissionalismo que usar Gmail ou Hotmail. Você pode acessar pelo computador ou configurar no celular.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ 4 -->
+                <div class="border border-white/10 rounded-xl overflow-hidden">
+                    <button class="w-full p-5 text-left bg-[#150520] text-white font-bold flex justify-between items-center" onclick="toggleFaq(this)">
+                        <span>Preciso pagar mensalidade?</span>
+                        <i class="fa-solid fa-chevron-down text-fox-orange transition-transform"></i>
+                    </button>
+                    <div class="max-h-0 overflow-hidden faq-content bg-[#0F0314]">
+                        <div class="p-5 text-gray-400 text-sm">
+                            A criação do site é pagamento único. Porém, oferecemos 1 ano de hospedagem e domínio GRÁTIS. Após o primeiro ano, você só precisa renovar esses serviços (custo anual baixo) para manter o site no ar.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ 5 -->
+                <div class="border border-white/10 rounded-xl overflow-hidden">
+                    <button class="w-full p-5 text-left bg-[#150520] text-white font-bold flex justify-between items-center" onclick="toggleFaq(this)">
+                        <span>O site funciona em celulares (Mobile)?</span>
+                        <i class="fa-solid fa-chevron-down text-fox-orange transition-transform"></i>
+                    </button>
+                    <div class="max-h-0 overflow-hidden faq-content bg-[#0F0314]">
+                        <div class="p-5 text-gray-400 text-sm">
+                            Sim! Todos os nossos sites são desenvolvidos com tecnologia "Mobile First", garantindo que fiquem perfeitos em qualquer tamanho de tela.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-[#05010a] border-t border-purple-500/10 pt-16 pb-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <img src="/assets/images/Logo-2-H.png" alt="Agência FoxOn" class="h-12 w-auto mx-auto mb-6">
+            <p class="text-gray-500 text-sm max-w-sm mx-auto mb-8">
+                Transformando negócios através de tecnologia e design de alta performance.
+            </p>
+            <div class="flex justify-center space-x-6 mb-8">
+                <a href="#" class="text-gray-400 hover:text-fox-orange transition-colors"><i class="fa-brands fa-instagram text-2xl"></i></a>
+                <a href="#" class="text-gray-400 hover:text-fox-orange transition-colors"><i class="fa-brands fa-whatsapp text-2xl"></i></a>
+            </div>
+            <p class="text-gray-600 text-xs">
+                &copy; 2024 Agência FoxOn. Todos os direitos reservados.
+            </p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        function toggleFaq(button) {
+            const content = button.nextElementSibling;
+            const icon = button.querySelector('i');
+            
+            // Close others
+            document.querySelectorAll('.faq-content').forEach(el => {
+                if(el !== content) {
+                    el.style.maxHeight = null;
+                    el.previousElementSibling.querySelector('i').style.transform = 'rotate(0deg)';
+                }
+            });
+
+            // Toggle current
+            if (content.style.maxHeight) {
+                content.style.maxHeight = null;
+                icon.style.transform = 'rotate(0deg)';
+            } else {
+                content.style.maxHeight = content.scrollHeight + "px";
+                icon.style.transform = 'rotate(180deg)';
+            }
+        }
+    </script>
+</body>
+</html>

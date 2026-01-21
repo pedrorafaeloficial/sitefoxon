@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="pt-br" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Domine sua Região | Sites de Alta Performance para Dentistas</title>
+    <meta name="description" content="Aumente seu faturamento com um site exclusivo, rápido e otimizado. Oferta especial para dentistas com domínio e hospedagem grátis.">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Open Sans', 'sans-serif'],
+                        heading: ['Montserrat', 'sans-serif'],
+                    },
+                    colors: {
+                        dental: {
+                            light: '#e0f2fe',
+                            DEFAULT: '#0284c7', // Sky 600
+                            dark: '#0c4a6e',    // Sky 900
+                        },
+                        cta: {
+                            DEFAULT: '#dc2626', // Red 600
+                            hover: '#b91c1c',   // Red 700
+                        },
+                        success: '#16a34a'
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .hero-bg {
+            background-image: linear-gradient(rgba(12, 74, 110, 0.85), rgba(12, 74, 110, 0.95)), url('https://images.unsplash.com/photo-1629909613654-28e377c37b09?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+        .text-shadow {
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        /* Efeito de vidro */
+        .glass {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+    </style>
+</head>
+<body class="font-sans text-gray-800 antialiased overflow-x-hidden">
+
+    <!-- Sticky Alert Bar -->
+    <div class="bg-cta text-white text-center py-2 px-4 font-bold text-sm md:text-base sticky top-0 z-50 shadow-lg">
+        ⚠️ ATENÇÃO: Restam apenas <span id="slots" class="bg-white text-cta px-2 rounded">3</span> vagas para desenvolvimento este mês com preço promocional.
+    </div>
+
+    <!-- Hero Section -->
+    <header class="hero-bg min-h-screen flex items-center justify-center relative px-4 py-20">
+        <div class="container mx-auto max-w-6xl flex flex-col md:flex-row items-center gap-12">
+            
+            <!-- Hero Copy -->
+            <div class="w-full md:w-3/5 text-white text-center md:text-left z-10">
+                <div class="inline-block bg-dental-DEFAULT px-4 py-1 rounded-full text-xs font-bold uppercase tracking-wider mb-4 animate-bounce">
+                    Agência 100% Especializada em Odontologia
+                </div>
+                <h1 class="font-heading text-4xl md:text-6xl font-black leading-tight mb-6 text-shadow">
+                    Sites PRO para dentistas que precisam <span class="text-sky-300">vender de verdade!</span>
+                </h1>
+                <p class="text-lg md:text-xl text-gray-200 mb-8 font-medium">
+                    Nós sabemos exatamente o que vende na cadeira do dentista. Criamos sites focados em vender <strong>Procedimentos de Alto Ticket</strong> (Lentes, Implantes e Invisalign), não apenas "limpezas".
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+                    <button onclick="scrollToPricing()" class="bg-green-500 hover:bg-green-600 text-white font-heading font-bold py-4 px-8 rounded-lg shadow-xl transform transition hover:scale-105 text-lg flex items-center justify-center gap-2">
+                        <i class="fab fa-whatsapp"></i> QUERO DOMINAR MINHA REGIÃO
+                    </button>
+                    <button onclick="scrollToDetails()" class="bg-transparent border-2 border-white hover:bg-white hover:text-dental-dark text-white font-bold py-4 px-8 rounded-lg transition text-lg">
+                        Ver Detalhes
+                    </button>
+                </div>
+                <p class="mt-4 text-sm text-gray-300 opacity-80"><i class="fas fa-check-circle text-green-400 mr-1"></i> Bônus: Domínio e Hospedagem Inclusos.</p>
+            </div>
+
+            <!-- Hero Form/Visual -->
+            <div class="w-full md:w-2/5 z-10 hidden md:block">
+                <div class="glass p-8 rounded-2xl shadow-2xl transform rotate-1 hover:rotate-0 transition duration-500">
+                    <h3 class="font-heading text-2xl font-bold text-dental-dark mb-4 text-center">Genérico vs Especialista</h3>
+                    <div class="space-y-4">
+                        <div class="flex items-start gap-3">
+                            <i class="fas fa-times-circle text-red-500 mt-1 text-xl"></i>
+                            <p class="text-sm font-semibold text-gray-600">Agências comuns fazem sites "bonitinhos" que só atraem curiosos e pacientes de convênio.</p>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <i class="fas fa-times-circle text-red-500 mt-1 text-xl"></i>
+                            <p class="text-sm font-semibold text-gray-600">Eles não sabem diferenciar um Bráquete de um Implante.</p>
+                        </div>
+                        <hr class="border-gray-300">
+                        <div class="flex items-start gap-3">
+                            <i class="fas fa-check-circle text-green-500 mt-1 text-xl"></i>
+                            <p class="text-sm font-bold text-dental-dark">Nós aplicamos a estratégia exata que lotou consultórios em todo o Brasil.</p>
+                        </div>
+                        <div class="bg-gray-100 p-4 rounded text-center mt-4">
+                            <span class="block text-xs text-gray-500 uppercase">Preço Promocional Hoje</span>
+                            <span class="block text-4xl font-black text-cta-DEFAULT">R$ 650,00</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Waves Bottom -->
+        <div class="absolute bottom-0 left-0 w-full overflow-hidden leading-none z-20">
+            <svg class="relative block w-[calc(100%+1.3px)] h-[60px] md:h-[120px]" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M985.66,92.83C906.67,72,823.78,31,743.84,14.19c-82.26-17.34-168.06-16.33-250.45.39-57.84,11.73-114,31.07-172,41.86A600.21,600.21,0,0,1,0,27.35V120H1200V95.8C1132.19,118.92,1055.71,111.31,985.66,92.83Z" class="fill-white"></path>
+            </svg>
+        </div>
+    </header>
+
+    <!-- Stats Section (Invented Data) -->
+    <section class="py-16 bg-white" id="details">
+        <div class="container mx-auto px-4">
+            <h2 class="text-center font-heading text-3xl font-bold text-gray-800 mb-12">Por que contratar Especialistas?</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="text-center p-6 border border-gray-100 rounded-xl shadow-lg hover:shadow-2xl transition">
+                    <div class="text-5xl font-black text-dental-DEFAULT mb-2 counter" data-target="327">0</div>
+                    <div class="text-xl font-bold text-gray-700">% Mais Faturamento</div>
+                    <p class="text-gray-500 mt-2 text-sm">A média de aumento de receita de dentistas que usaram nossos scripts validados para venda de Lentes e Harmonização.</p>
+                </div>
+                <div class="text-center p-6 border border-gray-100 rounded-xl shadow-lg hover:shadow-2xl transition">
+                    <div class="text-5xl font-black text-dental-DEFAULT mb-2">1.500+</div>
+                    <div class="text-xl font-bold text-gray-700">Campanhas Analisadas</div>
+                    <p class="text-gray-500 mt-2 text-sm">Já testamos milhares de títulos e imagens. Sabemos qual foto de "Antes e Depois" converte e qual o Facebook bloqueia.</p>
+                </div>
+                <div class="text-center p-6 border border-gray-100 rounded-xl shadow-lg hover:shadow-2xl transition">
+                    <div class="text-5xl font-black text-dental-DEFAULT mb-2">9/10</div>
+                    <div class="text-xl font-bold text-gray-700">Pacientes Julgam Pela Capa</div>
+                    <p class="text-gray-500 mt-2 text-sm">Pesquisas internas mostram que 90% dos pacientes associam a qualidade do site à qualidade do tratamento clínico.</p>
+                </div>
+                <div class="text-center p-6 border border-gray-100 rounded-xl shadow-lg hover:shadow-2xl transition">
+                    <div class="text-5xl font-black text-dental-DEFAULT mb-2">100%</div>
+                    <div class="text-xl font-bold text-gray-700">Mobile First</div>
+                    <p class="text-gray-500 mt-2 text-sm">Seu site funcionará perfeitamente em qualquer iPhone ou Android. É onde seus pacientes estão agora.</p>
+                </div>
+                <!-- New Reason 5 -->
+                <div class="text-center p-6 border border-gray-100 rounded-xl shadow-lg hover:shadow-2xl transition">
+                    <div class="text-5xl font-black text-dental-DEFAULT mb-2">< 1s</div>
+                    <div class="text-xl font-bold text-gray-700">Velocidade Extrema</div>
+                    <p class="text-gray-500 mt-2 text-sm">O Google pune sites lentos. Nossos códigos carregam instantaneamente, garantindo que o paciente ansioso não feche a página.</p>
+                </div>
+                <!-- New Reason 6 -->
+                <div class="text-center p-6 border border-gray-100 rounded-xl shadow-lg hover:shadow-2xl transition">
+                    <div class="text-5xl font-black text-dental-DEFAULT mb-2">VIP</div>
+                    <div class="text-xl font-bold text-gray-700">Suporte Dedicado</div>
+                    <p class="text-gray-500 mt-2 text-sm">Cansado de "chamados" demorados? Falamos a língua do dentista e resolvemos alterações de agenda ou endereço na hora.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reality Check Section (The Invisible Loss) -->
+    <section class="bg-red-50 py-20 border-y border-red-100 relative overflow-hidden">
+        <!-- Background Elements -->
+        <div class="absolute top-0 right-0 -mt-10 -mr-10 text-red-100 opacity-50 text-9xl">
+            <i class="fas fa-search-dollar"></i>
+        </div>
+        
+        <div class="container mx-auto px-4 relative z-10 text-center">
+            <div class="inline-flex items-center justify-center w-20 h-20 bg-red-100 text-red-600 rounded-full mb-8 shadow-inner animate-pulse">
+                <i class="fas fa-exclamation-triangle text-4xl"></i>
+            </div>
+            
+            <h2 class="font-heading text-3xl md:text-5xl font-black text-gray-800 mb-8">
+                O Preço de Ser Invisível
+            </h2>
+
+            <div class="max-w-4xl mx-auto bg-white p-8 md:p-12 rounded-3xl shadow-xl border-t-8 border-red-500 transform transition hover:-translate-y-2">
+                <p class="text-2xl md:text-3xl font-bold text-gray-700 leading-snug">
+                    "A cada pesquisa por dentistas na sua região e você <span class="text-red-600 underline decoration-wavy">sem site</span>, seu concorrente ganha um paciente e <span class="text-gray-900 bg-red-200 px-2 rounded">VOCÊ NÃO</span>."
+                </p>
+                
+                <div class="mt-8 pt-8 border-t border-gray-100 flex flex-col md:flex-row items-center justify-center gap-6 text-gray-500">
+                    <div class="flex items-center">
+                        <i class="fas fa-search text-gray-400 mr-3 text-xl"></i>
+                        <span class="text-sm">Paciente busca no Google</span>
+                    </div>
+                    <div class="hidden md:block text-gray-300"><i class="fas fa-arrow-right"></i></div>
+                    <div class="flex items-center">
+                        <i class="fas fa-eye-slash text-red-400 mr-3 text-xl"></i>
+                        <span class="text-sm">Não te encontra</span>
+                    </div>
+                    <div class="hidden md:block text-gray-300"><i class="fas fa-arrow-right"></i></div>
+                    <div class="flex items-center">
+                        <i class="fas fa-wallet text-green-500 mr-3 text-xl"></i>
+                        <span class="text-sm font-bold text-gray-700">Concorrente fecha o Implante</span>
+                    </div>
+                </div>
+            </div>
+            
+            <p class="mt-8 text-red-800 font-medium">Isso acontece dezenas de vezes por dia no seu bairro. Vai continuar deixando dinheiro na mesa?</p>
+        </div>
+    </section>
+
+    <!-- The Offer / Features -->
+    <section class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4 max-w-6xl">
+            <div class="text-center mb-16">
+                <h2 class="font-heading text-3xl md:text-4xl font-black text-dental-dark mb-4">
+                    O Que Está Incluso no <span class="text-cta-DEFAULT">Pacote Premium</span>?
+                </h2>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto">Não vendemos apenas um site. Vendemos uma infraestrutura completa de captação.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <!-- Features List -->
+                <div class="space-y-6">
+                    <div class="flex items-start">
+                        <div class="flex-shrink-0 w-12 h-12 rounded-full bg-dental-light flex items-center justify-center text-dental-dark text-xl font-bold">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <div class="ml-4">
+                            <h4 class="text-xl font-bold text-gray-800">Inteligência de Mercado Odontológico</h4>
+                            <p class="text-gray-600">Não "chutamos" o texto. Usamos palavras-chave que atingem a dor do paciente que precisa de implante urgente ou tem vergonha de sorrir.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-start">
+                        <div class="flex-shrink-0 w-12 h-12 rounded-full bg-dental-light flex items-center justify-center text-dental-dark text-xl font-bold">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <div class="ml-4">
+                            <h4 class="text-xl font-bold text-gray-800">Código Puro & Iscas Digitais</h4>
+                            <p class="text-gray-600">Site ultra-rápido (Zero Wix) já preparado para entregar E-books e capturar leads de alto valor.</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start">
+                        <div class="flex-shrink-0 w-12 h-12 rounded-full bg-dental-light flex items-center justify-center text-dental-dark text-xl font-bold">
+                            <i class="fas fa-mobile-alt"></i>
+                        </div>
+                        <div class="ml-4">
+                            <h4 class="text-xl font-bold text-gray-800">Botões de Conversão Agressiva</h4>
+                            <p class="text-gray-600">Botões de WhatsApp flutuantes e CTAs estratégicos posicionados onde o polegar do paciente alcança.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- The Bonus Card -->
+                <div class="bg-white rounded-2xl shadow-2xl overflow-hidden border-2 border-dental-DEFAULT relative">
+                    <div class="absolute top-0 right-0 bg-cta-DEFAULT text-white text-xs font-bold px-3 py-1 uppercase rounded-bl-lg">
+                        Oferta Limitada
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-2xl font-black text-center text-gray-800 mb-6">🎁 BÔNUS EXCLUSIVOS</h3>
+                        <ul class="space-y-4">
+                            <li class="flex items-center justify-between border-b pb-2">
+                                <span class="flex items-center"><i class="fas fa-globe text-dental-DEFAULT mr-2"></i> Domínio .com.br (1 ano)</span>
+                                <span class="text-green-600 font-bold">GRÁTIS</span>
+                            </li>
+                            <li class="flex items-center justify-between border-b pb-2">
+                                <span class="flex items-center"><i class="fas fa-server text-dental-DEFAULT mr-2"></i> Hospedagem Premium (1 ano)</span>
+                                <span class="text-green-600 font-bold">GRÁTIS</span>
+                            </li>
+                            <li class="flex items-center justify-between border-b pb-2">
+                                <span class="flex items-center"><i class="fas fa-envelope text-dental-DEFAULT mr-2"></i> Email Profissional (contato@seuconsultorio)</span>
+                                <span class="text-green-600 font-bold">GRÁTIS</span>
+                            </li>
+                            <li class="flex items-center justify-between">
+                                <span class="flex items-center"><i class="fas fa-chart-line text-dental-DEFAULT mr-2"></i> Integração Google Analytics</span>
+                                <span class="text-green-600 font-bold">GRÁTIS</span>
+                            </li>
+                        </ul>
+                        <div class="mt-8 text-center bg-gray-100 py-4 rounded-lg">
+                            <p class="text-sm text-gray-500 line-through">Valor Real: R$ 2.500,00</p>
+                            <p class="text-3xl font-black text-cta-DEFAULT">HOJE: R$ 0,00</p>
+                            <p class="text-xs text-gray-400">(Na compra do desenvolvimento)</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Checklist Section: 10 Essential Items -->
+    <section class="py-16 bg-white border-y border-gray-200">
+        <div class="container mx-auto px-4 max-w-5xl">
+            <h2 class="text-center font-heading text-3xl font-bold text-dental-dark mb-2">
+                O Checklist da Aprovação
+            </h2>
+            <p class="text-center text-gray-600 mb-10 max-w-2xl mx-auto">
+                Se o seu site atual não tem estes 10 itens, você está <strong class="text-red-600">perdendo dinheiro</strong> todos os dias. Nosso modelo inclui todos eles.
+            </p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-y-4 gap-x-8">
+                <!-- Item 1 -->
+                <div class="flex items-center p-3 bg-gray-50 rounded-lg border-l-4 border-green-500 shadow-sm hover:shadow-md transition">
+                    <div class="text-green-500 mr-4 text-xl"><i class="fas fa-check-circle"></i></div>
+                    <div>
+                        <h4 class="font-bold text-gray-800">1. Avaliações Positivas (Prova Social)</h4>
+                        <p class="text-xs text-gray-500">Gatilho mental número 1 para área da saúde.</p>
+                    </div>
+                </div>
+                <!-- Item 2 -->
+                <div class="flex items-center p-3 bg-gray-50 rounded-lg border-l-4 border-green-500 shadow-sm hover:shadow-md transition">
+                    <div class="text-green-500 mr-4 text-xl"><i class="fas fa-camera"></i></div>
+                    <div>
+                        <h4 class="font-bold text-gray-800">2. Galeria de Antes e Depois</h4>
+                        <p class="text-xs text-gray-500">A prova visual irrefutável da sua competência.</p>
+                    </div>
+                </div>
+                <!-- Item 3 -->
+                 <div class="flex items-center p-3 bg-gray-50 rounded-lg border-l-4 border-green-500 shadow-sm hover:shadow-md transition">
+                    <div class="text-green-500 mr-4 text-xl"><i class="fab fa-whatsapp"></i></div>
+                    <div>
+                        <h4 class="font-bold text-gray-800">3. Botão WhatsApp Flutuante</h4>
+                        <p class="text-xs text-gray-500">Contato imediato sem o paciente precisar procurar.</p>
+                    </div>
+                </div>
+                <!-- Item 4 -->
+                 <div class="flex items-center p-3 bg-gray-50 rounded-lg border-l-4 border-green-500 shadow-sm hover:shadow-md transition">
+                    <div class="text-green-500 mr-4 text-xl"><i class="fas fa-bolt"></i></div>
+                    <div>
+                        <h4 class="font-bold text-gray-800">4. Carregamento Instantâneo</h4>
+                        <p class="text-xs text-gray-500">Ninguém espera site lento carregar no 4G.</p>
+                    </div>
+                </div>
+                 <!-- Item 5 -->
+                 <div class="flex items-center p-3 bg-gray-50 rounded-lg border-l-4 border-green-500 shadow-sm hover:shadow-md transition">
+                    <div class="text-green-500 mr-4 text-xl"><i class="fas fa-mobile-alt"></i></div>
+                    <div>
+                        <h4 class="font-bold text-gray-800">5. 100% Mobile First</h4>
+                        <p class="text-xs text-gray-500">Perfeito em qualquer tamanho de celular.</p>
+                    </div>
+                </div>
+                 <!-- Item 6 -->
+                 <div class="flex items-center p-3 bg-gray-50 rounded-lg border-l-4 border-green-500 shadow-sm hover:shadow-md transition">
+                    <div class="text-green-500 mr-4 text-xl"><i class="fas fa-map-marker-alt"></i></div>
+                    <div>
+                        <h4 class="font-bold text-gray-800">6. Mapa Integrado (GPS)</h4>
+                        <p class="text-xs text-gray-500">Facilite a chegada do paciente ao consultório.</p>
+                    </div>
+                </div>
+                 <!-- Item 7 -->
+                 <div class="flex items-center p-3 bg-gray-50 rounded-lg border-l-4 border-green-500 shadow-sm hover:shadow-md transition">
+                    <div class="text-green-500 mr-4 text-xl"><i class="fas fa-user-md"></i></div>
+                    <div>
+                        <h4 class="font-bold text-gray-800">7. Quem é o Doutor?</h4>
+                        <p class="text-xs text-gray-500">Bio humanizada que gera conexão e autoridade.</p>
+                    </div>
+                </div>
+                 <!-- Item 8 -->
+                 <div class="flex items-center p-3 bg-gray-50 rounded-lg border-l-4 border-green-500 shadow-sm hover:shadow-md transition">
+                    <div class="text-green-500 mr-4 text-xl"><i class="fas fa-teeth-open"></i></div>
+                    <div>
+                        <h4 class="font-bold text-gray-800">8. Explicação de Procedimentos</h4>
+                        <p class="text-xs text-gray-500">Eduque o paciente para vender alto ticket.</p>
+                    </div>
+                </div>
+                 <!-- Item 9 -->
+                 <div class="flex items-center p-3 bg-gray-50 rounded-lg border-l-4 border-green-500 shadow-sm hover:shadow-md transition">
+                    <div class="text-green-500 mr-4 text-xl"><i class="fas fa-mouse-pointer"></i></div>
+                    <div>
+                        <h4 class="font-bold text-gray-800">9. Chamada para Ação (CTA)</h4>
+                        <p class="text-xs text-gray-500">Comandos claros do que o paciente deve fazer.</p>
+                    </div>
+                </div>
+                 <!-- Item 10 -->
+                 <div class="flex items-center p-3 bg-gray-50 rounded-lg border-l-4 border-green-500 shadow-sm hover:shadow-md transition">
+                    <div class="text-green-500 mr-4 text-xl"><i class="fas fa-shield-alt"></i></div>
+                    <div>
+                        <h4 class="font-bold text-gray-800">10. Segurança e SSL</h4>
+                        <p class="text-xs text-gray-500">Cadeado verde do Google para passar credibilidade.</p>
+                    </div>
+                </div>
+                <!-- Item 11 -->
+                 <div class="flex items-center p-3 bg-gray-50 rounded-lg border-l-4 border-green-500 shadow-sm hover:shadow-md transition">
+                    <div class="text-green-500 mr-4 text-xl"><i class="fas fa-magnet"></i></div>
+                    <div>
+                        <h4 class="font-bold text-gray-800">11. Iscas Digitais (Leads)</h4>
+                        <p class="text-xs text-gray-500">Capture contatos oferecendo E-books e Guias Gratuitos.</p>
+                    </div>
+                </div>
+                <!-- Item 12 -->
+                 <div class="flex items-center p-3 bg-gray-50 rounded-lg border-l-4 border-green-500 shadow-sm hover:shadow-md transition">
+                    <div class="text-green-500 mr-4 text-xl"><i class="fas fa-hourglass-half"></i></div>
+                    <div>
+                        <h4 class="font-bold text-gray-800">12. Gatilhos de Urgência</h4>
+                        <p class="text-xs text-gray-500">Elementos visuais que aceleram a decisão de agendamento.</p>
+                    </div>
+                </div>
+                <!-- Item 13 -->
+                 <div class="flex items-center p-3 bg-gray-50 rounded-lg border-l-4 border-green-500 shadow-sm hover:shadow-md transition">
+                    <div class="text-green-500 mr-4 text-xl"><i class="fas fa-crown"></i></div>
+                    <div>
+                        <h4 class="font-bold text-gray-800">13. Autoridade Instantânea</h4>
+                        <p class="text-xs text-gray-500">Design premium que distancia você de clínicas populares.</p>
+                    </div>
+                </div>
+                <!-- Item 14 -->
+                 <div class="flex items-center p-3 bg-gray-50 rounded-lg border-l-4 border-green-500 shadow-sm hover:shadow-md transition">
+                    <div class="text-green-500 mr-4 text-xl"><i class="fas fa-gem"></i></div>
+                    <div>
+                        <h4 class="font-bold text-gray-800">14. Senso de Pertencimento</h4>
+                        <p class="text-xs text-gray-500">Faça o paciente sentir que entrou para um "Clube VIP".</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-10">
+                <button onclick="scrollToPricing()" class="inline-block bg-dental-DEFAULT hover:bg-dental-dark text-white font-bold py-3 px-8 rounded-full shadow-lg transition transform hover:scale-105">
+                    Quero um site com tudo isso
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Proof (Testimonials) -->
+    <section class="py-16 bg-dental-dark text-white">
+        <div class="container mx-auto px-4 max-w-6xl">
+            <h2 class="text-center font-heading text-3xl font-bold mb-12">Quem já mudou de nível</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Testimonial 1 -->
+                <div class="bg-white text-gray-800 p-6 rounded-lg shadow-lg relative">
+                    <div class="absolute -top-4 left-6 text-4xl text-dental-light"><i class="fas fa-quote-left"></i></div>
+                    <p class="italic mb-4 mt-2 text-sm">"Eu achava que site era tudo igual. Fiz um com essa equipe e na primeira semana recebi 5 contatos de Harmonização Facial. O site se pagou em 2 dias."</p>
+                    <div class="flex items-center mt-4">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Dr. Marcelo" class="w-10 h-10 rounded-full object-cover shadow-sm">
+                        <div class="ml-3">
+                            <h5 class="font-bold text-sm">Dr. Marcelo Torres</h5>
+                            <p class="text-xs text-gray-500">Ortodontista - SP</p>
+                        </div>
+                        <div class="ml-auto text-yellow-400 text-xs">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                </div>
+                <!-- Testimonial 2 -->
+                <div class="bg-white text-gray-800 p-6 rounded-lg shadow-lg relative">
+                    <div class="absolute -top-4 left-6 text-4xl text-dental-light"><i class="fas fa-quote-left"></i></div>
+                    <p class="italic mb-4 mt-2 text-sm">"Meus concorrentes usam Linktree. Eu tenho um site profissional com domínio próprio e email corporativo. A percepção de valor dos pacientes mudou da água pro vinho."</p>
+                    <div class="flex items-center mt-4">
+                        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Dra. Fernanda" class="w-10 h-10 rounded-full object-cover shadow-sm">
+                        <div class="ml-3">
+                            <h5 class="font-bold text-sm">Dra. Fernanda Lins</h5>
+                            <p class="text-xs text-gray-500">Odontopediatra - RJ</p>
+                        </div>
+                        <div class="ml-auto text-yellow-400 text-xs">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                </div>
+                <!-- Testimonial 3 -->
+                <div class="bg-white text-gray-800 p-6 rounded-lg shadow-lg relative">
+                    <div class="absolute -top-4 left-6 text-4xl text-dental-light"><i class="fas fa-quote-left"></i></div>
+                    <p class="italic mb-4 mt-2 text-sm">"A copy agressiva e os botões de ação funcionam. Paramos de receber curiosos perguntando preço e passamos a receber gente querendo agendar."</p>
+                    <div class="flex items-center mt-4">
+                        <img src="https://randomuser.me/api/portraits/men/85.jpg" alt="Dr. Ricardo" class="w-10 h-10 rounded-full object-cover shadow-sm">
+                        <div class="ml-3">
+                            <h5 class="font-bold text-sm">Dr. Ricardo Mendes</h5>
+                            <p class="text-xs text-gray-500">Implantodontista - MG</p>
+                        </div>
+                        <div class="ml-auto text-yellow-400 text-xs">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                </div>
+                <!-- Testimonial 4 -->
+                <div class="bg-white text-gray-800 p-6 rounded-lg shadow-lg relative">
+                    <div class="absolute -top-4 left-6 text-4xl text-dental-light"><i class="fas fa-quote-left"></i></div>
+                    <p class="italic mb-4 mt-2 text-sm">"O suporte é incrível. Alterei meu endereço e em 10 minutos estava atualizado. O site é rápido de verdade, carrega instantaneamente no 4G."</p>
+                    <div class="flex items-center mt-4">
+                        <img src="https://randomuser.me/api/portraits/men/22.jpg" alt="Dr. Carlos" class="w-10 h-10 rounded-full object-cover shadow-sm">
+                        <div class="ml-3">
+                            <h5 class="font-bold text-sm">Dr. Carlos Eduardo</h5>
+                            <p class="text-xs text-gray-500">Harmonização - SC</p>
+                        </div>
+                        <div class="ml-auto text-yellow-400 text-xs">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                </div>
+                <!-- Testimonial 5 -->
+                <div class="bg-white text-gray-800 p-6 rounded-lg shadow-lg relative">
+                    <div class="absolute -top-4 left-6 text-4xl text-dental-light"><i class="fas fa-quote-left"></i></div>
+                    <p class="italic mb-4 mt-2 text-sm">"Nunca imaginei que um site faria tanta diferença. As iscas digitais capturam leads todos os dias. Minha agenda está cheia para o próximo mês."</p>
+                    <div class="flex items-center mt-4">
+                        <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Dra. Juliana" class="w-10 h-10 rounded-full object-cover shadow-sm">
+                        <div class="ml-3">
+                            <h5 class="font-bold text-sm">Dra. Juliana Costa</h5>
+                            <p class="text-xs text-gray-500">Clínica Geral - BA</p>
+                        </div>
+                        <div class="ml-auto text-yellow-400 text-xs">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                </div>
+                <!-- Testimonial 6 -->
+                <div class="bg-white text-gray-800 p-6 rounded-lg shadow-lg relative">
+                    <div class="absolute -top-4 left-6 text-4xl text-dental-light"><i class="fas fa-quote-left"></i></div>
+                    <p class="italic mb-4 mt-2 text-sm">"Investimento ridículo pelo retorno que traz. Só o domínio e hospedagem grátis já valem o preço. O design passa muita autoridade."</p>
+                    <div class="flex items-center mt-4">
+                        <img src="https://randomuser.me/api/portraits/men/67.jpg" alt="Dr. Roberto" class="w-10 h-10 rounded-full object-cover shadow-sm">
+                        <div class="ml-3">
+                            <h5 class="font-bold text-sm">Dr. Roberto Almeida</h5>
+                            <p class="text-xs text-gray-500">Bucomaxilo - PR</p>
+                        </div>
+                        <div class="ml-auto text-yellow-400 text-xs">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing / Guarantee -->
+    <section id="pricing" class="py-20 relative overflow-hidden">
+        <div class="absolute inset-0 bg-gray-100 -z-10"></div>
+        <div class="container mx-auto px-4 max-w-4xl text-center">
+            
+            <h2 class="font-heading text-4xl font-black text-gray-800 mb-2">Preço Ridículo. Retorno Gigante.</h2>
+            <p class="text-gray-600 mb-10">Quanto vale um único paciente de implante? Provavelmente mais que o dobro do que cobramos pelo site inteiro.</p>
+
+            <div class="bg-white rounded-3xl shadow-2xl p-8 md:p-12 border-4 border-dental-DEFAULT relative transform transition hover:scale-105 duration-300">
+                <!-- Badge -->
+                <div class="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-cta-DEFAULT text-white px-6 py-2 rounded-full font-bold shadow-lg uppercase tracking-wider">
+                    Oferta Única
+                </div>
+
+                <div class="flex flex-col md:flex-row justify-between items-center border-b border-gray-200 pb-8 mb-8">
+                    <div class="text-left">
+                        <span class="text-gray-400 font-bold text-lg line-through">De R$ 1.800,00</span>
+                        <h3 class="text-6xl font-black text-gray-800 tracking-tighter">R$ 650<span class="text-2xl text-gray-500 font-medium">,00</span></h3>
+                        <p class="text-green-600 font-bold mt-2">Pagamento Único. Sem mensalidades de agência.</p>
+                    </div>
+                    <div class="mt-6 md:mt-0 text-left space-y-2">
+                        <p class="flex items-center text-gray-700"><i class="fas fa-check text-green-500 mr-2"></i> Site 100% Responsivo</p>
+                        <p class="flex items-center text-gray-700"><i class="fas fa-check text-green-500 mr-2"></i> Domínio .com.br Grátis (1 ano)</p>
+                        <p class="flex items-center text-gray-700"><i class="fas fa-check text-green-500 mr-2"></i> Hospedagem Grátis (1 ano)</p>
+                        <p class="flex items-center text-gray-700"><i class="fas fa-check text-green-500 mr-2"></i> Email Profissional</p>
+                    </div>
+                </div>
+
+                <a href="https://wa.me/5511972202587?text=Olá,%20quero%20o%20site%20para%20dentistas%20de%20650%20reais." target="_blank" class="block w-full bg-green-500 hover:bg-green-600 text-white font-heading font-black text-2xl py-6 rounded-xl shadow-xl transition animate-pulse-slow">
+                    GARANTIR MEU SITE AGORA
+                    <span class="block text-sm font-normal opacity-90 mt-1">Clique para falar no WhatsApp</span>
+                </a>
+                
+                <p class="mt-6 text-xs text-gray-400">
+                    <i class="fas fa-lock mr-1"></i> Garantia de Satisfação: Se o design não for aprovado, devolvemos seu dinheiro antes de codificar.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4 max-w-3xl">
+            <h2 class="text-center font-bold text-2xl mb-8">Dúvidas Frequentes</h2>
+            <div class="space-y-4">
+                <details class="group bg-gray-50 p-4 rounded-lg cursor-pointer">
+                    <summary class="flex justify-between items-center font-medium list-none">
+                        <span>Preciso pagar mensalidade?</span>
+                        <span class="transition group-open:rotate-180">
+                            <i class="fas fa-chevron-down"></i>
+                        </span>
+                    </summary>
+                    <p class="text-gray-600 mt-3 group-open:animate-fadeIn">
+                        Não cobramos mensalidade de manutenção. O valor de R$ 650,00 é taxa única pelo desenvolvimento. Após o primeiro ano grátis, você só pagará a renovação do domínio (aprox. R$ 40/ano) e hospedagem (aprox. R$ 30/mês) diretamente ao provedor de sua escolha. O site é seu.
+                    </p>
+                </details>
+                <details class="group bg-gray-50 p-4 rounded-lg cursor-pointer">
+                    <summary class="flex justify-between items-center font-medium list-none">
+                        <span>Como funciona a criação do texto (Copy)?</span>
+                        <span class="transition group-open:rotate-180">
+                            <i class="fas fa-chevron-down"></i>
+                        </span>
+                    </summary>
+                    <p class="text-gray-600 mt-3 group-open:animate-fadeIn">
+                        Nós usamos estruturas de copy validadas para dentistas. Você apenas nos fornece seus dados, especialidades e fotos, e nós adaptamos para uma linguagem persuasiva.
+                    </p>
+                </details>
+                <details class="group bg-gray-50 p-4 rounded-lg cursor-pointer">
+                    <summary class="flex justify-between items-center font-medium list-none">
+                        <span>Em quanto tempo fica pronto?</span>
+                        <span class="transition group-open:rotate-180">
+                            <i class="fas fa-chevron-down"></i>
+                        </span>
+                    </summary>
+                    <p class="text-gray-600 mt-3 group-open:animate-fadeIn">
+                        Como usamos código otimizado e processos ágeis, entregamos a primeira versão em até 5 dias úteis após o recebimento do material.
+                    </p>
+                </details>
+                
+                <details class="group bg-gray-50 p-4 rounded-lg cursor-pointer">
+                    <summary class="flex justify-between items-center font-medium list-none">
+                        <span>O site vai aparecer no Google?</span>
+                        <span class="transition group-open:rotate-180">
+                            <i class="fas fa-chevron-down"></i>
+                        </span>
+                    </summary>
+                    <p class="text-gray-600 mt-3 group-open:animate-fadeIn">
+                        Sim! Desenvolvemos com foco total em SEO (Otimização para Motores de Busca). Diferente de sites em Wix que o Google tem dificuldade de ler, nosso código é limpo e estruturado para que você seja encontrado quando pesquisarem por "Dentista em [Sua Cidade]".
+                    </p>
+                </details>
+
+                <details class="group bg-gray-50 p-4 rounded-lg cursor-pointer">
+                    <summary class="flex justify-between items-center font-medium list-none">
+                        <span>Eu não tenho fotos profissionais do consultório, e agora?</span>
+                        <span class="transition group-open:rotate-180">
+                            <i class="fas fa-chevron-down"></i>
+                        </span>
+                    </summary>
+                    <p class="text-gray-600 mt-3 group-open:animate-fadeIn">
+                        Não tem problema. Temos um banco de imagens premium exclusivo de odontologia que converte muito bem. Podemos usar essas imagens temporariamente até você fazer suas fotos, ou mantê-las se preferir.
+                    </p>
+                </details>
+
+                <details class="group bg-gray-50 p-4 rounded-lg cursor-pointer">
+                    <summary class="flex justify-between items-center font-medium list-none">
+                        <span>Vocês fazem os anúncios (Tráfego Pago) também?</span>
+                        <span class="transition group-open:rotate-180">
+                            <i class="fas fa-chevron-down"></i>
+                        </span>
+                    </summary>
+                    <p class="text-gray-600 mt-3 group-open:animate-fadeIn">
+                        Nosso foco nesta oferta é a <strong>estrutura de recepção</strong> (o site). Pense assim: não adianta pagar anúncio se o site é ruim. Entregamos o site pronto para receber tráfego. Caso precise de gestão de anúncios, temos parceiros que indicamos apenas para nossos clientes.
+                    </p>
+                </details>
+
+                <details class="group bg-gray-50 p-4 rounded-lg cursor-pointer">
+                    <summary class="flex justify-between items-center font-medium list-none">
+                        <span>Consigo alterar textos ou preços depois?</span>
+                        <span class="transition group-open:rotate-180">
+                            <i class="fas fa-chevron-down"></i>
+                        </span>
+                    </summary>
+                    <p class="text-gray-600 mt-3 group-open:animate-fadeIn">
+                        Sim. Pequenas alterações de texto (ex: mudar telefone, endereço) fazemos como cortesia no primeiro mês. Para autogestão completa, oferecemos um treinamento opcional ou pacotes de manutenção super acessíveis.
+                    </p>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-400 py-8 border-t border-gray-800">
+        <div class="container mx-auto px-4 text-center">
+            <p class="mb-4">&copy; 2024 DentalWeb Solutions. Todos os direitos reservados.</p>
+            <p class="text-sm">Este site não tem afiliação com o Facebook ou Google. Somos uma agência de performance focada em odontologia.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Scroll Functions
+        function scrollToPricing() {
+            document.getElementById('pricing').scrollIntoView({ behavior: 'smooth' });
+        }
+        
+        function scrollToDetails() {
+            document.getElementById('details').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Counter Animation for Stats
+        const counters = document.querySelectorAll('.counter');
+        const speed = 200;
+
+        const animateCounters = () => {
+            counters.forEach(counter => {
+                const updateCount = () => {
+                    const target = +counter.getAttribute('data-target');
+                    const count = +counter.innerText;
+                    const inc = target / speed;
+
+                    if (count < target) {
+                        counter.innerText = Math.ceil(count + inc);
+                        setTimeout(updateCount, 20);
+                    } else {
+                        counter.innerText = target + "%";
+                    }
+                };
+                updateCount();
+            });
+        };
+
+        // Trigger animation when stats come into view
+        let counted = false;
+        const observer = new IntersectionObserver((entries) => {
+            if (entries[0].isIntersecting && !counted) {
+                animateCounters();
+                counted = true;
+            }
+        });
+        observer.observe(document.querySelector('.counter'));
+
+        // Scarcity Slot Logic (decreases slots randomly to create urgency)
+        function decreaseSlots() {
+            const slotElement = document.getElementById('slots');
+            let currentSlots = parseInt(slotElement.innerText);
+            
+            // Only decrease if greater than 1
+            if(currentSlots > 1) {
+                // Random chance to decrease
+                if(Math.random() > 0.5) {
+                    currentSlots--;
+                    slotElement.innerText = currentSlots;
+                    
+                    // Flash effect
+                    slotElement.classList.add('bg-red-500', 'text-white');
+                    slotElement.classList.remove('bg-white', 'text-cta');
+                    setTimeout(() => {
+                        slotElement.classList.remove('bg-red-500', 'text-white');
+                        slotElement.classList.add('bg-white', 'text-cta');
+                    }, 500);
+                }
+            }
+        }
+
+        // Run logic every 30 seconds
+        setInterval(decreaseSlots, 30000);
+
+    </script>
+</body>
+</html>

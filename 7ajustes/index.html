@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Download Seu Ebook | Agência FoxOn</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        fox: {
+                            orange: '#FF5722',
+                            dark: '#1E0B2B',
+                            black: '#0F0314',
+                            light: '#F5F5F5'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Open Sans', 'sans-serif'],
+                        heading: ['Montserrat', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        .gradient-text {
+            background: linear-gradient(90deg, #FF5722, #FF9100);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .hero-bg {
+            background-color: #0F0314;
+            background-image: 
+                radial-gradient(circle at 50% 50%, rgba(37, 211, 102, 0.05) 0%, transparent 50%), /* Greenish hint for success */
+                radial-gradient(circle at 85% 30%, rgba(156, 39, 176, 0.08) 0%, transparent 30%);
+        }
+
+        /* Animação de confete simples (CSS) */
+        @keyframes confetti-fall {
+            0% { transform: translateY(-100vh) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+        }
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: #FF5722;
+            animation: confetti-fall 4s linear infinite;
+            z-index: 1;
+        }
+    </style>
+</head>
+<body class="bg-fox-black text-fox-light font-sans antialiased min-h-screen flex flex-col">
+
+    <!-- Header Simples -->
+    <header class="w-full py-6 absolute top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 flex justify-center">
+             <img src="/assets/images/Logo-2-H.png" alt="Agência FoxOn" class="h-10 w-auto opacity-90 hover:opacity-100 transition-opacity">
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-grow flex flex-col items-center justify-center hero-bg py-24 px-4 relative overflow-hidden">
+        
+        <!-- Confetti Decoration (Static for visual flair, could be JS driven for more) -->
+        <div class="confetti" style="left: 10%; animation-delay: 0s; background: #FF5722;"></div>
+        <div class="confetti" style="left: 20%; animation-delay: 1.5s; background: #9C27B0;"></div>
+        <div class="confetti" style="left: 80%; animation-delay: 2s; background: #25D366;"></div>
+        <div class="confetti" style="left: 90%; animation-delay: 0.5s; background: #FF9100;"></div>
+
+        <div class="max-w-4xl w-full mx-auto text-center relative z-10">
+            
+            <!-- Success Icon -->
+            <div class="w-20 h-20 bg-green-500/20 rounded-full flex items-center justify-center mx-auto mb-8 animate-[bounce_2s_infinite]">
+                <i class="fa-solid fa-check text-4xl text-green-500"></i>
+            </div>
+
+            <h1 class="text-3xl md:text-5xl font-heading font-black text-white mb-6">
+                Parabéns! <span class="gradient-text">Seu E-book está pronto.</span>
+            </h1>
+            
+            <p class="text-gray-300 text-lg mb-12 max-w-2xl mx-auto">
+                Uma cópia também foi enviada para o seu e-mail. Toque no botão abaixo para baixar o PDF agora mesmo e começar a aplicar os 7 ajustes.
+            </p>
+
+            <!-- Download Block -->
+            <div class="bg-[#150520] border border-fox-orange/30 rounded-3xl p-8 md:p-10 shadow-2xl max-w-2xl mx-auto flex flex-col md:flex-row items-center gap-8 md:gap-12 relative overflow-hidden group">
+                
+                <!-- Mockup Image -->
+                <div class="w-40 md:w-48 flex-shrink-0 relative">
+                    <img src="/assets/images/mockup-1080.png" alt="Ebook Cover" class="w-full h-auto drop-shadow-xl transform group-hover:scale-105 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-fox-orange/20 blur-[40px] -z-10"></div>
+                </div>
+
+                <!-- Action -->
+                <div class="flex-grow text-center md:text-left">
+                    <h3 class="text-xl font-bold text-white mb-2">7 Ajustes Rápidos para Vender Mais</h3>
+                    <p class="text-xs text-gray-500 mb-6 uppercase tracking-wider">Formato PDF • Download Seguro</p>
+                    
+                    <a href="/assets/ebooks/7-Ajustes-Rapidos-que-Fazem-Qualquer-Negocio-Vender-Mais.pdf" 
+                       target="_blank"
+                       download
+                       class="w-full md:w-auto inline-flex items-center justify-center gap-3 bg-fox-orange hover:bg-orange-600 text-white font-bold py-4 px-8 rounded-lg shadow-lg shadow-orange-500/20 transition-all transform hover:-translate-y-1">
+                        <i class="fa-solid fa-download text-xl"></i>
+                        <span>BAIXAR AGORA</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Upsell / Next Step Section -->
+            <div class="mt-20 pt-10 border-t border-purple-500/10">
+                <p class="text-gray-400 text-sm mb-4 uppercase tracking-widest font-semibold">Próximo Passo Recomendado</p>
+                <h3 class="text-2xl font-bold text-white mb-6">Quer ir além do E-book e ter nossa ajuda pessoalmente?</h3>
+                
+                <a href="https://wa.me/5511972202587?text=Oi%2C%20baixei%20o%20ebook%20e%20gostaria%20de%20saber%20mais%20sobre%20o%20Diagn%C3%B3stico%20Gratuito." 
+                   target="_blank"
+                   class="inline-flex items-center gap-2 text-green-400 hover:text-green-300 font-bold border-b border-green-500/30 hover:border-green-400 pb-1 transition-colors">
+                   <i class="fa-brands fa-whatsapp"></i> Falar com um consultor sobre o Diagnóstico Gratuito
+                </a>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-[#05010a] py-8 border-t border-purple-500/10">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <p class="text-gray-600 text-sm mb-2">
+                &copy; 2024 Agência FoxOn. Todos os direitos reservados.
+            </p>
+        </div>
+    </footer>
+
+</body>
+</html>
