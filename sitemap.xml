@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://agenciafoxon.com.br/</loc>
+    <lastmod>2026-01-22</lastmod>
+    <priority>1.00</priority>
+  </url>
+
+  <url>
+    <loc>https://agenciafoxon.com.br/7ajustes/</loc>
+    <priority>0.80</priority>
+  </url>
+
+  <url>
+    <loc>https://agenciafoxon.com.br/bio/</loc>
+    <priority>0.80</priority>
+  </url>
+
+  <url>
+    <loc>https://agenciafoxon.com.br/downloadchecklist/</loc>
+    <priority>0.80</priority>
+  </url>
+
+  <url>
+    <loc>https://agenciafoxon.com.br/ebook/</loc>
+    <priority>0.80</priority>
+  </url>
+
+  <url>
+    <loc>https://agenciafoxon.com.br/projetos/</loc>
+    <priority>0.80</priority>
+  </url>
+
+  <url>
+    <loc>https://agenciafoxon.com.br/sitesodontopro/</loc>
+    <priority>0.80</priority>
+  </url>
+</urlset>
