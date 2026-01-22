@@ -21,11 +21,12 @@
     <!-- Favicon -->
     <link rel="icon" href="/assets/images/Ativo-1.png" type="image/png">
 
-    <!-- Performance Preconnects -->
+    <!-- Performance Preconnects (Corrected) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://cdn.tailwindcss.com">
-    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+    <link rel="preconnect" href="https://esm.sh" crossorigin>
 
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -147,8 +148,8 @@
             box-shadow: 0 0 50px rgba(249, 115, 22, 0.15);
         }
     </style>
-    <!-- Babel standalone for JSX processing -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.6/babel.min.js"></script>
+    <!-- Babel standalone via jsDelivr (Replaces Unpkg/CDNJS for better stability) -->
+    <script src="https://cdn.jsdelivr.net/npm/@babel/standalone@7.24.5/babel.min.js"></script>
     <script type="importmap">
     {
       "imports": {
@@ -220,12 +221,11 @@
 
           useEffect(() => {
             const handleScroll = () => {
-                // Optimization: use requestAnimationFrame for scroll events
                 requestAnimationFrame(() => {
                     setScrolled(window.scrollY > 50);
                 });
             };
-            window.addEventListener('scroll', handleScroll, { passive: true }); // Passive listener for better scroll performance
+            window.addEventListener('scroll', handleScroll, { passive: true });
             return () => window.removeEventListener('scroll', handleScroll);
           }, []);
 
@@ -254,8 +254,6 @@
                   <img 
                     src={LOGO_URL} 
                     alt="FoxOn Agência" 
-                    width="150" 
-                    height="40"
                     className={`transition-all duration-500 rounded-lg object-contain ${scrolled ? 'h-8' : 'h-10 md:h-12'}`} 
                   />
                   <div className="hidden md:flex gap-8 text-xs font-bold text-gray-300 uppercase tracking-widest">
@@ -277,14 +275,13 @@
                   <h1 className="text-5xl md:text-8xl font-black leading-[1] mb-6 tracking-tight">CORRIJA SEU <span className="text-orange-500">REC</span> E <br /><span className="text-gradient">VENDA COM ESCALA</span></h1>
                   <p className="text-lg md:text-2xl text-gray-200 max-w-3xl mx-auto mb-12 font-medium">O amadorismo é o maior ralo de dinheiro do seu negócio. Pare de tentar a sorte e aplique o <b>Protocolo REC</b> para dominar seu mercado.</p>
                   
-                  {/* Video Container - Modified for lazy loading */}
+                  {/* Video Container - Removed loading="lazy" for better LCP */}
                   <div className="relative max-w-4xl mx-auto aspect-video rounded-[32px] overflow-hidden border-2 border-white/20 orange-glow bg-black shadow-2xl backdrop-blur-sm">
                     <iframe 
                       className="w-full h-full" 
                       src="https://www.youtube.com/embed/O2u0L-eCBWk?rel=0" 
                       title="Vídeo de Apresentação FoxOn"
                       frameBorder="0" 
-                      loading="lazy"
                       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                       allowFullScreen
                     ></iframe>
@@ -358,8 +355,6 @@
                     <img 
                       src={PEDRO_IMG_URL} 
                       alt="Pedro Rafael, CEO da FoxOn Agência" 
-                      width="500"
-                      height="600"
                       loading="lazy"
                       className="w-full max-w-[500px] drop-shadow-2xl rounded-[32px] object-cover" 
                     />
@@ -470,7 +465,7 @@
               <footer className="bg-black/70 backdrop-blur-3xl pt-24 pb-12 px-6 border-t border-white/10">
                 <div className="max-w-7xl mx-auto grid md:grid-cols-4 gap-16 mb-20">
                   <div className="md:col-span-2">
-                    <img src={LOGO_URL} alt="FoxOn Agência Logo" width="150" height="40" loading="lazy" className="h-12 mb-8 rounded-lg" />
+                    <img src={LOGO_URL} alt="FoxOn Agência Logo" loading="lazy" className="h-12 mb-8 rounded-lg" />
                     <p className="text-gray-400">Transformando marketing digital em lucro líquido.</p>
                   </div>
                   <div>
