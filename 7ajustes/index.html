@@ -6,14 +6,10 @@
     <title>Download Seu Ebook | Agência FoxOn</title>
     <meta name="description" content="Parabéns! Baixe agora seu E-book com 7 Ajustes Rápidos para Vender Mais.">
     <meta name="theme-color" content="#0F0314">
-    <meta name="robots" content="noindex, nofollow"> <!-- Geralmente páginas de obrigado não devem ser indexadas -->
+    <meta name="robots" content="noindex, nofollow">
 
-    <!-- Preconnects para Velocidade -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-    <!-- Fontes Otimizadas (Display Swap) -->
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <!-- Preconnect para imagens (se necessário) -->
+    <!-- Sem fontes externas para desempenho 100/100 -->
 
     <style>
         /* CSS Reset & Variáveis */
@@ -22,21 +18,29 @@
             --fox-dark: #1E0B2B;
             --fox-black: #0F0314;
             --fox-light: #F5F5F5;
-            --font-sans: 'Open Sans', sans-serif;
-            --font-heading: 'Montserrat', sans-serif;
+            /* Fontes de Sistema: Zero Latência de Rede */
+            --font-stack: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
         }
 
-        * { box-sizing: border-box; margin: 0; padding: 0; }
+        * { box-sizing: border-box; margin: 0; padding: 0; outline: none; }
         
         body {
             background-color: var(--fox-black);
             color: var(--fox-light);
-            font-family: var(--font-sans);
+            font-family: var(--font-stack);
             min-height: 100vh;
             display: flex;
             flex-direction: column;
             overflow-x: hidden;
             -webkit-font-smoothing: antialiased;
+            line-height: 1.5;
+        }
+
+        /* Focus States para Acessibilidade */
+        a:focus-visible, button:focus-visible {
+            outline: 2px solid var(--fox-orange);
+            outline-offset: 4px;
+            border-radius: 4px;
         }
 
         /* Otimizações de GPU */
@@ -52,23 +56,35 @@
 
         /* Header */
         header { padding: 24px 0; position: absolute; top: 0; width: 100%; z-index: 50; }
-        .logo { height: 40px; width: auto; opacity: 0.9; transition: opacity 0.3s; }
-        .logo:hover { opacity: 1; }
-
-        /* Hero Background */
+        .logo { width: 160px; height: 40px; object-fit: contain; opacity: 0.9; transition: opacity 0.3s; }
+        
+        /* Hero Background - Otimizado */
         .hero-bg {
             background-color: var(--fox-black);
+            /* Gradientes simplificados */
             background-image: 
-                radial-gradient(circle at 50% 50%, rgba(37, 211, 102, 0.05) 0%, transparent 50%),
-                radial-gradient(circle at 85% 30%, rgba(156, 39, 176, 0.08) 0%, transparent 30%);
+                radial-gradient(circle at 50% 50%, rgba(37, 211, 102, 0.05) 0%, transparent 50%);
             flex-grow: 1;
             padding: 96px 16px;
         }
 
-        /* Tipografia */
-        h1 { font-family: var(--font-heading); font-weight: 900; font-size: 1.875rem; line-height: 1.2; color: white; margin-bottom: 24px; }
-        h3 { font-family: var(--font-sans); font-weight: 700; font-size: 1.25rem; color: white; margin-bottom: 8px; }
-        p { color: #D1D5DB; line-height: 1.6; }
+        /* Tipografia Otimizada */
+        h1 { 
+            font-weight: 900; 
+            font-size: 1.75rem; 
+            line-height: 1.2; 
+            color: white; 
+            margin-bottom: 24px;
+            letter-spacing: -0.02em;
+        }
+        h3 { 
+            font-weight: 700; 
+            font-size: 1.25rem; 
+            color: white; 
+            margin-bottom: 8px; 
+        }
+        p { color: #E5E7EB; line-height: 1.6; } /* Contraste aumentado */
+        
         .text-lg { font-size: 1.125rem; }
         .text-sm { font-size: 0.875rem; }
         .text-xs { font-size: 0.75rem; }
@@ -83,7 +99,7 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            color: transparent; /* Fallback */
+            color: #FF5722; /* Fallback de cor sólida para performance ou falha */
         }
 
         /* Success Icon */
@@ -96,12 +112,13 @@
             align-items: center;
             justify-content: center;
             margin: 0 auto 32px auto;
+            /* Animação simplificada */
             animation: bounce 2s infinite;
         }
 
         @keyframes bounce {
-            0%, 100% { transform: translateY(-5%); animation-timing-function: cubic-bezier(0.8,0,1,1); }
-            50% { transform: translateY(0); animation-timing-function: cubic-bezier(0,0,0.2,1); }
+            0%, 100% { transform: translateY(-5%); }
+            50% { transform: translateY(0); }
         }
 
         /* Card Download */
@@ -116,27 +133,34 @@
             flex-direction: column;
             align-items: center;
             gap: 32px;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            /* Sombra reduzida para performance mobile */
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); 
             position: relative;
             overflow: hidden;
             transition: transform 0.3s ease;
         }
-
-        .download-card:hover { transform: translateY(-4px); }
 
         @media (min-width: 768px) {
             .download-card { flex-direction: row; padding: 40px; text-align: left; gap: 48px; }
             .download-info { text-align: left; flex-grow: 1; }
         }
 
-        .mockup-container { width: 160px; flex-shrink: 0; position: relative; }
+        .mockup-container { width: 160px; flex-shrink: 0; position: relative; display: flex; justify-content: center; }
         @media (min-width: 768px) { .mockup-container { width: 192px; } }
         
-        .mockup-img { width: 100%; height: auto; filter: drop-shadow(0 20px 13px rgba(0,0,0,0.1)); transition: transform 0.5s ease; }
-        .download-card:hover .mockup-img { transform: scale(1.05); }
+        .mockup-img { width: 100%; height: auto; position: relative; z-index: 2; }
         
+        /* Glow Otimizado (Sem Blur Filter) */
         .mockup-glow {
-            position: absolute; inset: 0; background-color: rgba(255, 87, 34, 0.2); filter: blur(40px); z-index: 0;
+            position: absolute; 
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 120%;
+            height: 120%;
+            /* Radial Gradient é muito mais leve que filter: blur */
+            background: radial-gradient(circle, rgba(255, 87, 34, 0.4) 0%, rgba(255, 87, 34, 0) 70%);
+            z-index: 1;
         }
 
         /* Botão */
@@ -151,12 +175,13 @@
             text-decoration: none;
             padding: 16px 32px;
             border-radius: 8px;
-            transition: all 0.2s;
-            box-shadow: 0 10px 15px -3px rgba(249, 115, 22, 0.2);
+            transition: background-color 0.2s; /* Animando apenas bg color para performance */
             width: 100%;
+            border: none; /* Reset */
+            cursor: pointer;
         }
 
-        .btn-download:hover { background-color: #e64a19; transform: translateY(-2px); }
+        .btn-download:hover { background-color: #e64a19; }
         
         @media (min-width: 768px) { .btn-download { width: auto; } }
 
@@ -175,6 +200,7 @@
         .upsell-link {
             display: inline-flex;
             align-items: center;
+            justify-content: center;
             gap: 8px;
             color: #4ade80;
             font-weight: 700;
@@ -182,31 +208,31 @@
             border-bottom: 1px solid rgba(74, 222, 128, 0.3);
             padding-bottom: 4px;
             transition: color 0.2s;
+            line-height: 1.4;
         }
         .upsell-link:hover { color: #86efac; border-color: #86efac; }
 
-        /* Confetti Animation */
+        /* Confetti Animation - Otimizado para CPU */
         .confetti {
             position: absolute;
-            width: 10px;
-            height: 10px;
+            width: 8px;
+            height: 8px;
             background-color: var(--fox-orange);
-            animation: confetti-fall 4s linear infinite;
+            opacity: 0;
             z-index: 1;
-            top: -10px; /* Start above screen */
+            /* Animação simplificada */
+            animation: confetti-fall 4s linear infinite;
         }
+        
         @keyframes confetti-fall {
-            0% { transform: translateY(-10px) rotate(0deg); opacity: 1; }
-            100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+            0% { transform: translateY(-20px) rotate(0deg); opacity: 0.8; }
+            100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
         }
 
         /* Footer */
         footer { background-color: #05010a; padding: 32px 0; border-top: 1px solid rgba(168, 85, 247, 0.1); margin-top: auto; }
-        .footer-text { color: #4B5563; font-size: 0.875rem; text-align: center; }
+        .footer-text { color: #9CA3AF; font-size: 0.875rem; text-align: center; }
 
-        /* SVG Colors */
-        .text-green-500 { color: #22c55e; }
-        .text-white { color: white; }
     </style>
 </head>
 <body>
@@ -214,6 +240,7 @@
     <!-- Header -->
     <header class="flex-center">
         <div class="container flex-center">
+             <!-- Width/Height explícitos para evitar CLS -->
              <img src="/assets/images/Logo-2-H.png" alt="Agência FoxOn" width="160" height="40" class="logo">
         </div>
     </header>
@@ -221,17 +248,15 @@
     <!-- Main Content -->
     <main class="hero-bg flex-col flex-center relative hidden-overflow">
         
-        <!-- Confetti Elements -->
-        <div class="confetti animate-gpu" style="left: 10%; animation-delay: 0s; background: #FF5722;"></div>
-        <div class="confetti animate-gpu" style="left: 20%; animation-delay: 1.5s; background: #9C27B0;"></div>
-        <div class="confetti animate-gpu" style="left: 80%; animation-delay: 2s; background: #25D366;"></div>
-        <div class="confetti animate-gpu" style="left: 90%; animation-delay: 0.5s; background: #FF9100;"></div>
+        <!-- Confetti Elements (Reduzido e Otimizado) -->
+        <div class="confetti animate-gpu" style="left: 15%; animation-delay: 0.2s; background: #FF5722;"></div>
+        <div class="confetti animate-gpu" style="left: 85%; animation-delay: 1.5s; background: #25D366;"></div>
 
         <div class="container relative" style="z-index: 10; max-width: 896px;">
             <div class="text-center">
                 <!-- Success Icon SVG -->
-                <div class="success-icon animate-gpu">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <div class="success-icon animate-gpu" role="presentation">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
                 </div>
 
                 <h1>Parabéns! <span class="gradient-text">Seu E-book está pronto.</span></h1>
@@ -246,21 +271,22 @@
                 <!-- Mockup Image -->
                 <div class="mockup-container">
                     <div class="mockup-glow"></div>
-                    <!-- Adicionado width/height explícitos para evitar CLS -->
-                    <img src="/assets/images/mockup-1080.png" alt="Capa do Ebook - 7 Ajustes Rápidos" width="200" height="300" class="mockup-img relative">
+                    <!-- Imagem otimizada: width/height explícitos, loading eager (acima da dobra) -->
+                    <img src="/assets/images/mockup-1080.png" alt="Capa do Ebook: 7 Ajustes Rápidos" width="200" height="300" class="mockup-img" loading="eager">
                 </div>
 
                 <!-- Action -->
                 <div class="download-info text-center">
                     <h3 style="margin-bottom: 8px;">7 Ajustes Rápidos para Vender Mais</h3>
-                    <p class="text-xs" style="color: #6B7280; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 24px; font-weight: 600;">Formato PDF • Download Seguro</p>
+                    <p class="text-xs" style="color: #9CA3AF; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 24px; font-weight: 600;">Formato PDF • Download Seguro</p>
                     
                     <a href="/assets/ebooks/7-Ajustes-Rapidos-que-Fazem-Qualquer-Negocio-Vender-Mais.pdf" 
                        target="_blank"
                        download
-                       class="btn-download">
+                       class="btn-download"
+                       aria-label="Baixar Ebook PDF Agora">
                         <!-- Download Icon SVG -->
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
                         <span>BAIXAR AGORA</span>
                     </a>
                 </div>
@@ -274,9 +300,10 @@
                 <a href="https://wa.me/5511972202587?text=Oi%2C%20baixei%20o%20ebook%20e%20gostaria%20de%20saber%20mais%20sobre%20o%20Diagn%C3%B3stico%20Gratuito." 
                    target="_blank"
                    rel="noopener"
-                   class="upsell-link">
+                   class="upsell-link"
+                   aria-label="Falar com consultor no WhatsApp sobre Diagnóstico Gratuito">
                    <!-- Whatsapp Icon SVG -->
-                   <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+                   <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
                    Falar com um consultor sobre o Diagnóstico Gratuito
                 </a>
             </div>
@@ -294,7 +321,6 @@
     </footer>
 
     <script>
-        // Simple script to update year automatically
         document.getElementById('year').textContent = new Date().getFullYear();
     </script>
 </body>
