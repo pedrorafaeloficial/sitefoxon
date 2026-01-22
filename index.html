@@ -3,9 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FoxOn Agência | Protocolo REC</title>
+    <title>FoxOn Agência | Protocolo REC - Marketing de Alta Performance</title>
+    
+    <!-- SEO & Meta Tags -->
+    <meta name="description" content="Escale seu negócio com o Protocolo REC da FoxOn Agência. Marketing focado em Redes Sociais, Estrutura e Comercial. Solicite seu diagnóstico gratuito.">
+    <meta name="keywords" content="Marketing Digital, Agência de Marketing, Protocolo REC, Automação, Vendas, Tráfego Pago, FoxOn">
+    <meta name="author" content="FoxOn Agência">
+    <meta name="theme-color" content="#0d0118">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://agenciafoxon.com.br/">
+    <meta property="og:title" content="FoxOn Agência | Protocolo REC">
+    <meta property="og:description" content="Corrija seu REC e venda com escala. O fim do amadorismo no seu negócio.">
+    <meta property="og:image" content="/assets/images/Logo-2-H.png">
+
+    <!-- Performance Preconnects -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdn.tailwindcss.com">
+    <link rel="preconnect" href="https://unpkg.com">
+
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Fonts (Optimized with display=swap) -->
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap');
         
@@ -24,6 +46,7 @@
             overflow-x: hidden;
         }
 
+        /* Improved GPU usage for animations */
         .tech-bg {
             position: fixed;
             top: 0;
@@ -33,6 +56,7 @@
             z-index: -1;
             background: linear-gradient(to bottom, #110221, #0d0118);
             overflow: hidden;
+            will-change: transform;
         }
 
         .mesh-gradient {
@@ -46,6 +70,7 @@
                 radial-gradient(circle at 80% 70%, rgba(50, 10, 90, 0.35) 0%, transparent 50%);
             filter: blur(100px);
             animation: meshFloat 25s ease-in-out infinite alternate;
+            will-change: transform;
         }
 
         @keyframes meshFloat {
@@ -119,7 +144,7 @@
             box-shadow: 0 0 50px rgba(249, 115, 22, 0.15);
         }
     </style>
-    <!-- Babel standalone is required to process JSX in index.html -->
+    <!-- Babel standalone for JSX processing -->
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
     <script type="importmap">
     {
@@ -153,6 +178,9 @@
         const CONTACT_EMAIL = "contato@agenciafoxon.com.br";
         const WEBHOOK_URL = "https://automacao.agenciafoxon.com.br/webhook/checklistrec";
         const THANK_YOU_PAGE = "https://agenciafoxon.com.br/downloadchecklist";
+
+        const LOGO_URL = "/assets/images/Logo-2-H.png";
+        const PEDRO_IMG_URL = "/assets/images/Pedro.png";
 
         const MARCAS = ["TechFlow Solutions", "GlobalPrime Marketing", "NovaInvest Capital", "EcoSolutions Group", "PeakPerformance Gym", "UrbanNest Realty", "LuminaAds Digital", "SkyHigh Ventures", "FutureProof Tech", "GrowthMind SaaS", "TechFlow Solutions", "GlobalPrime Marketing", "NovaInvest Capital", "EcoSolutions Group", "PeakPerformance Gym", "UrbanNest Realty", "LuminaAds Digital", "SkyHigh Ventures", "FutureProof Tech", "GrowthMind SaaS"];
 
@@ -188,8 +216,13 @@
           const [formData, setFormData] = useState({ first_name: '', email: '', whatsapp: '' });
 
           useEffect(() => {
-            const handleScroll = () => setScrolled(window.scrollY > 50);
-            window.addEventListener('scroll', handleScroll);
+            const handleScroll = () => {
+                // Optimization: use requestAnimationFrame for scroll events
+                requestAnimationFrame(() => {
+                    setScrolled(window.scrollY > 50);
+                });
+            };
+            window.addEventListener('scroll', handleScroll, { passive: true }); // Passive listener for better scroll performance
             return () => window.removeEventListener('scroll', handleScroll);
           }, []);
 
@@ -212,22 +245,28 @@
 
           return (
             <div className="min-h-screen selection:bg-orange-500 selection:text-black">
-              {/* Navbar */}
+              {/* Navbar - Semantic Nav */}
               <div className={`fixed left-0 right-0 z-50 transition-all duration-500 flex justify-center ${scrolled ? 'top-6 px-6' : 'top-0'}`}>
-                <nav className={`w-full transition-all duration-500 flex justify-between items-center ${scrolled ? 'max-w-5xl bg-black/60 backdrop-blur-2xl border border-white/10 rounded-[32px] px-8 py-3 shadow-2xl' : 'max-w-7xl bg-transparent px-6 py-6 border-b border-white/5'}`}>
-                  <img src="/assets/images/Logo-2-H.png" alt="FoxOn" className={`transition-all duration-500 ${scrolled ? 'h-8' : 'h-10 md:h-12'}`} />
+                <nav className={`w-full transition-all duration-500 flex justify-between items-center ${scrolled ? 'max-w-5xl bg-black/60 backdrop-blur-2xl border border-white/10 rounded-[32px] px-8 py-3 shadow-2xl' : 'max-w-7xl bg-transparent px-6 py-6 border-b border-white/5'}`} aria-label="Navegação Principal">
+                  <img 
+                    src={LOGO_URL} 
+                    alt="FoxOn Agência" 
+                    width="150" 
+                    height="40"
+                    className={`transition-all duration-500 rounded-lg object-contain ${scrolled ? 'h-8' : 'h-10 md:h-12'}`} 
+                  />
                   <div className="hidden md:flex gap-8 text-xs font-bold text-gray-300 uppercase tracking-widest">
-                    <a href="#rec" className="hover:text-orange-400 transition">Protocolo REC</a>
-                    <a href="#sobre" className="hover:text-orange-400 transition">Pedro Rafael</a>
-                    <a href="#checklist" className="hover:text-orange-400 transition">Checklist</a>
-                    <a href="#faq" className="hover:text-orange-400 transition">FAQ</a>
+                    <a href="#rec" className="hover:text-orange-400 transition p-2">Protocolo REC</a>
+                    <a href="#sobre" className="hover:text-orange-400 transition p-2">Pedro Rafael</a>
+                    <a href="#checklist" className="hover:text-orange-400 transition p-2">Checklist</a>
+                    <a href="#faq" className="hover:text-orange-400 transition p-2">FAQ</a>
                   </div>
-                  <a href={WHATSAPP_LINK} target="_blank" className={`bg-orange-500 hover:bg-orange-600 text-black font-black rounded-full transition-all transform hover:scale-105 shadow-lg shadow-orange-500/20 px-6 py-2.5 text-xs`}>DIAGNÓSTICO GRÁTIS</a>
+                  <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer" className={`bg-orange-500 hover:bg-orange-600 text-black font-black rounded-full transition-all transform hover:scale-105 shadow-lg shadow-orange-500/20 px-6 py-2.5 text-xs`}>DIAGNÓSTICO GRÁTIS</a>
                 </nav>
               </div>
 
               {/* Hero */}
-              <section className="relative pt-40 pb-20 px-6 overflow-hidden min-h-[90vh] flex items-center">
+              <header className="relative pt-40 pb-20 px-6 overflow-hidden min-h-[90vh] flex items-center">
                 <div className="max-w-6xl mx-auto text-center relative z-10">
                   <div className="inline-flex items-center gap-2 px-4 py-2 bg-orange-500/20 border border-orange-500/40 rounded-full text-orange-400 text-sm font-bold mb-8 animate-pulse">
                     <Zap size={16} fill="currentColor" /> MARKETING DE ALTA PERFORMANCE & AUTOMAÇÃO
@@ -235,29 +274,31 @@
                   <h1 className="text-5xl md:text-8xl font-black leading-[1] mb-6 tracking-tight">CORRIJA SEU <span className="text-orange-500">REC</span> E <br /><span className="text-gradient">VENDA COM ESCALA</span></h1>
                   <p className="text-lg md:text-2xl text-gray-200 max-w-3xl mx-auto mb-12 font-medium">O amadorismo é o maior ralo de dinheiro do seu negócio. Pare de tentar a sorte e aplique o <b>Protocolo REC</b> para dominar seu mercado.</p>
                   
-                  {/* Video Container - Modified to show video directly */}
+                  {/* Video Container - Modified for lazy loading */}
                   <div className="relative max-w-4xl mx-auto aspect-video rounded-[32px] overflow-hidden border-2 border-white/20 orange-glow bg-black shadow-2xl backdrop-blur-sm">
                     <iframe 
                       className="w-full h-full" 
                       src="https://www.youtube.com/embed/O2u0L-eCBWk?rel=0" 
+                      title="Vídeo de Apresentação FoxOn"
                       frameBorder="0" 
+                      loading="lazy"
                       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                       allowFullScreen
                     ></iframe>
                   </div>
 
                   <div className="mt-16">
-                    <a href={WHATSAPP_LINK} target="_blank" className="bg-orange-500 hover:bg-orange-600 text-black font-black px-12 py-6 rounded-2xl text-xl shadow-2xl transition-all inline-flex items-center gap-3 transform hover:-translate-y-1">SOLICITAR MEU DIAGNÓSTICO GRATUITO <ArrowRight size={28} /></a>
+                    <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer" className="bg-orange-500 hover:bg-orange-600 text-black font-black px-12 py-6 rounded-2xl text-xl shadow-2xl transition-all inline-flex items-center gap-3 transform hover:-translate-y-1">SOLICITAR MEU DIAGNÓSTICO GRATUITO <ArrowRight size={28} /></a>
                     <div className="mt-6 flex flex-wrap justify-center gap-6 text-sm text-gray-300 font-bold">
                       <span className="flex items-center gap-2"><CheckCircle size={16} className="text-orange-500" /> Auditoria 100% Gratuita</span>
                       <span className="flex items-center gap-2"><CheckCircle size={16} className="text-orange-500" /> Plano de Escala Customizado</span>
                     </div>
                   </div>
                 </div>
-              </section>
+              </header>
 
               {/* Brand Carousel */}
-              <div className="py-20 border-y border-white/10 bg-white/5 backdrop-blur-sm overflow-hidden relative">
+              <div className="py-20 border-y border-white/10 bg-white/5 backdrop-blur-sm overflow-hidden relative" aria-hidden="true">
                 <div className="animate-scroll whitespace-nowrap">
                   {MARCAS.map((m, i) => (
                     <span key={i} className="mx-16 text-3xl font-black text-white/30 hover:text-orange-500 transition-colors uppercase tracking-[0.15em]">{m}</span>
@@ -292,7 +333,7 @@
                       { l: "C", t: "Comercial", i: <Target className="text-orange-500" />, d: "Scripts validados e CRM inteligente para fechamento veloz.", items: ["Vendedores", "Scripts", "Processos"] }
                     ].map((item, idx) => (
                       <div key={idx} className="glass-card p-10 rounded-[40px] relative overflow-hidden group">
-                        <div className="absolute top-0 right-0 p-8 text-8xl font-black opacity-10 group-hover:text-orange-500 transition-all select-none">{item.l}</div>
+                        <div className="absolute top-0 right-0 p-8 text-8xl font-black opacity-10 group-hover:text-orange-500 transition-all select-none" aria-hidden="true">{item.l}</div>
                         <div className="mb-8 p-5 bg-orange-500/20 rounded-2xl w-fit">{item.i}</div>
                         <h3 className="text-3xl font-black mb-4">{item.t}</h3>
                         <p className="text-gray-300 mb-8 text-lg">{item.d}</p>
@@ -311,10 +352,17 @@
               <section id="sobre" className="py-32 px-6">
                 <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-20 items-center">
                   <div className="relative group">
-                    <img src="/assets/images/Pedro.png" alt="Pedro Rafael" className="w-full max-w-[500px] drop-shadow-2xl" />
+                    <img 
+                      src={PEDRO_IMG_URL} 
+                      alt="Pedro Rafael, CEO da FoxOn Agência" 
+                      width="500"
+                      height="600"
+                      loading="lazy"
+                      className="w-full max-w-[500px] drop-shadow-2xl rounded-[32px] object-cover" 
+                    />
                     <div className="absolute bottom-10 left-0 right-0 p-8 bg-black/50 backdrop-blur-lg border border-white/20 rounded-b-[48px] mx-4 shadow-2xl">
-                       <p className="text-orange-500 font-black text-3xl uppercase">Pedro Rafael</p>
-                       <p className="text-white font-bold">CEO FoxOn Agência</p>
+                        <p className="text-orange-500 font-black text-3xl uppercase">Pedro Rafael</p>
+                        <p className="text-white font-bold">CEO FoxOn Agência</p>
                     </div>
                   </div>
                   <div>
@@ -336,10 +384,37 @@
                   <div className="glass-card p-8 md:p-12 rounded-[40px] shadow-2xl relative">
                     <div className="text-center mb-8"><Download className="mx-auto text-orange-500 mb-4" size={48} /><h3 className="text-2xl font-black mb-2">Baixe Agora Grátis</h3></div>
                     <form onSubmit={handleChecklistSubmit} className="space-y-5">
-                      <input required type="text" placeholder="Seu primeiro nome" className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white focus:outline-none focus:border-orange-500/50" value={formData.first_name} onChange={e => setFormData({...formData, first_name: e.target.value})} />
-                      <input required type="email" placeholder="Seu Melhor E-mail" className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white focus:outline-none focus:border-orange-500/50" value={formData.email} onChange={e => setFormData({...formData, email: e.target.value})} />
-                      <input required type="tel" placeholder="Seu Whatsapp" className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white focus:outline-none focus:border-orange-500/50" value={formData.whatsapp} onChange={e => setFormData({...formData, whatsapp: e.target.value})} />
-                      <button type="submit" disabled={loading} className="w-full bg-orange-500 hover:bg-orange-600 text-black font-black py-5 rounded-2xl text-lg shadow-xl flex items-center justify-center gap-3 disabled:opacity-50">{loading ? <Loader2 className="animate-spin" /> : <>LIBERAR DOWNLOAD AGORA <ArrowRight /></>}</button>
+                      {/* Added aria-labels for Accessibility */}
+                      <input 
+                        required 
+                        type="text" 
+                        aria-label="Seu primeiro nome"
+                        placeholder="Seu primeiro nome" 
+                        className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white focus:outline-none focus:border-orange-500/50" 
+                        value={formData.first_name} 
+                        onChange={e => setFormData({...formData, first_name: e.target.value})} 
+                      />
+                      <input 
+                        required 
+                        type="email" 
+                        aria-label="Seu Melhor E-mail"
+                        placeholder="Seu Melhor E-mail" 
+                        className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white focus:outline-none focus:border-orange-500/50" 
+                        value={formData.email} 
+                        onChange={e => setFormData({...formData, email: e.target.value})} 
+                      />
+                      <input 
+                        required 
+                        type="tel" 
+                        aria-label="Seu Whatsapp"
+                        placeholder="Seu Whatsapp" 
+                        className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white focus:outline-none focus:border-orange-500/50" 
+                        value={formData.whatsapp} 
+                        onChange={e => setFormData({...formData, whatsapp: e.target.value})} 
+                      />
+                      <button type="submit" disabled={loading} className="w-full bg-orange-500 hover:bg-orange-600 text-black font-black py-5 rounded-2xl text-lg shadow-xl flex items-center justify-center gap-3 disabled:opacity-50 transition-colors">
+                        {loading ? <Loader2 className="animate-spin" /> : <>LIBERAR DOWNLOAD AGORA <ArrowRight /></>}
+                      </button>
                     </form>
                   </div>
                 </div>
@@ -352,7 +427,7 @@
                   <div className="grid md:grid-cols-3 gap-8">
                     {REVIEWS.map((rev, i) => (
                       <div key={i} className="glass-card p-10 rounded-[40px] flex flex-col justify-between">
-                        <Quote className="text-orange-500/20 mb-6" size={32} />
+                        <Quote className="text-orange-500/20 mb-6" size={32} aria-hidden="true" />
                         <p className="text-gray-100 italic mb-8 leading-relaxed font-medium">"{rev.text}"</p>
                         <div className="pt-6 border-t border-white/5">
                            <p className="font-bold text-white text-lg">{rev.name}</p>
@@ -371,8 +446,17 @@
                   <div className="space-y-4">
                     {FAQS.map((faq, i) => (
                       <div key={i} className={`border ${openFaq === i ? 'border-orange-500/60 bg-orange-500/15' : 'border-white/10 bg-white/5'} rounded-3xl overflow-hidden transition-all backdrop-blur-md`}>
-                        <button onClick={() => setOpenFaq(openFaq === i ? null : i)} className="w-full p-8 flex justify-between items-center text-left"><span className={`font-black text-xl ${openFaq === i ? 'text-orange-500' : 'text-white'}`}>{faq.q}</span><ChevronDown className={`transition-transform ${openFaq === i ? 'rotate-180' : ''}`} /></button>
-                        <div className={`transition-all overflow-hidden ${openFaq === i ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0'}`}><div className="p-8 pt-0 text-gray-200 text-lg leading-relaxed border-t border-white/10 mt-2">{faq.a}</div></div>
+                        <button 
+                            onClick={() => setOpenFaq(openFaq === i ? null : i)} 
+                            aria-expanded={openFaq === i}
+                            className="w-full p-8 flex justify-between items-center text-left"
+                        >
+                            <span className={`font-black text-xl ${openFaq === i ? 'text-orange-500' : 'text-white'}`}>{faq.q}</span>
+                            <ChevronDown className={`transition-transform ${openFaq === i ? 'rotate-180' : ''}`} />
+                        </button>
+                        <div className={`transition-all overflow-hidden ${openFaq === i ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0'}`}>
+                            <div className="p-8 pt-0 text-gray-200 text-lg leading-relaxed border-t border-white/10 mt-2">{faq.a}</div>
+                        </div>
                       </div>
                     ))}
                   </div>
@@ -383,16 +467,30 @@
               <footer className="bg-black/70 backdrop-blur-3xl pt-24 pb-12 px-6 border-t border-white/10">
                 <div className="max-w-7xl mx-auto grid md:grid-cols-4 gap-16 mb-20">
                   <div className="md:col-span-2">
-                    <img src="/assets/images/Logo-2-H.png" alt="FoxOn" className="h-12 mb-8" />
+                    <img src={LOGO_URL} alt="FoxOn Agência Logo" width="150" height="40" loading="lazy" className="h-12 mb-8 rounded-lg" />
                     <p className="text-gray-400">Transformando marketing digital em lucro líquido.</p>
                   </div>
-                  <div><h4 className="font-black mb-8 uppercase text-sm">Fale Conosco</h4><ul className="space-y-4 text-gray-400 font-bold"><li>{CONTACT_EMAIL}</li><li>+55 (11) 97220-2587</li></ul></div>
+                  <div>
+                    <h4 className="font-black mb-8 uppercase text-sm">Fale Conosco</h4>
+                    <ul className="space-y-4 text-gray-400 font-bold">
+                        <li><a href={`mailto:${CONTACT_EMAIL}`} className="hover:text-orange-500 transition-colors">{CONTACT_EMAIL}</a></li>
+                        <li><a href={WHATSAPP_LINK} className="hover:text-orange-500 transition-colors">+55 (11) 97220-2587</a></li>
+                    </ul>
+                  </div>
                 </div>
                 <div className="text-center text-gray-500 text-sm font-bold pt-12 border-t border-white/10">&copy; {new Date().getFullYear()} FoxOn Agência. Todos os direitos reservados.</div>
               </footer>
 
               {/* Floating CTA */}
-              <div className="fixed bottom-6 right-6 z-[100]"><a href={WHATSAPP_LINK} target="_blank" className="w-14 h-14 md:w-16 md:h-16 bg-[#25D366] text-white rounded-full shadow-2xl flex items-center justify-center hover:scale-110 transition-all relative"><MessageCircle size={28} className="fill-current" /><span className="absolute -top-1 -right-1 flex h-4 w-4"><span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span><span className="relative inline-flex rounded-full h-4 w-4 bg-orange-500 border-2 border-white"></span></span></a></div>
+              <div className="fixed bottom-6 right-6 z-[100]">
+                  <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer" aria-label="Falar no WhatsApp" className="w-14 h-14 md:w-16 md:h-16 bg-[#25D366] text-white rounded-full shadow-2xl flex items-center justify-center hover:scale-110 transition-all relative">
+                      <MessageCircle size={28} className="fill-current" />
+                      <span className="absolute -top-1 -right-1 flex h-4 w-4">
+                          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
+                          <span className="relative inline-flex rounded-full h-4 w-4 bg-orange-500 border-2 border-white"></span>
+                      </span>
+                  </a>
+              </div>
             </div>
           );
         };
