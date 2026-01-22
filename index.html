@@ -5,538 +5,414 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FoxOn Agência | Protocolo REC - Marketing de Alta Performance</title>
     
-    <!-- SEO & Meta Tags -->
+    <!-- Meta Tags Críticas -->
     <meta name="description" content="Escale seu negócio com o Protocolo REC da FoxOn Agência. Marketing focado em Redes Sociais, Estrutura e Comercial. Solicite seu diagnóstico gratuito.">
-    <meta name="keywords" content="Marketing Digital, Agência de Marketing, Protocolo REC, Automação, Vendas, Tráfego Pago, FoxOn">
-    <meta name="author" content="FoxOn Agência">
     <meta name="theme-color" content="#0d0118">
-    
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://agenciafoxon.com.br/">
-    <meta property="og:title" content="FoxOn Agência | Protocolo REC">
-    <meta property="og:description" content="Corrija seu REC e venda com escala. O fim do amadorismo no seu negócio.">
-    <meta property="og:image" content="/assets/images/Logo-2-H.png">
 
-    <!-- Favicon -->
-    <link rel="icon" href="/assets/images/Ativo-1.png" type="image/png">
-
-    <!-- Performance: Preconnects -->
+    <!-- Preconnects para Velocidade -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://cdn.tailwindcss.com">
-    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
-    <link rel="preconnect" href="https://esm.sh" crossorigin>
 
-    <!-- Performance: Load Fonts via Link instead of @import to avoid chaining -->
+    <!-- Fonte Otimizada -->
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
-
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
     
+    <!-- Tailwind CSS (Via CDN com script defer para não bloquear renderização) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
     <style>
-        :root {
-            --bg-deep: #0d0118; 
-            --purple-main: #1a0230;
-            --orange-main: #f97316;
-            --neon-purple: #bc13fe;
-            --neon-orange: #ffac5f;
-        }
+        /* CSS Crítico Inline para evitar Layout Shift (CLS) */
+        :root { --bg-deep: #0d0118; --orange-main: #f97316; }
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: var(--bg-deep); color: white; overflow-x: hidden; margin: 0; }
+        
+        /* Otimizações de GPU */
+        .tech-bg, .mesh-gradient, .animate-scroll { will-change: transform; }
+        
+        .tech-bg { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; background: linear-gradient(to bottom, #110221, #0d0118); pointer-events: none; }
+        
+        .mesh-gradient { position: absolute; width: 150%; height: 150%; top: -25%; left: -25%; background: radial-gradient(circle at 20% 30%, rgba(100, 30, 160, 0.25) 0%, transparent 50%), radial-gradient(circle at 80% 70%, rgba(50, 10, 90, 0.35) 0%, transparent 50%); filter: blur(100px); animation: meshFloat 25s ease-in-out infinite alternate; }
+        @keyframes meshFloat { 0% { transform: translate(0, 0) rotate(0deg); } 100% { transform: translate(-3%, -3%) rotate(3deg); } }
+        
+        .hero-grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(249, 115, 22, 0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(249, 115, 22, 0.08) 1px, transparent 1px); background-size: 50px 50px; mask-image: radial-gradient(ellipse at center, black, transparent 85%); transform: rotateX(45deg) translateY(-20%); pointer-events: none; }
+        
+        .text-gradient { background: linear-gradient(to right, #ffffff, #f97316); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        
+        @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+        .animate-scroll { display: flex; width: max-content; animation: scroll 45s linear infinite; }
+        
+        .glass-card { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.08); transition: transform 0.3s ease, background 0.3s ease; }
+        .glass-card:hover { background: rgba(255, 255, 255, 0.06); transform: translateY(-8px); border-color: rgba(249, 115, 22, 0.5); }
+        
+        .orange-glow { box-shadow: 0 0 50px rgba(249, 115, 22, 0.15); }
+        
+        /* Utilitários para FAQ */
+        .faq-content { max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out, opacity 0.3s ease-out; opacity: 0; }
+        .faq-content.open { max-height: 500px; opacity: 1; }
+        .rotate-180 { transform: rotate(180deg); }
 
-        body {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            background-color: var(--bg-deep);
-            color: white;
-            overflow-x: hidden;
-        }
-
-        /* Improved GPU usage for animations */
-        .tech-bg {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            background: linear-gradient(to bottom, #110221, #0d0118);
-            overflow: hidden;
-            will-change: transform;
-            pointer-events: none; /* Performance: skip hit testing */
-        }
-
-        .mesh-gradient {
-            position: absolute;
-            width: 150%;
-            height: 150%;
-            top: -25%;
-            left: -25%;
-            background: 
-                radial-gradient(circle at 20% 30%, rgba(100, 30, 160, 0.25) 0%, transparent 50%),
-                radial-gradient(circle at 80% 70%, rgba(50, 10, 90, 0.35) 0%, transparent 50%);
-            filter: blur(100px);
-            animation: meshFloat 25s ease-in-out infinite alternate;
-            will-change: transform;
-        }
-
-        @keyframes meshFloat {
-            0% { transform: translate(0, 0) rotate(0deg); }
-            100% { transform: translate(-3%, -3%) rotate(3deg); }
-        }
-
-        .hero-grid {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: 
-                linear-gradient(rgba(249, 115, 22, 0.08) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(249, 115, 22, 0.08) 1px, transparent 1px);
-            background-size: 50px 50px;
-            mask-image: radial-gradient(ellipse at center, black, transparent 85%);
-            pointer-events: none;
-            z-index: 0;
-            perspective: 1000px;
-            transform: rotateX(45deg) translateY(-20%);
-        }
-
-        .particles-overlay {
-            position: absolute;
-            inset: 0;
-            background-image: radial-gradient(circle at 2px 2px, rgba(249, 115, 22, 0.2) 1px, transparent 0);
-            background-size: 40px 40px;
-            animation: particlesMove 20s linear infinite;
-            z-index: 0;
-            opacity: 0.6;
-        }
-
-        @keyframes particlesMove {
-            from { transform: translateY(0); }
-            to { transform: translateY(-40px); }
-        }
-
-        .text-gradient {
-            background: linear-gradient(to right, #ffffff, #f97316);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        @keyframes scroll {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
-        }
-
-        .animate-scroll {
-            display: flex;
-            width: max-content;
-            animation: scroll 45s linear infinite;
-            will-change: transform;
-        }
-
-        .glass-card {
-            background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(16px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-
-        .glass-card:hover {
-            background: rgba(255, 255, 255, 0.06);
-            transform: translateY(-8px);
-            border-color: rgba(249, 115, 22, 0.5);
-        }
-
-        .orange-glow {
-            box-shadow: 0 0 50px rgba(249, 115, 22, 0.15);
-        }
+        /* Loader */
+        .loader { border: 3px solid rgba(255,255,255,0.3); border-radius: 50%; border-top: 3px solid white; width: 24px; height: 24px; -webkit-animation: spin 1s linear infinite; animation: spin 1s linear infinite; }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
     </style>
 </head>
 <body>
+    <!-- Background Elements -->
     <div class="tech-bg">
         <div class="mesh-gradient"></div>
         <div class="hero-grid"></div>
-        <div class="particles-overlay"></div>
     </div>
-    <div id="root"></div>
 
-    <!-- Move Scripts to bottom to prevent blocking render -->
-    <!-- Babel standalone via jsDelivr -->
-    <script src="https://cdn.jsdelivr.net/npm/@babel/standalone@7.24.5/babel.min.js"></script>
-    <script type="importmap">
-    {
-      "imports": {
-        "react": "https://esm.sh/react@19.0.0",
-        "react-dom": "https://esm.sh/react-dom@19.0.0",
-        "react-dom/client": "https://esm.sh/react-dom@19.0.0/client",
-        "lucide-react": "https://esm.sh/lucide-react@0.460.0"
-      }
-    }
-    </script>
+    <!-- Navbar -->
+    <div id="navbar" class="fixed left-0 right-0 z-50 transition-all duration-500 flex justify-center top-0">
+        <nav id="nav-content" class="w-full transition-all duration-500 flex justify-between items-center max-w-7xl bg-transparent px-6 py-6 border-b border-white/5">
+            <img src="/assets/images/Logo-2-H.png" alt="FoxOn Agência" width="150" height="48" class="h-10 md:h-12 object-contain transition-all duration-500" id="nav-logo">
+            <div class="hidden md:flex gap-8 text-xs font-bold text-gray-300 uppercase tracking-widest">
+                <a href="#rec" class="hover:text-orange-400 transition p-2">Protocolo REC</a>
+                <a href="#sobre" class="hover:text-orange-400 transition p-2">Pedro Rafael</a>
+                <a href="#checklist" class="hover:text-orange-400 transition p-2">Checklist</a>
+                <a href="#faq" class="hover:text-orange-400 transition p-2">FAQ</a>
+            </div>
+            <a href="https://wa.me/5511972202587?text=Ol%C3%A1%20vim%20do%20Site%20e%20quero%20fazer%20um%20diagn%C3%B3stico%20Gratuito%20no%20meu%20neg%C3%B3cio!" target="_blank" rel="noopener" class="bg-orange-500 hover:bg-orange-600 text-black font-black rounded-full transition-transform hover:scale-105 shadow-lg shadow-orange-500/20 px-6 py-2.5 text-xs">DIAGNÓSTICO GRÁTIS</a>
+        </nav>
+    </div>
 
-    <script type="text/babel" data-type="module">
-        import React, { useState, useEffect } from 'react';
-        import ReactDOM from 'react-dom/client';
-        import { 
-          ArrowRight, CheckCircle, Play, Rocket, Instagram, Linkedin, 
-          ChevronDown, Star, Quote, Target, Zap, BarChart3, 
-          MessageCircle, Download, Loader2, ShieldCheck
-        } from 'lucide-react';
+    <!-- Hero Section -->
+    <header class="relative pt-40 pb-20 px-6 overflow-hidden min-h-[90vh] flex items-center">
+        <div class="max-w-6xl mx-auto text-center relative z-10">
+            <div class="inline-flex items-center gap-2 px-4 py-2 bg-orange-500/20 border border-orange-500/40 rounded-full text-orange-400 text-sm font-bold mb-8 animate-pulse">
+                <!-- SVG Zap -->
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+                MARKETING DE ALTA PERFORMANCE & AUTOMAÇÃO
+            </div>
+            <h1 class="text-5xl md:text-8xl font-black leading-[1] mb-6 tracking-tight">CORRIJA SEU <span class="text-orange-500">REC</span> E <br /><span class="text-gradient">VENDA COM ESCALA</span></h1>
+            <p class="text-lg md:text-2xl text-gray-200 max-w-3xl mx-auto mb-12 font-medium">O amadorismo é o maior ralo de dinheiro do seu negócio. Pare de tentar a sorte e aplique o <b>Protocolo REC</b> para dominar seu mercado.</p>
+            
+            <!-- Video Facade (Performance Optimization) -->
+            <div id="video-container" class="relative max-w-4xl mx-auto aspect-video rounded-[32px] overflow-hidden border-2 border-white/20 orange-glow bg-black shadow-2xl backdrop-blur-sm group cursor-pointer" onclick="loadVideo(this)">
+                <img src="https://img.youtube.com/vi/O2u0L-eCBWk/maxresdefault.jpg" alt="Thumbnail Vídeo" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-80" width="896" height="504">
+                <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+                    <div class="w-20 h-20 bg-orange-500/90 rounded-full flex items-center justify-center shadow-lg shadow-orange-500/40 transition-transform group-hover:scale-110">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white ml-1"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+                    </div>
+                </div>
+            </div>
 
-        const WHATSAPP_LINK = "https://wa.me/5511972202587?text=Olá%20vim%20do%20Site%20e%20quero%20fazer%20um%20diagnóstico%20Gratuito%20no%20meu%20negócio!";
-        const CONTACT_EMAIL = "contato@agenciafoxon.com.br";
-        const WEBHOOK_URL = "https://automacao.agenciafoxon.com.br/webhook/checklistrec";
-        const THANK_YOU_PAGE = "https://agenciafoxon.com.br/downloadchecklist";
+            <div class="mt-16">
+                <a href="https://wa.me/5511972202587?text=Ol%C3%A1%20vim%20do%20Site%20e%20quero%20fazer%20um%20diagn%C3%B3stico%20Gratuito%20no%20meu%20neg%C3%B3cio!" target="_blank" rel="noopener" class="bg-orange-500 hover:bg-orange-600 text-black font-black px-12 py-6 rounded-2xl text-xl shadow-2xl transition-transform inline-flex items-center gap-3 hover:-translate-y-1">
+                    SOLICITAR MEU DIAGNÓSTICO GRATUITO 
+                    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                </a>
+                <div class="mt-6 flex flex-wrap justify-center gap-6 text-sm text-gray-300 font-bold">
+                    <span class="flex items-center gap-2">
+                        <svg class="text-orange-500" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg> 
+                        Auditoria 100% Gratuita
+                    </span>
+                    <span class="flex items-center gap-2">
+                        <svg class="text-orange-500" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                        Plano de Escala Customizado
+                    </span>
+                </div>
+            </div>
+        </div>
+    </header>
 
-        const LOGO_URL = "/assets/images/Logo-2-H.png";
-        const PEDRO_IMG_URL = "/assets/images/Pedro.png";
-        const VIDEO_ID = "O2u0L-eCBWk";
+    <!-- Brand Carousel -->
+    <div class="py-20 border-y border-white/10 bg-white/5 backdrop-blur-sm overflow-hidden relative">
+        <div class="animate-scroll whitespace-nowrap" id="brand-scroll">
+            <!-- JS will populate duplicates for smooth loop -->
+        </div>
+    </div>
 
-        const MARCAS = ["TechFlow Solutions", "GlobalPrime Marketing", "NovaInvest Capital", "EcoSolutions Group", "PeakPerformance Gym", "UrbanNest Realty", "LuminaAds Digital", "SkyHigh Ventures", "FutureProof Tech", "GrowthMind SaaS", "TechFlow Solutions", "GlobalPrime Marketing", "NovaInvest Capital", "EcoSolutions Group", "PeakPerformance Gym", "UrbanNest Realty", "LuminaAds Digital", "SkyHigh Ventures", "FutureProof Tech", "GrowthMind SaaS"];
+    <!-- Pain Point -->
+    <section class="py-24 px-6 text-center">
+        <h3 class="text-orange-500 font-black text-xl mb-6 uppercase tracking-[0.2em]">O Custo da Inércia</h3>
+        <p class="text-3xl md:text-5xl font-black mb-12 max-w-4xl mx-auto leading-tight">Cada dia que seu negócio opera sem o <span class="text-white underline decoration-orange-500 underline-offset-8">REC corrigido</span>, você está literalmente queimando dinheiro.</p>
+        <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto text-left">
+            <div class="p-8 glass-card border-red-500/30 rounded-3xl">
+                <p class="text-red-400 font-bold text-lg mb-2">Amadorismo</p>
+                <p class="text-gray-200">Postagens sem estratégia, sites lentos e comercial baseado na sorte.</p>
+            </div>
+            <div class="p-8 glass-card border-green-500/30 rounded-3xl">
+                <p class="text-green-400 font-bold text-lg mb-2">Protocolo REC</p>
+                <p class="text-gray-200">Autoridade real, funis automáticos e comercial movido a processos.</p>
+            </div>
+        </div>
+    </section>
 
+    <!-- REC Section -->
+    <section id="rec" class="py-32 px-6">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-4xl md:text-6xl font-black mb-16 text-center">O Protocolo <span class="text-orange-500">REC</span></h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- R -->
+                <div class="glass-card p-10 rounded-[40px] relative overflow-hidden group">
+                    <div class="absolute top-0 right-0 p-8 text-8xl font-black opacity-10 group-hover:text-orange-500 transition-all select-none">R</div>
+                    <div class="mb-8 p-5 bg-orange-500/20 rounded-2xl w-fit">
+                        <svg class="text-orange-500" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                    </div>
+                    <h3 class="text-3xl font-black mb-4">Redes Sociais</h3>
+                    <p class="text-gray-300 mb-8 text-lg">Autoridade premium onde o cliente vê você como única opção lógica.</p>
+                    <ul class="space-y-4 text-sm font-bold">
+                        <li class="flex gap-3"><svg class="text-orange-500" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg> Posicionamento</li>
+                        <li class="flex gap-3"><svg class="text-orange-500" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg> Conteúdo</li>
+                        <li class="flex gap-3"><svg class="text-orange-500" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg> Tráfego</li>
+                    </ul>
+                </div>
+                <!-- E -->
+                <div class="glass-card p-10 rounded-[40px] relative overflow-hidden group">
+                    <div class="absolute top-0 right-0 p-8 text-8xl font-black opacity-10 group-hover:text-orange-500 transition-all select-none">E</div>
+                    <div class="mb-8 p-5 bg-orange-500/20 rounded-2xl w-fit">
+                        <svg class="text-orange-500" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="20" x2="12" y2="10"></line><line x1="18" y1="20" x2="18" y2="4"></line><line x1="6" y1="20" x2="6" y2="16"></line></svg>
+                    </div>
+                    <h3 class="text-3xl font-black mb-4">Estrutura</h3>
+                    <p class="text-gray-300 mb-8 text-lg">Tecnologia a serviço do lucro com funis que trabalham sozinhos.</p>
+                    <ul class="space-y-4 text-sm font-bold">
+                        <li class="flex gap-3"><svg class="text-orange-500" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg> Landing Pages</li>
+                        <li class="flex gap-3"><svg class="text-orange-500" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg> Automação</li>
+                        <li class="flex gap-3"><svg class="text-orange-500" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg> Dashboards</li>
+                    </ul>
+                </div>
+                <!-- C -->
+                <div class="glass-card p-10 rounded-[40px] relative overflow-hidden group">
+                    <div class="absolute top-0 right-0 p-8 text-8xl font-black opacity-10 group-hover:text-orange-500 transition-all select-none">C</div>
+                    <div class="mb-8 p-5 bg-orange-500/20 rounded-2xl w-fit">
+                        <svg class="text-orange-500" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg>
+                    </div>
+                    <h3 class="text-3xl font-black mb-4">Comercial</h3>
+                    <p class="text-gray-300 mb-8 text-lg">Scripts validados e CRM inteligente para fechamento veloz.</p>
+                    <ul class="space-y-4 text-sm font-bold">
+                        <li class="flex gap-3"><svg class="text-orange-500" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg> Vendedores</li>
+                        <li class="flex gap-3"><svg class="text-orange-500" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg> Scripts</li>
+                        <li class="flex gap-3"><svg class="text-orange-500" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg> Processos</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About -->
+    <section id="sobre" class="py-32 px-6">
+        <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-20 items-center">
+            <div class="relative group">
+                <img src="/assets/images/Pedro.png" alt="Pedro Rafael" loading="lazy" width="500" height="600" class="w-full max-w-[500px] h-auto drop-shadow-2xl rounded-[32px] object-cover">
+                <div class="absolute bottom-10 left-0 right-0 p-8 bg-black/50 backdrop-blur-lg border border-white/20 rounded-b-[48px] mx-4 shadow-2xl">
+                    <p class="text-orange-500 font-black text-3xl uppercase">Pedro Rafael</p>
+                    <p class="text-white font-bold">CEO FoxOn Agência</p>
+                </div>
+            </div>
+            <div>
+                <div class="w-16 h-2 bg-orange-500 mb-8 rounded-full"></div>
+                <h2 class="text-4xl md:text-6xl font-black mb-8 leading-tight">A Mente Estratégica <br /><span class="text-orange-500">Por Trás da FoxOn</span></h2>
+                <p class="text-xl text-gray-200 font-medium leading-relaxed">Pedro Rafael cansou de agências que focam apenas no "bonitinho". Fundou a FoxOn para gerar lucro previsível através da engenharia de processos digitais.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Checklist -->
+    <section id="checklist" class="py-32 px-6">
+        <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-center">
+            <div class="space-y-8">
+                <div class="inline-flex items-center gap-2 px-4 py-2 bg-orange-500/10 border border-orange-500/30 rounded-full text-orange-500 text-xs font-black uppercase">Material Gratuito</div>
+                <h2 class="text-4xl md:text-6xl font-black leading-tight">Checklist REC: <br /><span class="text-orange-500">30 Tarefas</span> para a Excelência</h2>
+                <p class="text-gray-300 text-xl font-medium">Audite suas redes sociais, funis e comercial agora mesmo.</p>
+            </div>
+            <div class="glass-card p-8 md:p-12 rounded-[40px] shadow-2xl relative">
+                <div class="text-center mb-8">
+                    <svg class="mx-auto text-orange-500 mb-4" xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                    <h3 class="text-2xl font-black mb-2">Baixe Agora Grátis</h3>
+                </div>
+                <form id="checklistForm" class="space-y-5">
+                    <input required type="text" name="first_name" placeholder="Seu primeiro nome" class="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white focus:outline-none focus:border-orange-500/50" aria-label="Nome">
+                    <input required type="email" name="email" placeholder="Seu Melhor E-mail" class="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white focus:outline-none focus:border-orange-500/50" aria-label="Email">
+                    <input required type="tel" name="whatsapp" placeholder="Seu Whatsapp" class="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white focus:outline-none focus:border-orange-500/50" aria-label="Whatsapp">
+                    <button type="submit" id="submitBtn" class="w-full bg-orange-500 hover:bg-orange-600 text-black font-black py-5 rounded-2xl text-lg shadow-xl flex items-center justify-center gap-3 transition-colors">
+                        <span>LIBERAR DOWNLOAD AGORA</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="py-32 px-6">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-4xl md:text-6xl font-black mb-16 text-center">O Que Dizem os <span class="text-orange-500">Gigantes</span></h2>
+            <div class="grid md:grid-cols-3 gap-8" id="testimonials">
+                <!-- JS Populates -->
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="py-32 px-6">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="text-4xl md:text-5xl font-black mb-16 text-center">Dúvidas Frequentes</h2>
+            <div class="space-y-4" id="faq-container">
+                <!-- JS Populates -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black/70 backdrop-blur-3xl pt-24 pb-12 px-6 border-t border-white/10">
+        <div class="max-w-7xl mx-auto grid md:grid-cols-4 gap-16 mb-20">
+            <div class="md:col-span-2">
+                <img src="/assets/images/Logo-2-H.png" alt="FoxOn Agência" loading="lazy" width="150" height="48" class="h-12 w-auto mb-8 rounded-lg object-contain">
+                <p class="text-gray-400">Transformando marketing digital em lucro líquido.</p>
+            </div>
+            <div>
+                <h4 class="font-black mb-8 uppercase text-sm">Fale Conosco</h4>
+                <ul class="space-y-4 text-gray-400 font-bold">
+                    <li><a href="mailto:contato@agenciafoxon.com.br" class="hover:text-orange-500 transition-colors">contato@agenciafoxon.com.br</a></li>
+                    <li><a href="https://wa.me/5511972202587" class="hover:text-orange-500 transition-colors">+55 (11) 97220-2587</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="text-center text-gray-500 text-sm font-bold pt-12 border-t border-white/10">&copy; <span id="year"></span> FoxOn Agência. Todos os direitos reservados.</div>
+    </footer>
+
+    <!-- Floating CTA -->
+    <div class="fixed bottom-6 right-6 z-[100]">
+        <a href="https://wa.me/5511972202587?text=Ol%C3%A1%20vim%20do%20Site%20e%20quero%20fazer%20um%20diagn%C3%B3stico%20Gratuito%20no%20meu%20neg%C3%B3cio!" target="_blank" rel="noopener" aria-label="WhatsApp" class="w-14 h-14 md:w-16 md:h-16 bg-[#25D366] text-white rounded-full shadow-2xl flex items-center justify-center hover:scale-110 transition-transform relative">
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M2.004 22.003l2.997-2.997a9.99 9.99 0 10-2.997-2.997l-2.997 2.997zm9.99-18a8 8 0 11-8 8 8.01 8.01 0 018-8zm4.4 11.2c-.3-.1-1.7-.9-1.9-1s-.4-.1-.6.1-.8 1-1 1.2-.4.3-.7.1-1.3-.5-2.5-1.5c-1-1-1.7-2.1-1.8-2.5s0-.7.3-1c.2-.2.4-.5.6-.8.2-.2.3-.4.4-.7s.1-.5 0-.7-.6-1.5-.9-2c-.3-.6-.6-.5-.8-.5s-.5 0-.7 0c-.3 0-.7.1-1.1.5-.4.4-1.5 1.5-1.5 3.6s1.6 4.2 1.8 4.5 3.1 4.7 7.5 6.6c2.8 1.2 3.9 1.2 5.3 1 .9-.1 1.7-.7 2-1.4.3-.7.3-1.3.2-1.4-.1-.1-.4-.2-.7-.4z"/></svg>
+            <span class="absolute -top-1 -right-1 flex h-4 w-4">
+                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
+                <span class="relative inline-flex rounded-full h-4 w-4 bg-orange-500 border-2 border-white"></span>
+            </span>
+        </a>
+    </div>
+
+    <!-- Vanilla JS Logic (Ultra Lightweight) -->
+    <script>
+        // Data
+        const MARCAS = ["TechFlow Solutions", "GlobalPrime Marketing", "NovaInvest Capital", "EcoSolutions Group", "PeakPerformance Gym", "UrbanNest Realty", "LuminaAds Digital", "SkyHigh Ventures", "FutureProof Tech", "GrowthMind SaaS"];
         const REVIEWS = [
           { name: "Mariana Silva", company: "CEO Moda Express", text: "A FoxOn transformou nosso faturamento. O Protocolo REC foi o divisor de águas para sairmos do amadorismo no Instagram." },
           { name: "Ricardo Mendes", company: "Proprietário FitLife", text: "Finalmente um marketing que foca no comercial e não apenas em likes. O diagnóstico abriu meus olhos." },
-          { name: "Ana Paula", company: "Diretora de Vendas TechLog", text: "Pedro Rafael e sua equipe são gênios da automação. Nosso CRM agora trabalha sozinho enquanto vendemos." },
-          { name: "Gustavo Costa", company: "Fundador GoSaaS", text: "Estrutura é tudo. O REC corrigiu processos que a gente nem sabia que estavam errados. Lucro previsível agora." },
-          { name: "Beatriz Nogueira", company: "Marketing Manager", text: "O diagnóstico gratuito já valeu mais do que consultorias pagas que fiz. A clareza que eles dão é absurda." },
-          { name: "João Vitor", company: "E-commerce Owner", text: "Minhas redes sociais agora vendem sozinhas. Incrível como o posicionamento certo muda o jogo." },
-          { name: "Carla Ferreira", company: "Médica Especialista", text: "Profissionalismo impecável. O funil de vendas agora é previsível e os pacientes chegam qualificados." },
-          { name: "Felipe Sampaio", company: "Agência de Viagens", text: "Dobramos nossa conversão comercial em 3 meses com a FoxOn. O pilar Comercial é o que faltava." },
-          { name: "Luciana Braga", company: "Educação Online", text: "O suporte do Pedro é diferenciado. Eles realmente vestem a camisa e focam no meu ROI, não em métricas vazias." },
+          { name: "Ana Paula", company: "Diretora de Vendas TechLog", text: "Pedro Rafael e sua equipe são gênios da automação. Nosso CRM agora trabalha sozinho enquanto vendemos." }
         ];
-
         const FAQS = [
           { q: "O que é o Protocolo REC?", a: "É a nossa metodologia exclusiva que foca nos três pilares fundamentais de qualquer negócio lucrativo: Redes Sociais (Posicionamento), Estrutura (Funis e Automação) e Processo Comercial (Fechamento)." },
           { q: "O diagnóstico é realmente gratuito?", a: "Sim! Reservamos horários na agenda do nosso team sênior para analisar seu negócio. Fazemos isso porque sabemos que após verem o potencial de lucro, muitos decidem implementar o protocolo conosco." },
           { q: "Para quem é a FoxOn Agência?", a: "Para empresários que já faturam ou querem escalar com previsibilidade, cansados de agências 'amadoras' que focam apenas em posts bonitos sem estratégia de vendas real." },
-          { q: "Quanto tempo leva para o Protocolo REC ser implementado?", a: "A fase de diagnóstico e plano de ação é imediata. A implementação completa dos funis e automações leva em média de 15 a 30 dias para começar a rodar 100%." },
-          { q: "Eu preciso aparecer nas redes sociais?", a: "Não necessariamente. O Protocolo REC adapta a estratégia ao seu modelo de negócio, seja ele focado em autoridade pessoal ou em marca institucional." },
-          { q: "Qual o investimento necessário em tráfego?", a: "O investimento é calculado com base na sua meta de faturamento. Durante o diagnóstico gratuito, analisamos seus números atuais e sugerimos um valor que traga o melhor ROI possível." },
-          { q: "Vocês cuidam de toda a parte tecnológica?", a: "Sim. Nossa equipe de Estrutura monta suas Landing Pages, configura CRM, integra APIs e cria as automações de WhatsApp e E-mail. Você não precisa lidar com códigos ou configurações técnicas." },
-          { q: "O que diferencia a FoxOn de outras agências?", a: "A maioria foca em 'gestão de redes sociais' (fazer posts). Nós focamos no Pilar Comercial. Se o marketing não está gerando dinheiro no bolso do cliente, ele não serve. Somos orientados a resultado direto." },
-          { q: "Já tive experiências ruins com agências. Por que seria diferente agora?", a: "Porque não trabalhamos com achismos. O Protocolo REC é um processo de engenharia comercial. Corrigimos primeiro a base (REC) antes de injetar tráfego, evitando que você jogue dinheiro fora." },
-          { q: "O que acontece depois do diagnóstico?", a: "Você sairá com um mapa claro dos seus gargalos no REC. Se houver fit cultural e comercial, apresentaremos como podemos executar o protocolo para você." }
+          { q: "Quanto tempo leva para o Protocolo REC ser implementado?", a: "A fase de diagnóstico e plano de ação é imediata. A implementação completa dos funis e automações leva em média de 15 a 30 dias para começar a rodar 100%." }
         ];
 
-        // Componente de Vídeo Facade para Performance Extrema
-        // Carrega apenas a imagem (thumbnail) leve primeiro. Só carrega o iframe pesado ao clicar.
-        const VideoFacade = () => {
-          const [isPlaying, setIsPlaying] = useState(false);
+        // Init
+        document.addEventListener('DOMContentLoaded', () => {
+            // Navbar Scroll
+            const nav = document.getElementById('navbar');
+            const navContent = document.getElementById('nav-content');
+            const navLogo = document.getElementById('nav-logo');
+            
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    nav.classList.add('top-6', 'px-6');
+                    navContent.classList.replace('max-w-7xl', 'max-w-5xl');
+                    navContent.classList.add('bg-black/60', 'backdrop-blur-2xl', 'border-white/10', 'rounded-[32px]', 'px-8', 'py-3', 'shadow-2xl');
+                    navContent.classList.remove('bg-transparent', 'px-6', 'py-6', 'border-b');
+                    navLogo.classList.replace('h-10', 'h-8');
+                    navLogo.classList.replace('md:h-12', 'h-8');
+                } else {
+                    nav.classList.remove('top-6', 'px-6');
+                    navContent.classList.replace('max-w-5xl', 'max-w-7xl');
+                    navContent.classList.remove('bg-black/60', 'backdrop-blur-2xl', 'border-white/10', 'rounded-[32px]', 'px-8', 'py-3', 'shadow-2xl');
+                    navContent.classList.add('bg-transparent', 'px-6', 'py-6', 'border-b');
+                    navLogo.classList.replace('h-8', 'h-10');
+                    navLogo.classList.add('md:h-12');
+                }
+            }, { passive: true });
 
-          if (isPlaying) {
-            return (
-              <iframe 
-                className="w-full h-full animate-in fade-in duration-500" 
-                src={`https://www.youtube.com/embed/${VIDEO_ID}?autoplay=1&rel=0`}
-                title="Vídeo de Apresentação FoxOn"
-                frameBorder="0" 
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                allowFullScreen
-              ></iframe>
-            );
-          }
+            // Brand Carousel
+            const brandScroll = document.getElementById('brand-scroll');
+            const brandsHTML = [...MARCAS, ...MARCAS].map(m => `<span class="mx-16 text-3xl font-black text-white/30 hover:text-orange-500 transition-colors uppercase tracking-[0.15em]">${m}</span>`).join('');
+            brandScroll.innerHTML = brandsHTML;
 
-          return (
-            <button 
-              onClick={() => setIsPlaying(true)}
-              className="w-full h-full relative group cursor-pointer overflow-hidden"
-              aria-label="Reproduzir Vídeo de Apresentação"
-            >
-              <img 
-                src={`https://img.youtube.com/vi/${VIDEO_ID}/maxresdefault.jpg`} 
-                alt="Thumbnail Vídeo FoxOn"
-                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-80"
-                width="896"
-                height="504"
-              />
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="w-20 h-20 bg-orange-500/90 rounded-full flex items-center justify-center shadow-lg shadow-orange-500/40 transition-all group-hover:scale-110 group-hover:bg-orange-500">
-                  <Play size={32} className="text-white fill-current ml-1" />
+            // Testimonials
+            const testContainer = document.getElementById('testimonials');
+            testContainer.innerHTML = REVIEWS.map(r => `
+                <div class="glass-card p-10 rounded-[40px] flex flex-col justify-between">
+                    <svg class="text-orange-500/20 mb-6" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="currentColor"><path d="M3 21c3 0 7-1 7-8V5c0-1.25-.756-2.017-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V20c0 1 0 1 1 1z"/><path d="M15 21c3 0 7-1 7-8V5c0-1.25-.757-2.017-2-2h-4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V20c0 1 0 1 1 1z"/></svg>
+                    <p class="text-gray-100 italic mb-8 leading-relaxed font-medium">"${r.text}"</p>
+                    <div class="pt-6 border-t border-white/5">
+                        <p class="font-bold text-white text-lg">${r.name}</p>
+                        <p class="text-xs text-orange-400 font-black uppercase tracking-widest mt-1">${r.company}</p>
+                    </div>
                 </div>
-              </div>
-            </button>
-          );
-        };
+            `).join('');
 
-        const App = () => {
-          const [scrolled, setScrolled] = useState(false);
-          const [openFaq, setOpenFaq] = useState(0);
-          const [loading, setLoading] = useState(false);
-          const [formData, setFormData] = useState({ first_name: '', email: '', whatsapp: '' });
+            // FAQ
+            const faqContainer = document.getElementById('faq-container');
+            faqContainer.innerHTML = FAQS.map((f, i) => `
+                <div class="faq-item border border-white/10 bg-white/5 rounded-3xl overflow-hidden transition-all backdrop-blur-md cursor-pointer" onclick="toggleFaq(this)">
+                    <div class="w-full p-8 flex justify-between items-center text-left">
+                        <span class="font-black text-xl text-white question">${f.q}</span>
+                        <svg class="transition-transform duration-300 arrow" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                    </div>
+                    <div class="faq-content">
+                        <div class="p-8 pt-0 text-gray-200 text-lg leading-relaxed border-t border-white/10 mt-2">${f.a}</div>
+                    </div>
+                </div>
+            `).join('');
 
-          useEffect(() => {
-            const handleScroll = () => {
-                requestAnimationFrame(() => {
-                    setScrolled(window.scrollY > 50);
-                });
-            };
-            window.addEventListener('scroll', handleScroll, { passive: true });
-            return () => window.removeEventListener('scroll', handleScroll);
-          }, []);
+            // Footer Year
+            document.getElementById('year').textContent = new Date().getFullYear();
 
-          const handleChecklistSubmit = async (e) => {
-            e.preventDefault();
-            setLoading(true);
-            try {
-              await fetch(WEBHOOK_URL, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(formData)
-              });
-              window.location.href = THANK_YOU_PAGE;
-            } catch (error) {
-              window.location.href = THANK_YOU_PAGE;
-            } finally {
-              setLoading(false);
+            // Form Submit
+            const form = document.getElementById('checklistForm');
+            const submitBtn = document.getElementById('submitBtn');
+            form.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                const originalContent = submitBtn.innerHTML;
+                submitBtn.innerHTML = '<div class="loader"></div>';
+                submitBtn.disabled = true;
+                
+                const formData = new FormData(form);
+                const data = Object.fromEntries(formData.entries());
+
+                try {
+                    await fetch("https://automacao.agenciafoxon.com.br/webhook/checklistrec", {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(data)
+                    });
+                } catch(e) {} // Silent fail
+                
+                window.location.href = "https://agenciafoxon.com.br/downloadchecklist";
+            });
+        });
+
+        // FAQ Toggle
+        function toggleFaq(el) {
+            const content = el.querySelector('.faq-content');
+            const arrow = el.querySelector('.arrow');
+            const question = el.querySelector('.question');
+            
+            const isOpen = content.classList.contains('open');
+            
+            // Close all others
+            document.querySelectorAll('.faq-content').forEach(c => c.classList.remove('open'));
+            document.querySelectorAll('.arrow').forEach(a => a.classList.remove('rotate-180'));
+            document.querySelectorAll('.faq-item').forEach(i => {
+                i.classList.remove('border-orange-500/60', 'bg-orange-500/15');
+                i.querySelector('.question').classList.remove('text-orange-500');
+            });
+
+            if (!isOpen) {
+                content.classList.add('open');
+                arrow.classList.add('rotate-180');
+                el.classList.add('border-orange-500/60', 'bg-orange-500/15');
+                question.classList.add('text-orange-500');
             }
-          };
+        }
 
-          return (
-            <div className="min-h-screen selection:bg-orange-500 selection:text-black">
-              {/* Navbar - Semantic Nav */}
-              <div className={`fixed left-0 right-0 z-50 transition-all duration-500 flex justify-center ${scrolled ? 'top-6 px-6' : 'top-0'}`}>
-                <nav className={`w-full transition-all duration-500 flex justify-between items-center ${scrolled ? 'max-w-5xl bg-black/60 backdrop-blur-2xl border border-white/10 rounded-[32px] px-8 py-3 shadow-2xl' : 'max-w-7xl bg-transparent px-6 py-6 border-b border-white/5'}`} aria-label="Navegação Principal">
-                  <img 
-                    src={LOGO_URL} 
-                    alt="FoxOn Agência" 
-                    width="150"
-                    height="48"
-                    className={`transition-all duration-500 object-contain w-auto ${scrolled ? 'h-8' : 'h-10 md:h-12'}`} 
-                  />
-                  <div className="hidden md:flex gap-8 text-xs font-bold text-gray-300 uppercase tracking-widest">
-                    <a href="#rec" className="hover:text-orange-400 transition p-2">Protocolo REC</a>
-                    <a href="#sobre" className="hover:text-orange-400 transition p-2">Pedro Rafael</a>
-                    <a href="#checklist" className="hover:text-orange-400 transition p-2">Checklist</a>
-                    <a href="#faq" className="hover:text-orange-400 transition p-2">FAQ</a>
-                  </div>
-                  <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer" className={`bg-orange-500 hover:bg-orange-600 text-black font-black rounded-full transition-all transform hover:scale-105 shadow-lg shadow-orange-500/20 px-6 py-2.5 text-xs`}>DIAGNÓSTICO GRÁTIS</a>
-                </nav>
-              </div>
-
-              {/* Hero */}
-              <header className="relative pt-40 pb-20 px-6 overflow-hidden min-h-[90vh] flex items-center">
-                <div className="max-w-6xl mx-auto text-center relative z-10">
-                  <div className="inline-flex items-center gap-2 px-4 py-2 bg-orange-500/20 border border-orange-500/40 rounded-full text-orange-400 text-sm font-bold mb-8 animate-pulse">
-                    <Zap size={16} fill="currentColor" /> MARKETING DE ALTA PERFORMANCE & AUTOMAÇÃO
-                  </div>
-                  <h1 className="text-5xl md:text-8xl font-black leading-[1] mb-6 tracking-tight">CORRIJA SEU <span className="text-orange-500">REC</span> E <br /><span className="text-gradient">VENDA COM ESCALA</span></h1>
-                  <p className="text-lg md:text-2xl text-gray-200 max-w-3xl mx-auto mb-12 font-medium">O amadorismo é o maior ralo de dinheiro do seu negócio. Pare de tentar a sorte e aplique o <b>Protocolo REC</b> para dominar seu mercado.</p>
-                  
-                  {/* Video Container - Facade implementation for 100 Performance */}
-                  <div className="relative max-w-4xl mx-auto aspect-video rounded-[32px] overflow-hidden border-2 border-white/20 orange-glow bg-black shadow-2xl backdrop-blur-sm">
-                    <VideoFacade />
-                  </div>
-
-                  <div className="mt-16">
-                    <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer" className="bg-orange-500 hover:bg-orange-600 text-black font-black px-12 py-6 rounded-2xl text-xl shadow-2xl transition-all inline-flex items-center gap-3 transform hover:-translate-y-1">SOLICITAR MEU DIAGNÓSTICO GRATUITO <ArrowRight size={28} /></a>
-                    <div className="mt-6 flex flex-wrap justify-center gap-6 text-sm text-gray-300 font-bold">
-                      <span className="flex items-center gap-2"><CheckCircle size={16} className="text-orange-500" /> Auditoria 100% Gratuita</span>
-                      <span className="flex items-center gap-2"><CheckCircle size={16} className="text-orange-500" /> Plano de Escala Customizado</span>
-                    </div>
-                  </div>
-                </div>
-              </header>
-
-              {/* Brand Carousel */}
-              <div className="py-20 border-y border-white/10 bg-white/5 backdrop-blur-sm overflow-hidden relative" aria-hidden="true">
-                <div className="animate-scroll whitespace-nowrap">
-                  {MARCAS.map((m, i) => (
-                    <span key={i} className="mx-16 text-3xl font-black text-white/30 hover:text-orange-500 transition-colors uppercase tracking-[0.15em]">{m}</span>
-                  ))}
-                </div>
-              </div>
-
-              {/* Pain Point */}
-              <section className="py-24 px-6 text-center">
-                <h3 className="text-orange-500 font-black text-xl mb-6 uppercase tracking-[0.2em]">O Custo da Inércia</h3>
-                <p className="text-3xl md:text-5xl font-black mb-12 max-w-4xl mx-auto leading-tight">Cada dia que seu negócio opera sem o <span className="text-white underline decoration-orange-500 underline-offset-8">REC corrigido</span>, você está literalmente queimando dinheiro.</p>
-                <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto text-left">
-                  <div className="p-8 glass-card border-red-500/30 rounded-3xl">
-                    <p className="text-red-400 font-bold text-lg mb-2">Amadorismo</p>
-                    <p className="text-gray-200">Postagens sem estratégia, sites lentos e comercial baseado na sorte.</p>
-                  </div>
-                  <div className="p-8 glass-card border-green-500/30 rounded-3xl">
-                    <p className="text-green-400 font-bold text-lg mb-2">Protocolo REC</p>
-                    <p className="text-gray-200">Autoridade real, funis automáticos e comercial movido a processos.</p>
-                  </div>
-                </div>
-              </section>
-
-              {/* REC Section */}
-              <section id="rec" className="py-32 px-6">
-                <div className="max-w-7xl mx-auto">
-                  <h2 className="text-4xl md:text-6xl font-black mb-16 text-center">O Protocolo <span className="text-orange-500">REC</span></h2>
-                  <div className="grid md:grid-cols-3 gap-8">
-                    {[
-                      { l: "R", t: "Redes Sociais", i: <Instagram className="text-orange-500" />, d: "Autoridade premium onde o cliente vê você como única opção lógica.", items: ["Posicionamento", "Conteúdo", "Tráfego"] },
-                      { l: "E", t: "Estrutura", i: <BarChart3 className="text-orange-500" />, d: "Tecnologia a serviço do lucro com funis que trabalham sozinhos.", items: ["Landing Pages", "Automação", "Dashboards"] },
-                      { l: "C", t: "Comercial", i: <Target className="text-orange-500" />, d: "Scripts validados e CRM inteligente para fechamento veloz.", items: ["Vendedores", "Scripts", "Processos"] }
-                    ].map((item, idx) => (
-                      <div key={idx} className="glass-card p-10 rounded-[40px] relative overflow-hidden group">
-                        <div className="absolute top-0 right-0 p-8 text-8xl font-black opacity-10 group-hover:text-orange-500 transition-all select-none" aria-hidden="true">{item.l}</div>
-                        <div className="mb-8 p-5 bg-orange-500/20 rounded-2xl w-fit">{item.i}</div>
-                        <h3 className="text-3xl font-black mb-4">{item.t}</h3>
-                        <p className="text-gray-300 mb-8 text-lg">{item.d}</p>
-                        <ul className="space-y-4">
-                          {item.items.map((li, i) => (
-                            <li key={i} className="flex items-center gap-3 text-sm font-bold"><CheckCircle size={16} className="text-orange-500" /> {li}</li>
-                          ))}
-                        </ul>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </section>
-
-              {/* About */}
-              <section id="sobre" className="py-32 px-6">
-                <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-20 items-center">
-                  <div className="relative group">
-                    <img 
-                      src={PEDRO_IMG_URL} 
-                      alt="Pedro Rafael, CEO da FoxOn Agência" 
-                      loading="lazy"
-                      width="500"
-                      height="600"
-                      className="w-full max-w-[500px] h-auto drop-shadow-2xl rounded-[32px] object-cover" 
-                    />
-                    <div className="absolute bottom-10 left-0 right-0 p-8 bg-black/50 backdrop-blur-lg border border-white/20 rounded-b-[48px] mx-4 shadow-2xl">
-                        <p className="text-orange-500 font-black text-3xl uppercase">Pedro Rafael</p>
-                        <p className="text-white font-bold">CEO FoxOn Agência</p>
-                    </div>
-                  </div>
-                  <div>
-                    <div className="w-16 h-2 bg-orange-500 mb-8 rounded-full"></div>
-                    <h2 className="text-4xl md:text-6xl font-black mb-8 leading-tight">A Mente Estratégica <br /><span className="text-orange-500">Por Trás da FoxOn</span></h2>
-                    <p className="text-xl text-gray-200 font-medium leading-relaxed">Pedro Rafael cansou de agências que focam apenas no "bonitinho". Fundou a FoxOn para gerar lucro previsível através da engenharia de processos digitais.</p>
-                  </div>
-                </div>
-              </section>
-
-              {/* Checklist Section */}
-              <section id="checklist" className="py-32 px-6">
-                <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-center">
-                  <div className="space-y-8">
-                    <div className="inline-flex items-center gap-2 px-4 py-2 bg-orange-500/10 border border-orange-500/30 rounded-full text-orange-500 text-xs font-black uppercase">Material Gratuito</div>
-                    <h2 className="text-4xl md:text-6xl font-black leading-tight">Checklist REC: <br /><span className="text-orange-500">30 Tarefas</span> para a Excelência</h2>
-                    <p className="text-gray-300 text-xl font-medium">Audite suas redes sociais, funis e comercial agora mesmo.</p>
-                  </div>
-                  <div className="glass-card p-8 md:p-12 rounded-[40px] shadow-2xl relative">
-                    <div className="text-center mb-8"><Download className="mx-auto text-orange-500 mb-4" size={48} /><h3 className="text-2xl font-black mb-2">Baixe Agora Grátis</h3></div>
-                    <form onSubmit={handleChecklistSubmit} className="space-y-5">
-                      {/* Added aria-labels for Accessibility */}
-                      <input 
-                        required 
-                        type="text" 
-                        aria-label="Seu primeiro nome"
-                        placeholder="Seu primeiro nome" 
-                        className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white focus:outline-none focus:border-orange-500/50" 
-                        value={formData.first_name} 
-                        onChange={e => setFormData({...formData, first_name: e.target.value})} 
-                      />
-                      <input 
-                        required 
-                        type="email" 
-                        aria-label="Seu Melhor E-mail"
-                        placeholder="Seu Melhor E-mail" 
-                        className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white focus:outline-none focus:border-orange-500/50" 
-                        value={formData.email} 
-                        onChange={e => setFormData({...formData, email: e.target.value})} 
-                      />
-                      <input 
-                        required 
-                        type="tel" 
-                        aria-label="Seu Whatsapp"
-                        placeholder="Seu Whatsapp" 
-                        className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white focus:outline-none focus:border-orange-500/50" 
-                        value={formData.whatsapp} 
-                        onChange={e => setFormData({...formData, whatsapp: e.target.value})} 
-                      />
-                      <button type="submit" disabled={loading} className="w-full bg-orange-500 hover:bg-orange-600 text-black font-black py-5 rounded-2xl text-lg shadow-xl flex items-center justify-center gap-3 disabled:opacity-50 transition-colors">
-                        {loading ? <Loader2 className="animate-spin" /> : <>LIBERAR DOWNLOAD AGORA <ArrowRight /></>}
-                      </button>
-                    </form>
-                  </div>
-                </div>
-              </section>
-
-              {/* Testimonials */}
-              <section className="py-32 px-6">
-                <div className="max-w-7xl mx-auto">
-                  <h2 className="text-4xl md:text-6xl font-black mb-16 text-center">O Que Dizem os <span className="text-orange-500">Gigantes</span></h2>
-                  <div className="grid md:grid-cols-3 gap-8">
-                    {REVIEWS.map((rev, i) => (
-                      <div key={i} className="glass-card p-10 rounded-[40px] flex flex-col justify-between">
-                        <Quote className="text-orange-500/20 mb-6" size={32} aria-hidden="true" />
-                        <p className="text-gray-100 italic mb-8 leading-relaxed font-medium">"{rev.text}"</p>
-                        <div className="pt-6 border-t border-white/5">
-                           <p className="font-bold text-white text-lg">{rev.name}</p>
-                           <p className="text-xs text-orange-400 font-black uppercase tracking-widest mt-1">{rev.company}</p>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </section>
-
-              {/* FAQ */}
-              <section id="faq" className="py-32 px-6">
-                <div className="max-w-4xl mx-auto">
-                  <h2 className="text-4xl md:text-5xl font-black mb-16 text-center">Dúvidas Frequentes</h2>
-                  <div className="space-y-4">
-                    {FAQS.map((faq, i) => (
-                      <div key={i} className={`border ${openFaq === i ? 'border-orange-500/60 bg-orange-500/15' : 'border-white/10 bg-white/5'} rounded-3xl overflow-hidden transition-all backdrop-blur-md`}>
-                        <button 
-                            onClick={() => setOpenFaq(openFaq === i ? null : i)} 
-                            aria-expanded={openFaq === i}
-                            className="w-full p-8 flex justify-between items-center text-left"
-                        >
-                            <span className={`font-black text-xl ${openFaq === i ? 'text-orange-500' : 'text-white'}`}>{faq.q}</span>
-                            <ChevronDown className={`transition-transform ${openFaq === i ? 'rotate-180' : ''}`} />
-                        </button>
-                        <div className={`transition-all overflow-hidden ${openFaq === i ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0'}`}>
-                            <div className="p-8 pt-0 text-gray-200 text-lg leading-relaxed border-t border-white/10 mt-2">{faq.a}</div>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </section>
-
-              {/* Footer */}
-              <footer className="bg-black/70 backdrop-blur-3xl pt-24 pb-12 px-6 border-t border-white/10">
-                <div className="max-w-7xl mx-auto grid md:grid-cols-4 gap-16 mb-20">
-                  <div className="md:col-span-2">
-                    <img src={LOGO_URL} alt="FoxOn Agência Logo" loading="lazy" width="150" height="48" className="h-12 w-auto mb-8 rounded-lg object-contain" />
-                    <p className="text-gray-400">Transformando marketing digital em lucro líquido.</p>
-                  </div>
-                  <div>
-                    <h4 className="font-black mb-8 uppercase text-sm">Fale Conosco</h4>
-                    <ul className="space-y-4 text-gray-400 font-bold">
-                        <li><a href={`mailto:${CONTACT_EMAIL}`} className="hover:text-orange-500 transition-colors">{CONTACT_EMAIL}</a></li>
-                        <li><a href={WHATSAPP_LINK} className="hover:text-orange-500 transition-colors">+55 (11) 97220-2587</a></li>
-                    </ul>
-                  </div>
-                </div>
-                <div className="text-center text-gray-500 text-sm font-bold pt-12 border-t border-white/10">&copy; {new Date().getFullYear()} FoxOn Agência. Todos os direitos reservados.</div>
-              </footer>
-
-              {/* Floating CTA */}
-              <div className="fixed bottom-6 right-6 z-[100]">
-                  <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer" aria-label="Falar no WhatsApp" className="w-14 h-14 md:w-16 md:h-16 bg-[#25D366] text-white rounded-full shadow-2xl flex items-center justify-center hover:scale-110 transition-all relative">
-                      <MessageCircle size={28} className="fill-current" />
-                      <span className="absolute -top-1 -right-1 flex h-4 w-4">
-                          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
-                          <span className="relative inline-flex rounded-full h-4 w-4 bg-orange-500 border-2 border-white"></span>
-                      </span>
-                  </a>
-              </div>
-            </div>
-          );
-        };
-
-        const root = ReactDOM.createRoot(document.getElementById('root'));
-        root.render(<App />);
+        // Video Load
+        function loadVideo(el) {
+            el.innerHTML = '<iframe class="w-full h-full animate-[fade-in_0.5s]" src="https://www.youtube.com/embed/O2u0L-eCBWk?autoplay=1&rel=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
+            el.removeAttribute('onclick');
+            el.classList.remove('cursor-pointer');
+        }
     </script>
 </body>
 </html>
