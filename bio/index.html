@@ -4,161 +4,341 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Links | Agência FoxOn</title>
-    
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
-    
-    <!-- FontAwesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta name="description" content="Conecte-se com a Agência FoxOn. Acesse nossos serviços de marketing de alta performance, e-books gratuitos e canais de atendimento.">
+    <meta name="theme-color" content="#0F0314">
+    <link rel="canonical" href="https://agenciafoxon.com.br/links">
 
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        fox: {
-                            orange: '#FF5722',
-                            dark: '#1E0B2B',
-                            black: '#0F0314',
-                            light: '#F5F5F5'
-                        }
-                    },
-                    fontFamily: {
-                        sans: ['Open Sans', 'sans-serif'],
-                        heading: ['Montserrat', 'sans-serif'],
-                    },
-                    animation: {
-                        'fade-in-up': 'fadeInUp 0.5s ease-out forwards',
-                        'pulse-slow': 'pulse 3s infinite',
-                    },
-                    keyframes: {
-                        fadeInUp: {
-                            '0%': { opacity: '0', transform: 'translateY(20px)' },
-                            '100%': { opacity: '1', transform: 'translateY(0)' },
-                        }
-                    }
-                }
-            }
-        }
-    </script>
+    <!-- Open Graph / Social Media -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://agenciafoxon.com.br/links">
+    <meta property="og:title" content="Links | Agência FoxOn">
+    <meta property="og:description" content="Transforme seu negócio em uma máquina de vendas com a Agência FoxOn.">
+    <meta property="og:image" content="https://agenciafoxon.com.br/assets/images/Logo-2-H.png">
+
+    <!-- Favicon -->
+    <link rel="icon" href="/assets/images/Ativo-1.png" type="image/png">
 
     <style>
+        /* Variáveis e Reset */
+        :root {
+            --fox-orange: #FF5722;
+            --fox-dark: #1E0B2B;
+            --fox-black: #0F0314;
+            --fox-light: #F5F5F5;
+            --font-stack: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; outline: none; }
+
+        body {
+            background-color: var(--fox-black);
+            color: var(--fox-light);
+            font-family: var(--font-stack);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 48px 16px;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            line-height: 1.5;
+        }
+
+        /* Focus States para Acessibilidade */
+        a:focus-visible {
+            outline: 2px solid var(--fox-orange);
+            outline-offset: 4px;
+            border-radius: 12px;
+        }
+
+        /* Background Hero */
         .hero-bg {
-            background-color: #0F0314;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--fox-black);
             background-image: 
                 radial-gradient(circle at 50% 0%, rgba(156, 39, 176, 0.2) 0%, transparent 50%),
                 radial-gradient(circle at 100% 100%, rgba(255, 87, 34, 0.1) 0%, transparent 40%);
-            min-height: 100vh;
+            z-index: -1;
+            pointer-events: none;
         }
-        
+
+        /* Header */
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            width: 100%;
+            max-width: 448px; /* max-w-md */
+            animation: fadeInUp 0.5s ease-out forwards;
+        }
+
+        .avatar-container {
+            position: relative;
+            width: 112px; /* w-28 */
+            height: 112px;
+            margin: 0 auto 16px auto;
+        }
+
+        .avatar-glow {
+            position: absolute;
+            inset: 0;
+            border-radius: 50%;
+            background: linear-gradient(to top right, var(--fox-orange), #9333ea);
+            opacity: 0.75;
+            filter: blur(8px); /* Blur reduzido para performance */
+            animation: pulse 3s infinite;
+        }
+
+        .avatar-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            padding: 4px;
+            background-color: #0F0314;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            overflow: hidden;
+        }
+
+        .avatar-img { width: 80px; height: auto; }
+
+        h1 { font-weight: 700; font-size: 1.5rem; color: white; margin-bottom: 4px; }
+        .subtitle { font-size: 0.875rem; color: #9CA3AF; }
+
+        /* Links Container */
+        main {
+            width: 100%;
+            max-width: 448px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        /* Cards de Links (Glassmorphism) */
         .glass-btn {
+            display: block;
+            text-decoration: none;
+            width: 100%;
+            padding: 4px;
+            border-radius: 12px;
             background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(10px);
+            backdrop-filter: blur(10px); /* Opcional: remover se performance for crítica */
             border: 1px solid rgba(255, 255, 255, 0.1);
             transition: all 0.3s ease;
+            animation: fadeInUp 0.5s ease-out forwards;
+            opacity: 0; /* Começa invisível para animação */
         }
-        
+
         .glass-btn:hover {
             background: rgba(255, 255, 255, 0.08);
-            border-color: #FF5722;
+            border-color: var(--fox-orange);
             transform: translateY(-2px);
             box-shadow: 0 10px 20px -5px rgba(255, 87, 34, 0.2);
         }
+
+        .btn-content {
+            display: flex;
+            align-items: center;
+            padding: 16px;
+            background: rgba(21, 5, 32, 0.5);
+            border-radius: 8px;
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .icon-box {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 16px;
+            flex-shrink: 0;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        /* Estilos específicos de ícones */
+        .icon-orange { background-color: rgba(255, 87, 34, 0.2); color: var(--fox-orange); }
+        .glass-btn:hover .icon-orange { background-color: var(--fox-orange); color: white; }
+
+        .icon-purple { background-color: rgba(168, 85, 247, 0.2); color: #c084fc; }
+        .glass-btn:hover .icon-purple { background-color: #a855f7; color: white; }
+
+        .icon-blue { background-color: rgba(59, 130, 246, 0.2); color: #60a5fa; }
+        .glass-btn:hover .icon-blue { background-color: #3b82f6; color: white; }
+
+        .link-text { flex: 1; text-align: left; }
+        .link-title { font-weight: 700; color: white; font-size: 0.875rem; display: block; }
+        .link-desc { font-size: 0.75rem; color: #9CA3AF; margin-top: 2px; display: block; }
+
+        .arrow-icon { color: #4B5563; transition: color 0.3s; }
+        .glass-btn:hover .arrow-icon { color: white; }
+
+        /* Tag Grátis */
+        .tag-free {
+            position: absolute;
+            top: 0;
+            right: 0;
+            background-color: #22c55e;
+            color: white;
+            font-size: 10px;
+            font-weight: 700;
+            padding: 2px 8px;
+            border-bottom-left-radius: 8px;
+        }
+
+        /* Footer / Social */
+        footer {
+            margin-top: 48px;
+            width: 100%;
+            max-width: 448px;
+            text-align: center;
+            animation: fadeInUp 0.5s ease-out forwards;
+            animation-delay: 400ms;
+            opacity: 0;
+        }
+
+        .social-label { color: #6B7280; font-size: 0.75rem; margin-bottom: 16px; text-transform: uppercase; letter-spacing: 0.1em; }
+        
+        .social-grid { display: flex; justify-content: center; gap: 16px; margin-bottom: 48px; }
+
+        .social-btn {
+            width: 56px;
+            height: 56px;
+            border-radius: 16px;
+            background-color: #1A0924;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #9CA3AF;
+            transition: all 0.3s;
+            text-decoration: none;
+        }
+
+        .social-btn:hover { transform: scale(1.1); color: white; }
+        .hover-insta:hover { border-color: #a855f7; background: linear-gradient(to top right, #7e22ce, #db2777); }
+        .hover-whats:hover { border-color: #22c55e; background-color: #166534; }
+        .hover-email:hover { border-color: var(--fox-orange); background-color: var(--fox-orange); }
+
+        .footer-logo { height: 24px; opacity: 0.3; filter: grayscale(100%); transition: all 0.5s; }
+        .footer-logo:hover { opacity: 0.5; filter: grayscale(0%); }
+
+        /* Keyframes Otimizados */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 0.75; }
+            50% { opacity: 0.4; }
+        }
+
+        /* Delays de animação */
+        .delay-100 { animation-delay: 100ms; }
+        .delay-200 { animation-delay: 200ms; }
+        .delay-300 { animation-delay: 300ms; }
+
     </style>
 </head>
-<body class="bg-fox-black text-fox-light font-sans antialiased hero-bg flex flex-col items-center py-12 px-4">
+<body>
 
-    <!-- Profile/Header -->
-    <header class="text-center mb-10 w-full max-w-md animate-fade-in-up" style="animation-delay: 0ms;">
-        <div class="relative w-28 h-28 mx-auto mb-4 group">
-            <div class="absolute inset-0 bg-gradient-to-tr from-fox-orange to-purple-600 rounded-full blur opacity-75 group-hover:opacity-100 transition duration-500 animate-pulse-slow"></div>
-            <div class="relative w-full h-full rounded-full p-1 bg-[#0F0314] overflow-hidden flex items-center justify-center border border-white/10">
-                <img src="/assets/images/Logo-2-H.png" alt="Agência FoxOn" class="w-20 h-auto">
+    <div class="hero-bg"></div>
+
+    <!-- Header -->
+    <header>
+        <div class="avatar-container">
+            <div class="avatar-glow"></div>
+            <div class="avatar-inner">
+                <img src="/assets/images/Logo-2-H.png" alt="Agência FoxOn" width="80" height="20" class="avatar-img" loading="eager">
             </div>
         </div>
-        
-        <h1 class="text-2xl font-heading font-bold text-white mb-1">Agência FoxOn</h1>
-        <p class="text-sm text-gray-400">Transformando Negócios em Máquinas de Vendas</p>
+        <h1>Agência FoxOn</h1>
+        <p class="subtitle">Transformando Negócios em Máquinas de Vendas</p>
     </header>
 
-    <!-- Links Container -->
-    <main class="w-full max-w-md space-y-4">
-
-        <!-- Link 1: Main Page (Protocolo REC) -->
-        <a href="https://agenciafoxon.com.br/" class="glass-btn block w-full p-1 rounded-xl group animate-fade-in-up" style="animation-delay: 100ms;">
-            <div class="flex items-center p-4 bg-[#150520]/50 rounded-lg h-full">
-                <div class="w-12 h-12 rounded-full bg-fox-orange/20 flex items-center justify-center text-fox-orange mr-4 group-hover:bg-fox-orange group-hover:text-white transition-colors">
-                    <i class="fa-solid fa-rocket text-xl"></i>
+    <!-- Links -->
+    <main>
+        
+        <!-- Link 1 -->
+        <a href="https://agenciafoxon.com.br/" class="glass-btn delay-100" aria-label="Conheça o Protocolo REC">
+            <div class="btn-content">
+                <div class="icon-box icon-orange">
+                    <!-- Rocket SVG -->
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M2.9 15.8a1.9 1.9 0 0 0 2.5 1.1l2.4-.8a12.8 12.8 0 0 0 6-6l.8-2.4a1.9 1.9 0 0 0-1.1-2.5 1.9 1.9 0 0 0-2.5 1.1l-.8 2.4a12.8 12.8 0 0 0-6 6l-2.4.8a1.9 1.9 0 0 0 1.1 2.3z"/><path d="M15 5.5A2.5 2.5 0 0 1 17.5 8"/><path d="M9 13a6 6 0 0 0 6-6"/><path d="M14 18a1.9 1.9 0 0 0 1.1-2.5 1.9 1.9 0 0 0-2.5-1.1l-2.4.8a12.8 12.8 0 0 0-6 6l-.8 2.4a1.9 1.9 0 0 0 1.1 2.5 1.9 1.9 0 0 0 2.5-1.1l.8-2.4a12.8 12.8 0 0 0 6-6z"/></svg>
                 </div>
-                <div class="flex-1 text-left">
-                    <h3 class="font-bold text-white text-sm">Precisa que seu negócio venda mais?</h3>
-                    <p class="text-xs text-gray-400 mt-0.5">Conheça o Protocolo REC</p>
+                <div class="link-text">
+                    <span class="link-title">Precisa que seu negócio venda mais?</span>
+                    <span class="link-desc">Conheça o Protocolo REC</span>
                 </div>
-                <i class="fa-solid fa-chevron-right text-gray-600 group-hover:text-white transition-colors text-sm"></i>
+                <svg class="arrow-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
             </div>
         </a>
 
-        <!-- Link 2: Ebook Magnet -->
-        <a href="https://agenciafoxon.com.br/ebook" class="glass-btn block w-full p-1 rounded-xl group animate-fade-in-up" style="animation-delay: 200ms;">
-            <div class="flex items-center p-4 bg-[#150520]/50 rounded-lg h-full relative overflow-hidden">
-                <!-- Tag "Grátis" -->
-                <div class="absolute top-0 right-0 bg-green-500 text-white text-[10px] font-bold px-2 py-0.5 rounded-bl-lg">GRÁTIS</div>
-                
-                <div class="w-12 h-12 rounded-full bg-purple-500/20 flex items-center justify-center text-purple-400 mr-4 group-hover:bg-purple-500 group-hover:text-white transition-colors">
-                    <i class="fa-solid fa-book-open text-xl"></i>
+        <!-- Link 2 -->
+        <a href="https://agenciafoxon.com.br/ebook" class="glass-btn delay-200" aria-label="Baixar Ebook Gratuito">
+            <div class="btn-content">
+                <div class="tag-free">GRÁTIS</div>
+                <div class="icon-box icon-purple">
+                    <!-- Book SVG -->
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
                 </div>
-                <div class="flex-1 text-left">
-                    <h3 class="font-bold text-white text-sm">Aprenda os 7 Ajustes Rápidos</h3>
-                    <p class="text-xs text-gray-400 mt-0.5">Para vender mais agora mesmo</p>
+                <div class="link-text">
+                    <span class="link-title">Aprenda os 7 Ajustes Rápidos</span>
+                    <span class="link-desc">Para vender mais agora mesmo</span>
                 </div>
-                <i class="fa-solid fa-chevron-right text-gray-600 group-hover:text-white transition-colors text-sm"></i>
+                <svg class="arrow-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
             </div>
         </a>
 
-        <!-- Link 3: Websites VSL -->
-        <a href="https://agenciafoxon.com.br/projetos" class="glass-btn block w-full p-1 rounded-xl group animate-fade-in-up" style="animation-delay: 300ms;">
-            <div class="flex items-center p-4 bg-[#150520]/50 rounded-lg h-full">
-                <div class="w-12 h-12 rounded-full bg-blue-500/20 flex items-center justify-center text-blue-400 mr-4 group-hover:bg-blue-500 group-hover:text-white transition-colors">
-                    <i class="fa-solid fa-laptop-code text-xl"></i>
+        <!-- Link 3 -->
+        <a href="https://agenciafoxon.com.br/projetos" class="glass-btn delay-300" aria-label="Veja nossos projetos de Sites">
+            <div class="btn-content">
+                <div class="icon-box icon-blue">
+                    <!-- Laptop SVG -->
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="2" y1="20" x2="22" y2="20"/></svg>
                 </div>
-                <div class="flex-1 text-left">
-                    <h3 class="font-bold text-white text-sm">Precisa de um Site que Vende?</h3>
-                    <p class="text-xs text-gray-400 mt-0.5">Veja nossos projetos e planos</p>
+                <div class="link-text">
+                    <span class="link-title">Precisa de um Site que Vende?</span>
+                    <span class="link-desc">Veja nossos projetos e planos</span>
                 </div>
-                <i class="fa-solid fa-chevron-right text-gray-600 group-hover:text-white transition-colors text-sm"></i>
+                <svg class="arrow-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
             </div>
         </a>
 
     </main>
 
-    <!-- Social Buttons -->
-    <footer class="mt-12 w-full max-w-md animate-fade-in-up" style="animation-delay: 400ms;">
-        <p class="text-center text-gray-500 text-xs mb-4 uppercase tracking-widest">Fale conosco</p>
+    <!-- Footer -->
+    <footer>
+        <p class="social-label">Fale conosco</p>
         
-        <div class="flex justify-center gap-4">
+        <div class="social-grid">
             <!-- Instagram -->
-            <a href="https://instagram.com/pedrorafaeloficial" target="_blank" class="w-14 h-14 rounded-2xl bg-[#1A0924] border border-white/10 flex items-center justify-center text-gray-400 hover:text-white hover:border-purple-500 hover:bg-gradient-to-tr hover:from-purple-600 hover:to-pink-500 transition-all duration-300 shadow-lg group">
-                <i class="fa-brands fa-instagram text-2xl group-hover:scale-110 transition-transform"></i>
+            <a href="https://instagram.com/pedrorafaeloficial" target="_blank" rel="noopener" class="social-btn hover-insta" aria-label="Instagram">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
             </a>
 
             <!-- WhatsApp -->
-            <a href="https://wa.me/5511972202587" target="_blank" class="w-14 h-14 rounded-2xl bg-[#1A0924] border border-white/10 flex items-center justify-center text-gray-400 hover:text-white hover:border-green-500 hover:bg-green-600 transition-all duration-300 shadow-lg group">
-                <i class="fa-brands fa-whatsapp text-2xl group-hover:scale-110 transition-transform"></i>
+            <a href="https://wa.me/5511972202587" target="_blank" rel="noopener" class="social-btn hover-whats" aria-label="WhatsApp">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
             </a>
             
-            <!-- Email (Optional Extra) -->
-            <a href="mailto:contato@agenciafoxon.com.br" class="w-14 h-14 rounded-2xl bg-[#1A0924] border border-white/10 flex items-center justify-center text-gray-400 hover:text-white hover:border-fox-orange hover:bg-fox-orange transition-all duration-300 shadow-lg group">
-                <i class="fa-regular fa-envelope text-2xl group-hover:scale-110 transition-transform"></i>
+            <!-- Email -->
+            <a href="mailto:contato@agenciafoxon.com.br" class="social-btn hover-email" aria-label="E-mail">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
             </a>
         </div>
 
-        <div class="mt-12 text-center">
-            <img src="/assets/images/Logo-2-H.png" alt="Logo Footer" class="h-6 mx-auto opacity-30 grayscale hover:grayscale-0 hover:opacity-50 transition-all duration-500">
+        <div>
+            <img src="/assets/images/Logo-2-H.png" alt="Agência FoxOn" width="80" height="20" class="footer-logo" loading="lazy">
         </div>
     </footer>
 
