@@ -21,20 +21,20 @@
     <!-- Favicon -->
     <link rel="icon" href="/assets/images/Ativo-1.png" type="image/png">
 
-    <!-- Performance Preconnects (Corrected) -->
+    <!-- Performance: Preconnects -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://cdn.tailwindcss.com">
     <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
     <link rel="preconnect" href="https://esm.sh" crossorigin>
 
+    <!-- Performance: Load Fonts via Link instead of @import to avoid chaining -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     
-    <!-- Fonts (Optimized with display=swap) -->
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap');
-        
         :root {
             --bg-deep: #0d0118; 
             --purple-main: #1a0230;
@@ -61,6 +61,7 @@
             background: linear-gradient(to bottom, #110221, #0d0118);
             overflow: hidden;
             will-change: transform;
+            pointer-events: none; /* Performance: skip hit testing */
         }
 
         .mesh-gradient {
@@ -129,6 +130,7 @@
             display: flex;
             width: max-content;
             animation: scroll 45s linear infinite;
+            will-change: transform;
         }
 
         .glass-card {
@@ -148,7 +150,17 @@
             box-shadow: 0 0 50px rgba(249, 115, 22, 0.15);
         }
     </style>
-    <!-- Babel standalone via jsDelivr (Replaces Unpkg/CDNJS for better stability) -->
+</head>
+<body>
+    <div class="tech-bg">
+        <div class="mesh-gradient"></div>
+        <div class="hero-grid"></div>
+        <div class="particles-overlay"></div>
+    </div>
+    <div id="root"></div>
+
+    <!-- Move Scripts to bottom to prevent blocking render -->
+    <!-- Babel standalone via jsDelivr -->
     <script src="https://cdn.jsdelivr.net/npm/@babel/standalone@7.24.5/babel.min.js"></script>
     <script type="importmap">
     {
@@ -160,14 +172,6 @@
       }
     }
     </script>
-</head>
-<body>
-    <div class="tech-bg">
-        <div class="mesh-gradient"></div>
-        <div class="hero-grid"></div>
-        <div class="particles-overlay"></div>
-    </div>
-    <div id="root"></div>
 
     <script type="text/babel" data-type="module">
         import React, { useState, useEffect } from 'react';
@@ -185,6 +189,7 @@
 
         const LOGO_URL = "/assets/images/Logo-2-H.png";
         const PEDRO_IMG_URL = "/assets/images/Pedro.png";
+        const VIDEO_ID = "O2u0L-eCBWk";
 
         const MARCAS = ["TechFlow Solutions", "GlobalPrime Marketing", "NovaInvest Capital", "EcoSolutions Group", "PeakPerformance Gym", "UrbanNest Realty", "LuminaAds Digital", "SkyHigh Ventures", "FutureProof Tech", "GrowthMind SaaS", "TechFlow Solutions", "GlobalPrime Marketing", "NovaInvest Capital", "EcoSolutions Group", "PeakPerformance Gym", "UrbanNest Realty", "LuminaAds Digital", "SkyHigh Ventures", "FutureProof Tech", "GrowthMind SaaS"];
 
@@ -212,6 +217,46 @@
           { q: "Já tive experiências ruins com agências. Por que seria diferente agora?", a: "Porque não trabalhamos com achismos. O Protocolo REC é um processo de engenharia comercial. Corrigimos primeiro a base (REC) antes de injetar tráfego, evitando que você jogue dinheiro fora." },
           { q: "O que acontece depois do diagnóstico?", a: "Você sairá com um mapa claro dos seus gargalos no REC. Se houver fit cultural e comercial, apresentaremos como podemos executar o protocolo para você." }
         ];
+
+        // Componente de Vídeo Facade para Performance Extrema
+        // Carrega apenas a imagem (thumbnail) leve primeiro. Só carrega o iframe pesado ao clicar.
+        const VideoFacade = () => {
+          const [isPlaying, setIsPlaying] = useState(false);
+
+          if (isPlaying) {
+            return (
+              <iframe 
+                className="w-full h-full animate-in fade-in duration-500" 
+                src={`https://www.youtube.com/embed/${VIDEO_ID}?autoplay=1&rel=0`}
+                title="Vídeo de Apresentação FoxOn"
+                frameBorder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowFullScreen
+              ></iframe>
+            );
+          }
+
+          return (
+            <button 
+              onClick={() => setIsPlaying(true)}
+              className="w-full h-full relative group cursor-pointer overflow-hidden"
+              aria-label="Reproduzir Vídeo de Apresentação"
+            >
+              <img 
+                src={`https://img.youtube.com/vi/${VIDEO_ID}/maxresdefault.jpg`} 
+                alt="Thumbnail Vídeo FoxOn"
+                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-80"
+                width="896"
+                height="504"
+              />
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="w-20 h-20 bg-orange-500/90 rounded-full flex items-center justify-center shadow-lg shadow-orange-500/40 transition-all group-hover:scale-110 group-hover:bg-orange-500">
+                  <Play size={32} className="text-white fill-current ml-1" />
+                </div>
+              </div>
+            </button>
+          );
+        };
 
         const App = () => {
           const [scrolled, setScrolled] = useState(false);
@@ -254,7 +299,9 @@
                   <img 
                     src={LOGO_URL} 
                     alt="FoxOn Agência" 
-                    className={`transition-all duration-500 rounded-lg object-contain ${scrolled ? 'h-8' : 'h-10 md:h-12'}`} 
+                    width="150"
+                    height="48"
+                    className={`transition-all duration-500 object-contain w-auto ${scrolled ? 'h-8' : 'h-10 md:h-12'}`} 
                   />
                   <div className="hidden md:flex gap-8 text-xs font-bold text-gray-300 uppercase tracking-widest">
                     <a href="#rec" className="hover:text-orange-400 transition p-2">Protocolo REC</a>
@@ -275,16 +322,9 @@
                   <h1 className="text-5xl md:text-8xl font-black leading-[1] mb-6 tracking-tight">CORRIJA SEU <span className="text-orange-500">REC</span> E <br /><span className="text-gradient">VENDA COM ESCALA</span></h1>
                   <p className="text-lg md:text-2xl text-gray-200 max-w-3xl mx-auto mb-12 font-medium">O amadorismo é o maior ralo de dinheiro do seu negócio. Pare de tentar a sorte e aplique o <b>Protocolo REC</b> para dominar seu mercado.</p>
                   
-                  {/* Video Container - Removed loading="lazy" for better LCP */}
+                  {/* Video Container - Facade implementation for 100 Performance */}
                   <div className="relative max-w-4xl mx-auto aspect-video rounded-[32px] overflow-hidden border-2 border-white/20 orange-glow bg-black shadow-2xl backdrop-blur-sm">
-                    <iframe 
-                      className="w-full h-full" 
-                      src="https://www.youtube.com/embed/O2u0L-eCBWk?rel=0" 
-                      title="Vídeo de Apresentação FoxOn"
-                      frameBorder="0" 
-                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                      allowFullScreen
-                    ></iframe>
+                    <VideoFacade />
                   </div>
 
                   <div className="mt-16">
@@ -356,7 +396,9 @@
                       src={PEDRO_IMG_URL} 
                       alt="Pedro Rafael, CEO da FoxOn Agência" 
                       loading="lazy"
-                      className="w-full max-w-[500px] drop-shadow-2xl rounded-[32px] object-cover" 
+                      width="500"
+                      height="600"
+                      className="w-full max-w-[500px] h-auto drop-shadow-2xl rounded-[32px] object-cover" 
                     />
                     <div className="absolute bottom-10 left-0 right-0 p-8 bg-black/50 backdrop-blur-lg border border-white/20 rounded-b-[48px] mx-4 shadow-2xl">
                         <p className="text-orange-500 font-black text-3xl uppercase">Pedro Rafael</p>
@@ -465,7 +507,7 @@
               <footer className="bg-black/70 backdrop-blur-3xl pt-24 pb-12 px-6 border-t border-white/10">
                 <div className="max-w-7xl mx-auto grid md:grid-cols-4 gap-16 mb-20">
                   <div className="md:col-span-2">
-                    <img src={LOGO_URL} alt="FoxOn Agência Logo" loading="lazy" className="h-12 mb-8 rounded-lg" />
+                    <img src={LOGO_URL} alt="FoxOn Agência Logo" loading="lazy" width="150" height="48" className="h-12 w-auto mb-8 rounded-lg object-contain" />
                     <p className="text-gray-400">Transformando marketing digital em lucro líquido.</p>
                   </div>
                   <div>
