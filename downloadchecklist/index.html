@@ -1,80 +1,154 @@
-import React from 'react';
-import { CheckCircle, Download, ArrowLeft, ExternalLink } from 'lucide-react';
-
-// Caminho atualizado conforme solicitado
-const CHECKLIST_URL = "assets/ebooks/Checklist_REC.pdf";
-const WHATSAPP_LINK = "https://wa.me/5511972202587?text=Quero%20agendar%20um%20diagnóstico%20enquanto%20leio%20o%20checklist!";
-
-export default function App() {
-  return (
-    <div className="min-h-screen bg-[#0d0118] text-white flex items-center justify-center overflow-x-hidden font-['Plus_Jakarta_Sans'] selection:bg-orange-500/30">
-      {/* Elementos de Fundo */}
-      <div className="fixed inset-0 z-0">
-        <div className="absolute inset-0 bg-gradient-to-bottom from-[#110221] to-[#0d0118]" />
-        <div 
-          className="absolute inset-0 opacity-[0.08]" 
-          style={{
-            backgroundImage: `linear-gradient(#f97316 1px, transparent 1px), linear-gradient(90deg, #f97316 1px, transparent 1px)`,
-            backgroundSize: '50px 50px',
-            maskImage: 'radial-gradient(ellipse at center, black, transparent 85%)',
-            transform: 'rotateX(45deg) translateY(-20%)'
-          }}
-        />
-      </div>
-
-      <div className="relative z-10 p-6 max-w-2xl w-full animate-[scaleIn_0.5s_cubic-bezier(0.175,0.885,0.32,1.275)]">
-        <div className="bg-white/5 backdrop-blur-xl p-10 md:p-16 rounded-[48px] text-center border border-orange-500/20 shadow-2xl">
-          {/* Ícone de Sucesso */}
-          <div className="w-24 h-24 bg-green-500/20 text-green-500 rounded-full flex items-center justify-center mx-auto mb-8">
-            <CheckCircle size={56} />
-          </div>
-          
-          <h1 className="text-4xl md:text-5xl font-black mb-6 leading-tight">
-            Acesso <span className="text-[#f97316]">Liberado!</span>
-          </h1>
-          
-          <p className="text-gray-300 text-lg mb-12 font-medium">
-            Sua inscrição foi concluída com sucesso. Clique abaixo para baixar seu Checklist e começar a auditar sua operação digital.
-          </p>
-
-          <div className="flex flex-col gap-4">
-            <a 
-              href={CHECKLIST_URL} 
-              download="Checklist_REC.pdf"
-              className="bg-[#f97316] hover:bg-[#ea580c] text-black font-black py-6 px-10 rounded-2xl text-xl flex items-center justify-center gap-3 transition-all duration-300 hover:-translate-y-0.5 shadow-[0_0_20px_rgba(249,115,22,0.3)] hover:shadow-[0_0_35px_rgba(249,115,22,0.5)]"
-            >
-              <Download size={24} /> BAIXAR CHECKLIST AGORA
-            </a>
-
-            <a 
-              href={WHATSAPP_LINK} 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              className="bg-white/5 hover:bg-white/10 text-white font-bold py-5 px-10 rounded-2xl text-lg border border-white/10 flex items-center justify-center gap-3 transition-all duration-300"
-            >
-              AGENDAR DIAGNÓSTICO <ExternalLink size={20} />
-            </a>
-          </div>
-
-          <div className="mt-12 pt-8 border-t border-white/10">
-            <a 
-              href="../index.html" 
-              className="text-gray-500 hover:text-orange-500 font-bold inline-flex items-center gap-2 transition-colors duration-300"
-            >
-              <ArrowLeft size={18} /> Voltar para o site
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <style dangerouslySetInnerHTML={{ __html: `
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Download Checklist | FoxOn Agência</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
         @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap');
         
-        @keyframes scaleIn {
-          from { transform: scale(0.8); opacity: 0; }
-          to { transform: scale(1); opacity: 1; }
+        :root {
+            --bg-deep: #0d0118;
+            --orange-primary: #f97316;
+            --orange-hover: #ea580c;
         }
-      `}} />
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg-deep);
+            color: white;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow-x: hidden;
+            margin: 0;
+        }
+
+        /* Background Effects */
+        .tech-bg {
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            background: linear-gradient(to bottom, #110221, #0d0118);
+        }
+
+        .hero-grid {
+            position: absolute;
+            inset: 0;
+            background-image: linear-gradient(rgba(249, 115, 22, 0.08) 1px, transparent 1px), 
+                              linear-gradient(90deg, rgba(249, 115, 22, 0.08) 1px, transparent 1px);
+            background-size: 50px 50px;
+            mask-image: radial-gradient(ellipse at center, black, transparent 85%);
+            pointer-events: none;
+            transform: rotateX(45deg) translateY(-20%);
+        }
+
+        /* Glassmorphism Card */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(249, 115, 22, 0.2);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Buttons */
+        .orange-button {
+            background: var(--orange-primary);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 0 20px rgba(249, 115, 22, 0.3);
+        }
+
+        .orange-button:hover {
+            background: var(--orange-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 0 35px rgba(249, 115, 22, 0.5);
+        }
+
+        .secondary-button {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .secondary-button:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Animations */
+        .success-anim {
+            animation: scaleIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        @keyframes scaleIn {
+            from { transform: scale(0.8); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        ::selection {
+            background: rgba(249, 115, 22, 0.3);
+        }
+    </style>
+</head>
+<body>
+    <!-- Background Structure -->
+    <div class="tech-bg">
+        <div class="hero-grid"></div>
     </div>
-  );
-}
+
+    <!-- Main Content -->
+    <main class="p-6 max-w-2xl w-full success-anim relative z-10">
+        <div class="glass-card p-10 md:p-16 rounded-[48px] text-center">
+            
+            <!-- Success Icon -->
+            <div class="w-24 h-24 bg-green-500/20 text-green-500 rounded-full flex items-center justify-center mx-auto mb-8">
+                <i data-lucide="check-circle" style="width: 56px; height: 56px;"></i>
+            </div>
+            
+            <h1 class="text-4xl md:text-5xl font-black mb-6 leading-tight">
+                Acesso <span class="text-[#f97316]">Liberado!</span>
+            </h1>
+            
+            <p class="text-gray-300 text-lg mb-12 font-medium">
+                Sua inscrição foi concluída com sucesso. Clique abaixo para baixar seu Checklist e começar a auditar sua operação digital.
+            </p>
+
+            <!-- Action Buttons -->
+            <div class="flex flex-col gap-4">
+                <a href="assets/ebooks/Checklist_REC.pdf" 
+                   download="Checklist_REC.pdf"
+                   class="orange-button text-black font-black py-6 px-10 rounded-2xl text-xl flex items-center justify-center gap-3">
+                    <i data-lucide="download" class="w-6 h-6"></i> 
+                    BAIXAR CHECKLIST AGORA
+                </a>
+
+                <a href="https://wa.me/5511972202587?text=Quero%20agendar%20um%20diagnóstico%20enquanto%20leio%20o%20checklist!" 
+                   target="_blank" 
+                   rel="noopener noreferrer"
+                   class="secondary-button text-white font-bold py-5 px-10 rounded-2xl text-lg flex items-center justify-center gap-3">
+                    AGENDAR DIAGNÓSTICO 
+                    <i data-lucide="external-link" class="w-5 h-5"></i>
+                </a>
+            </div>
+
+            <!-- Footer Link -->
+            <div class="mt-12 pt-8 border-t border-white/10">
+                <a href="../index.html" class="text-gray-500 hover:text-orange-500 font-bold inline-flex items-center gap-2 transition-colors">
+                    <i data-lucide="arrow-left" class="w-4.5 h-4.5"></i> 
+                    Voltar para o site
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+    </script>
+</body>
+</html>
